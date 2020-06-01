@@ -5,7 +5,7 @@ import Icon from '@material-ui/core/Icon'
 import Card from '@material-ui/core/Card'
 
 import { useThemeSelection } from '../hooks/theme-hook'
-import { useCardStyles } from '../styles/card-styles'
+import { OnboardingCardStyles } from '../styles/card-styles'
 import history from '../util/history-util'
 
 export const Favorites = () => {
@@ -22,7 +22,7 @@ export const Favorites = () => {
 	})
 
 	const { currentThemeSelection } = useThemeSelection()
-	const { baseCard } = useCardStyles()
+	const { baseCard } = OnboardingCardStyles()
 	return (
 		<div
 			style={{

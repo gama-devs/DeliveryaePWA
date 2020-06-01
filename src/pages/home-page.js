@@ -10,7 +10,8 @@ import { InputField } from '../components/input-field-component'
 import { Lyrics } from '../components/lyrics-component'
 import { useThemeSelection } from '../hooks/theme-hook'
 import { useBtnStyles } from '../styles/button-styles'
-import { useCardStyles } from '../styles/card-styles'
+import { OnboardingCardStyles } from '../styles/card-styles'
+import { Onboarding1 } from '../pages/onboardings/onboarding1'
 
 const Home = () => {
 	const { isLyricsLoading, isLyricsNotFound, lyrics } = useStore(
@@ -25,7 +26,7 @@ const Home = () => {
 	)
 
 	const { currentThemeSelection } = useThemeSelection()
-	const { baseCard, title } = useCardStyles()
+	const { baseCard, title } = OnboardingCardStyles()
 	const { btnGroup } = useBtnStyles()
 
 	const searchValidation = (values) => {
