@@ -1,23 +1,19 @@
-import React, { useState } from 'react'
-import { useStore, useAction } from 'easy-peasy'
-import { Form, Field } from 'react-final-form'
-import { withRouter } from 'react-router-dom'
-import CardContent from '@material-ui/core/CardContent'
+import React from 'react'
 import Button from '@material-ui/core/Button'
-import Card from '@material-ui/core/Card'
-import { InputField } from '../../components/input-field-component'
-import { Lyrics } from '../../components/lyrics-component'
-import { useThemeSelection } from '../../hooks/theme-hook'
 import { useBtnStyles } from '../../styles/button-styles'
 import { OnboardingCardStyles } from '../../styles/card-styles'
-import { Row } from 'reactstrap'
-import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight'
+import CloseIcon from '@material-ui/icons/Close'
+import history from '../../util/history-util'
+import {
+	BrowserView,
+	MobileView,
+	isBrowser,
+	isMobile,
+} from 'react-device-detect'
 
 export const Onboarding1 = (props) => {
-	const { currentThemeSelection } = useThemeSelection()
-	const { baseCard, title, imginside, title2, title1 } = OnboardingCardStyles()
+	const { imginside, title2, title1 } = OnboardingCardStyles()
 	const { btnGroup, btnProx } = useBtnStyles()
-	const [lhul, setlhul] = useState(0)
 
 	return (
 		<div
@@ -27,8 +23,26 @@ export const Onboarding1 = (props) => {
 				padding: '0.1px',
 			}}
 		>
+			<div
+				style={{
+					cursor: 'pointer',
+					alignContent: 'center',
+					textAlign: 'center',
+				}}
+			>
+				<CloseIcon
+					onClick={() => {
+						history.push('/checkaddres')
+					}}
+					style={{ marginRight: '40vh', marginTop: '10%' }}
+				/>
+			</div>
 			<div style={{ alignContent: 'center', textAlign: 'center' }}>
-				<img className={imginside} src={props.img} />
+				<img
+					alt="Imagem dentro do card"
+					className={imginside}
+					src={props.img}
+				/>
 			</div>
 
 			<div className={title1}>{props.title1()}</div>
@@ -39,14 +53,11 @@ export const Onboarding1 = (props) => {
 						style={{ borderRadius: '12px', backgroundColor: '#FF805D' }}
 						onClick={() => {
 							props.func()
-							console.log('sim como descobriu')
 						}}
 					>
 						<div className={btnProx}>
-							Próximo{' '}
-							<KeyboardArrowRightIcon
-								style={{ fontSize: '20px', marginBottom: '-6px' }}
-							/>
+							{props.btntext}
+							{props.btnicon()}
 						</div>
 					</Button>
 				</div>

@@ -13,6 +13,8 @@
     "lodash": "^4.17.13",
     "react": "^16.13.1",
     "react-app-rewire-workbox": "^2.0.1",
+    "react-bottom-sheet": "^1.1.1",
+    "react-device-detect": "^1.12.1",
     "react-dom": "^16.13.1",
     "react-final-form": "^4.0.2",
     "react-redux": "^6.0.0",

@@ -11,7 +11,6 @@ import { Lyrics } from '../components/lyrics-component'
 import { useThemeSelection } from '../hooks/theme-hook'
 import { useBtnStyles } from '../styles/button-styles'
 import { OnboardingCardStyles } from '../styles/card-styles'
-import { Onboarding1 } from '../pages/onboardings/onboarding1'
 
 const Home = () => {
 	const { isLyricsLoading, isLyricsNotFound, lyrics } = useStore(

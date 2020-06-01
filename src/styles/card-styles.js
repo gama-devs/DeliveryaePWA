@@ -2,14 +2,26 @@ import { makeStyles } from '@material-ui/styles'
 
 export const OnboardingCardStyles = makeStyles({
 	baseCard: {
-		borderRadius: '.5rem',
+		borderRadius: '200px',
 		height: '100vh',
 	},
 	imginside: {
 		alignContent: 'center',
 		width: '356px',
-		height: '356px',
+		height: '370px',
 		marginLeft: '2vh',
+	},
+	logoCheckAddress: {
+		alignContent: 'center',
+		width: '50%',
+		height: '10%',
+		marginTop: '5vh',
+	},
+	imgCheckAddress: {
+		alignContent: 'center',
+		marginTop: '-8vh',
+		width: '316px',
+		height: '473px',
 	},
 	title2: {
 		textAlign: 'center',
@@ -24,6 +36,6 @@ export const OnboardingCardStyles = makeStyles({
 		lineHeight: '23px',
 		fontSize: '20px',
 		textAlign: 'center',
-		margin: '50px 60px 30px 30px',
+		margin: '50px 3px 30px 3px',
 	},
 })

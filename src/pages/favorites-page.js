@@ -6,7 +6,7 @@ import Card from '@material-ui/core/Card'
 
 import { useThemeSelection } from '../hooks/theme-hook'
 import { OnboardingCardStyles } from '../styles/card-styles'
-import history from '../util/history-util'
+// import history from '../util/history-util'
 
 export const Favorites = () => {
 	const { favoriteLyrics } = useStore((state) => state.music)
