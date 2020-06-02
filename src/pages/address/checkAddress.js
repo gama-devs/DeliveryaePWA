@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { withRouter } from 'react-router-dom'
 import BaseCheck from './basecheck'
+import DoneIcon from '@material-ui/icons/Done'
 import { Field } from 'react-final-form'
 import { InputField } from '../../components/input-field-component'
 import { OnboardingCardStyles } from '../../styles/card-styles'
-
+import { Input, Row, Col } from 'reactstrap'
 const checkAddress = () => {
 	const { baseCard, title1 } = OnboardingCardStyles()
 
-	const [boleano, setbol] = useState(false)
+	const [endereco, setendereco] = useState('')
 	return (
 		<div
 			style={{
@@ -16,41 +17,53 @@ const checkAddress = () => {
 			}}
 		>
 			<BaseCheck />
-
 			<div
 				style={{
 					marginTop: '20vh',
 					borderRadius: '20px 20px 0px 0px',
 					backgroundColor: `#FF805D`,
-					height: '30vh',
+					height: '25vh',
 				}}
 			>
 				<div
 					style={{
-						padding: '5vh 0vh 10vh 0vh',
+						padding: '5vh 0vh 6vh 0vh',
 						textAlign: 'center',
 						fontSize: '16px',
 						color: '#FFF',
 					}}
 				>
-					Iforme o endereço de entrega
+					Informe o endereço de entrega
 				</div>
-				<div>
-					<form
-						style={{ borderRadius: '10px' }}
-						onSubmit={() => {
+				<Row style={{ textAlign: 'center', alignContent: 'center' }}>
+					<Input
+						onChange={(e) => {
+							setendereco(e.target.value)
+						}}
+						value={endereco}
+						placeholder="Endereço de entrega"
+						style={{ padding: '1.1vh 3vh 1.1vh 3vh' }}
+					/>
+					<div
+						onClick={() => {
 							console.log('sim')
 						}}
+						style={{
+							cursor: 'pointer',
+							position: 'absolute',
+							borderRadius: '5px',
+							backgroundColor: '#000',
+							height: '4.5vh',
+							width: '4.5vh',
+							margin: '-5vh -100px 3vh 35vh',
+							color: '#fff',
+						}}
 					>
-						<Field
-							style={{ paddingbackgroundColor: '#FFFF', borderRadius: '10px' }}
-							component={InputField}
-							placeholder="Endereço de Entrega"
-							name="Endereço de Entrega"
-							type="text"
-						/>
-					</form>
-				</div>
+						<text>
+							<DoneIcon style={{ marginBottom: '-2vh' }} />
+						</text>
+					</div>
+				</Row>
 			</div>
 		</div>
 	)
