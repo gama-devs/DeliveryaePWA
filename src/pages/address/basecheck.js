@@ -6,6 +6,7 @@ import { OnboardingCardStyles } from '../../styles/card-styles'
 import { Button } from 'reactstrap'
 import imggps from '../../assets/img-gps.png'
 import imgLogo from '../../assets/logo.png'
+
 const BaseCheck = () => {
 	const { imgCheckAddress, logoCheckAddress, title1 } = OnboardingCardStyles()
 
@@ -26,4 +27,4 @@ const BaseCheck = () => {
 		</div>
 	)
 }
-export default withRouter(BaseCheck)
+export default BaseCheck

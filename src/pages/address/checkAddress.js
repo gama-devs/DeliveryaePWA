@@ -3,13 +3,18 @@ import { withRouter } from 'react-router-dom'
 import BaseCheck from './basecheck'
 import DoneIcon from '@material-ui/icons/Done'
 import { Field } from 'react-final-form'
+import { useAction } from 'easy-peasy'
 import { InputField } from '../../components/input-field-component'
 import { OnboardingCardStyles } from '../../styles/card-styles'
 import { Input, Row, Col } from 'reactstrap'
+import history from '../../util/history-util'
+
 const checkAddress = () => {
+	const setaddresbase = useAction((state) => state.user.setaddress)
 	const { baseCard, title1 } = OnboardingCardStyles()
 
 	const [endereco, setendereco] = useState('')
+
 	return (
 		<div
 			style={{
@@ -46,7 +51,8 @@ const checkAddress = () => {
 					/>
 					<div
 						onClick={() => {
-							console.log('sim')
+							setaddresbase(endereco)
+							history.push('/searchaddres')
 						}}
 						style={{
 							cursor: 'pointer',

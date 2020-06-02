@@ -7,6 +7,7 @@ import history from '../util/history-util'
 import Home from '../pages/home-page'
 import Andrezin from '../pages/andrezin'
 import checkAddress from '../pages/address/checkAddress'
+import searchAddress from '../pages/address/searchAddress'
 
 /**
  * 👉 if authenticated routes are needed 👈
@@ -30,6 +31,7 @@ export const Routes = () => (
 				<Route exact path="/" component={Andrezin} />
 				<Route path="/checkaddres" component={checkAddress} />
 				<Route path="/andrezinpae" component={Home} />
+				<Route path="/searchaddres" component={searchAddress} />
 				{/* <PrivateRoute path="/" component={() => RestrictedArea()} /> */}
 			</Switch>
 		</Layout>
