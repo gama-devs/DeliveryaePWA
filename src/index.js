@@ -8,6 +8,7 @@ import { Routes } from './routes'
 import { theme } from './styles/custom-theme-style'
 import './index.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import './assets/scss/style.scss'
 
 const customTheme = createMuiTheme(theme)
 
