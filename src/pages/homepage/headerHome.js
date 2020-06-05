@@ -3,6 +3,7 @@ import pizzalogo from '../../assets/logo.png'
 import SearchIcon from '@material-ui/icons/Search'
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline'
 import { withRouter } from 'react-router-dom'
+import history from '../../util/history-util'
 const HeaderHome = () => {
 	return (
 		<div
@@ -24,7 +25,7 @@ const HeaderHome = () => {
 			<SearchIcon style={{ flex: 1, color: '#FF805D' }} />
 			<div
 				onClick={() => {
-					console.log('clicou')
+					history.push('/login')
 				}}
 				style={{
 					cursor: 'pointer',

@@ -9,6 +9,7 @@ import Onboarding from '../pages/andrezin'
 import checkAddress from '../pages/address/checkAddress'
 import searchAddress from '../pages/address/searchAddress'
 import HomePage from '../pages/homepage/homePage'
+import LoginPage from '../pages/login/loginPage'
 
 /**
  * 👉 if authenticated routes are needed 👈
@@ -34,6 +35,7 @@ export const Routes = () => (
 				<Route path="/andrezinpae" component={Home} />
 				<Route path="/searchaddres" component={searchAddress} />
 				<Route path="/home" component={HomePage} />
+				<Route path="/login" component={LoginPage} />
 				{/* <PrivateRoute path="/" component={() => RestrictedArea()} /> */}
 			</Switch>
 		</Layout>

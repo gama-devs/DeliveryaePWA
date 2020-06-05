@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useStore, useStoreActions } from 'easy-peasy'
+import { useStore, useStoreActions, useStoreState } from 'easy-peasy'
 import { Form, Field } from 'react-final-form'
 import { withRouter } from 'react-router-dom'
 import { Row, Col, Button, Label, Input } from 'reactstrap'
@@ -10,8 +10,7 @@ import LoadedAddresses from './loadedAddresses'
 import SerachBar from './serachBar'
 
 const searchAddress = () => {
-	const fulluser = useStore((state) => {
-		console.log(state, 'aaaaaaaaaaaaaaaaaa')
+	const fulluser = useStoreState((state) => {
 		return state.user
 	})
 
@@ -141,6 +140,7 @@ const searchAddress = () => {
 									backgroundColor: '#FF805D',
 								}}
 								onClick={() => {
+									history.push('/home')
 									console.log('salvar')
 								}}
 							>
@@ -148,6 +148,7 @@ const searchAddress = () => {
 							</Button>
 							<div
 								onClick={() => {
+									history.push('/home')
 									console.log('comentando ')
 								}}
 								style={{ cursor: 'pointer' }}
