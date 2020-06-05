@@ -1,12 +1,95 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 import LoginBg from './bglogin'
-import { Input } from 'reactstrap'
-
+import { Input, Button } from 'reactstrap'
+import NewUser from './newuser'
+import ConfirmSms from './confirmSms'
+import ForgotPassword from './forgotPassword'
+import TempPassword from './tempPassword'
+import ConfirmTempPassword from './confirmTempPassword'
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
 const LoginPage = () => {
+	const [backarrowstate, setbackarrowstate] = useState('')
+	let arrowbackfunction = (str) => {}
 	return (
 		<LoginBg>
+			{backarrowstate && (
+				<div style={{ display: 'flex', flexDirection: 'row' }}>
+					<Button
+						onClick={() => {
+							console.log('sim')
+						}}
+						style={{
+							marginLeft: '3vw',
+							marginTop: '3vh',
+							borderStyle: 'none',
+							backgroundColor: '#FF805D',
+							borderRadius: '8px',
+							height: '7vh',
+							width: '7vh',
+						}}
+					>
+						<ArrowBackIosIcon style={{ color: '#FFFF' }} />
+					</Button>
+				</div>
+			)}
+			{/* <div
+				style={{
+					alignContent: 'center',
+					display: 'flex',
+					justifyContent: 'center',
+					flexDirection: 'row',
+					marginTop: '60vh',
+				}}
+			>
+				<ConfirmSms />
+			</div> */}
+			{/* <div
+				style={{
+					alignContent: 'center',
+					display: 'flex',
+					justifyContent: 'center',
+					flexDirection: 'row',
+					marginTop: '60vh',
+				}}
+			>
+				<ForgotPassword />
+			</div> */}
+			{/* <div
+				style={{
+					alignContent: 'center',
+					display: 'flex',
+					justifyContent: 'center',
+					flexDirection: 'row',
+					marginTop: '60vh',
+				}}
+			>
+				<TempPassword />
+			</div> */}
 			<div
+				style={{
+					alignContent: 'center',
+					display: 'flex',
+					justifyContent: 'center',
+					flexDirection: 'row',
+					marginTop: '75vh',
+				}}
+			>
+				<ConfirmTempPassword />
+			</div>
+
+			{/* <div
+				style={{
+					alignContent: 'center',
+					display: 'flex',
+					justifyContent: 'center',
+					flexDirection: 'row',
+					marginTop: '40vh',
+				}}
+			>
+				<NewUser />
+			</div>
+			{/* <div
 				style={{
 					position: 'relative',
 					display: 'flex',
@@ -113,7 +196,7 @@ const LoginPage = () => {
 						</h4>
 					</div>
 				</div>
-			</div>
+			</div> */}
 		</LoginBg>
 	)
 }
