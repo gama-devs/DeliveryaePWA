@@ -5,9 +5,10 @@ import { Layout } from '../components/layout-component'
 import { Favorites } from '../pages/favorites-page'
 import history from '../util/history-util'
 import Home from '../pages/home-page'
-import Andrezin from '../pages/andrezin'
+import Onboarding from '../pages/andrezin'
 import checkAddress from '../pages/address/checkAddress'
 import searchAddress from '../pages/address/searchAddress'
+import HomePage from '../pages/homepage/homePage'
 
 /**
  * 👉 if authenticated routes are needed 👈
@@ -28,10 +29,11 @@ export const Routes = () => (
 		<Layout>
 			<Switch>
 				<Route path="/favorites" component={Favorites} />
-				<Route exact path="/" component={Andrezin} />
+				<Route exact path="/" component={checkAddress} />
 				<Route path="/checkaddres" component={checkAddress} />
 				<Route path="/andrezinpae" component={Home} />
 				<Route path="/searchaddres" component={searchAddress} />
+				<Route path="/home" component={HomePage} />
 				{/* <PrivateRoute path="/" component={() => RestrictedArea()} /> */}
 			</Switch>
 		</Layout>

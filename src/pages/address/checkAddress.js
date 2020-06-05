@@ -3,14 +3,14 @@ import { withRouter } from 'react-router-dom'
 import BaseCheck from './basecheck'
 import DoneIcon from '@material-ui/icons/Done'
 import { Field } from 'react-final-form'
-import { useAction } from 'easy-peasy'
+import { useStoreActions } from 'easy-peasy'
 import { InputField } from '../../components/input-field-component'
 import { OnboardingCardStyles } from '../../styles/card-styles'
 import { Input, Row, Col } from 'reactstrap'
 import history from '../../util/history-util'
 
 const checkAddress = () => {
-	const setaddresbase = useAction((state) => state.user.setaddress)
+	const setaddresbase = useStoreActions((actions) => actions.user.setaddress)
 	const { baseCard, title1 } = OnboardingCardStyles()
 
 	const [endereco, setendereco] = useState('')
@@ -40,35 +40,43 @@ const checkAddress = () => {
 				>
 					Informe o endereço de entrega
 				</div>
-				<Row style={{ textAlign: 'center', alignContent: 'center' }}>
-					<Input
-						onChange={(e) => {
-							setendereco(e.target.value)
-						}}
-						value={endereco}
-						placeholder="Endereço de entrega"
-						style={{ padding: '1.1vh 3vh 1.1vh 3vh' }}
-					/>
-					<div
-						onClick={() => {
-							setaddresbase(endereco)
-							history.push('/searchaddres')
-						}}
-						style={{
-							cursor: 'pointer',
-							position: 'absolute',
-							borderRadius: '5px',
-							backgroundColor: '#000',
-							height: '4.5vh',
-							width: '4.5vh',
-							margin: '-5vh -100px 3vh 35vh',
-							color: '#fff',
-						}}
-					>
-						<text>
-							<DoneIcon style={{ marginBottom: '-2vh' }} />
-						</text>
-					</div>
+				<Row>
+					<Col>
+						<Input
+							onChange={(e) => {
+								setendereco(e.target.value)
+							}}
+							value={endereco.str}
+							placeholder="Endereço de entrega"
+							style={{ padding: '1.1vh 3vh 1.1vh 3vh' }}
+						/>
+						<div
+							onClick={() => {
+								setaddresbase({
+									str: endereco,
+									fullresp: '',
+									lat: '',
+									long: '',
+									cep: '',
+								})
+								history.push('/searchaddres')
+							}}
+							style={{
+								cursor: 'pointer',
+								position: 'absolute',
+								borderRadius: '5px',
+								backgroundColor: '#000',
+								height: '4.5vh',
+								width: '4.5vh',
+								margin: '-5vh -100px 3vh 35vh',
+								color: '#fff',
+							}}
+						>
+							<div>
+								<DoneIcon style={{ marginBottom: '-2vh' }} />
+							</div>
+						</div>
+					</Col>
 				</Row>
 			</div>
 		</div>

@@ -5,6 +5,5 @@ import { userModel } from './user-model'
 
 export const model = {
 	...settingsModel,
-	...musicModel,
 	...userModel,
 }

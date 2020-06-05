@@ -1,0 +1,46 @@
+import React from 'react'
+import pizzalogo from '../../assets/logo.png'
+import SearchIcon from '@material-ui/icons/Search'
+import PersonOutlineIcon from '@material-ui/icons/PersonOutline'
+import { withRouter } from 'react-router-dom'
+const HeaderHome = () => {
+	return (
+		<div
+			style={{
+				alignItems: 'center',
+				height: '8vh',
+				marginTop: '2vh',
+				backgroundColor: '#FFF',
+				display: 'flex',
+				flexDirection: 'row',
+			}}
+		>
+			<img
+				alt="logo"
+				src={pizzalogo}
+				style={{ paddingLeft: '3vw', height: '6vh', flex: 1 }}
+			></img>
+			<div style={{ flex: 5 }}> </div>
+			<SearchIcon style={{ flex: 1, color: '#FF805D' }} />
+			<div
+				onClick={() => {
+					console.log('clicou')
+				}}
+				style={{
+					cursor: 'pointer',
+					display: 'flex',
+					alignItems: 'center',
+					justifyContent: 'center',
+					borderRadius: '6px',
+					height: '5vh',
+					width: '5vh',
+					backgroundColor: '#FF805D',
+				}}
+			>
+				{' '}
+				<PersonOutlineIcon style={{ color: '#FFF' }} />
+			</div>
+		</div>
+	)
+}
+export default withRouter(HeaderHome)

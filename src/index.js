@@ -9,12 +9,13 @@ import { theme } from './styles/custom-theme-style'
 import './index.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './assets/scss/style.scss'
+import { userModel } from './models/user-model'
 
 const customTheme = createMuiTheme(theme)
 
 ReactDOM.render(
 	<div className="App">
-		<StoreProvider store={store}>
+		<StoreProvider store={userModel}>
 			<MuiThemeProvider theme={customTheme}>
 				<Routes />
 			</MuiThemeProvider>
