@@ -67,7 +67,7 @@ const SearchBar = (props) => {
 					<Col>
 						<Button
 							onClick={() => {
-								history.push(props.backroute())
+								props.backroute()
 							}}
 							style={{
 								backgroundColor: '#FFFF',

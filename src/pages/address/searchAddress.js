@@ -42,7 +42,7 @@ const searchAddress = () => {
 	}, [fulluser])
 
 	let functionbackarrow = (str) => {
-		if (str == 'clear') {
+		if (str == 'clear' || selected) {
 			cleanPage()
 		} else {
 			history.push('/checkaddres')
