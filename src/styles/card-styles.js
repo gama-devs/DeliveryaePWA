@@ -13,15 +13,14 @@ export const OnboardingCardStyles = makeStyles({
 	},
 	logoCheckAddress: {
 		alignContent: 'center',
-		width: '50%',
-		height: '10%',
+		width: '35vw',
+		height: 'auto',
 		marginTop: '5vh',
 	},
 	imgCheckAddress: {
 		alignContent: 'center',
-		marginTop: '-8vh',
-		width: '316px',
-		height: '473px',
+		width: '55vw',
+		height: 'auto',
 	},
 	title2: {
 		textAlign: 'center',
@@ -32,10 +31,10 @@ export const OnboardingCardStyles = makeStyles({
 		color: '#868484',
 	},
 	title1: {
-		fontFamily: 'Gilroy-Bold',
-		lineHeight: '23px',
-		fontSize: '20px',
+		lineHeight: '1.5em',
+		fontSize: '1.3em',
 		textAlign: 'center',
-		margin: '50px 3px 30px 3px',
+		margin: '2vh 0 auto 0',
+		fontWeight: '600'
 	},
 })

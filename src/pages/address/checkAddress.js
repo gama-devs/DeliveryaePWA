@@ -18,62 +18,72 @@ const checkAddress = () => {
 	return (
 		<div
 			style={{
-				backgroundColor: `#FFFFFF`,
+				backgroundColor: `#FFFFFF`
 			}}
 		>
 			<BaseCheck />
 			<div
 				style={{
-					marginTop: '20vh',
 					borderRadius: '20px 20px 0px 0px',
 					backgroundColor: `#FF805D`,
 					height: '25vh',
+					position: 'fixed',
+					width: '100%',
+					bottom: '0'
 				}}
 			>
 				<div
 					style={{
-						padding: '5vh 0vh 6vh 0vh',
+						padding: '3vh 0',
 						textAlign: 'center',
-						fontSize: '16px',
+						fontSize: '1em',
 						color: '#FFF',
+						fontWeight: '600'
 					}}
 				>
-					Informe o endereço de entrega
+					Informe o endereço de entrega.
 				</div>
 				<Row>
 					<Col>
-						<Input
-							onChange={(e) => {
-								setendereco(e.target.value)
-							}}
-							value={endereco.str}
-							placeholder="Endereço de entrega"
-							style={{ padding: '1.1vh 3vh 1.1vh 3vh' }}
-						/>
-						<div
-							onClick={() => {
-								setaddresbase({
-									str: endereco,
-									fullresp: '',
-									lat: '',
-									long: '',
-									cep: '',
-								})
-								history.push('/searchaddres')
-							}}
+						<div 
 							style={{
-								cursor: 'pointer',
-								position: 'absolute',
-								borderRadius: '5px',
-								backgroundColor: '#000',
-								height: '4.5vh',
-								width: '4.5vh',
-								margin: '-5vh -100px 3vh 35vh',
-								color: '#fff',
-							}}
-						>
-							<div>
-								<DoneIcon style={{ marginBottom: '-2vh' }} />
+								display: 'flex',
+								alignItems: 'center',
+								backgroundColor: 'white',
+								padding: '0.5em 0.3em',
+								margin: '0 5vh',
+								borderRadius: '12px'
+							}}>
+							<Input
+								onChange={(e) => {
+									setendereco(e.target.value)
+								}}
+								value={endereco.str}
+								placeholder="Endereço de entrega"
+								style={{ border: 'none' }}
+							/>
+							<div style={{color: "#fff"}}>
+								<DoneIcon
+									onClick={() => {
+										setaddresbase({
+											str: endereco,
+											fullresp: '',
+											lat: '',
+											long: '',
+											cep: '',
+										})
+										history.push('/searchaddres')
+									}}
+									style={{
+										borderRadius: '12px',
+										backgroundColor: '#413131',
+										padding: '0.4em',
+										width: '40px',
+										height: '40px',
+										marginRight: '0.1em',
+										color: '#fff'
+									}} 
+								/>
 							</div>
 						</div>
 					</Col>

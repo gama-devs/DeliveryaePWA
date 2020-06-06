@@ -11,7 +11,7 @@ const BaseCheck = () => {
 	const { imgCheckAddress, logoCheckAddress, title1 } = OnboardingCardStyles()
 
 	return (
-		<div>
+		<div style={{height: 'auto'}}>
 			<div style={{ alignContent: 'center', textAlign: 'center' }}>
 				<img alt="Logo" className={logoCheckAddress} src={imgLogo} />
 			</div>
@@ -22,7 +22,7 @@ const BaseCheck = () => {
 			<div className={title1}>
 				Precisamos verificar
 				<br />
-				se atendemos sua região
+				se atendemos sua região.
 			</div>
 		</div>
 	)
