@@ -198,7 +198,12 @@ const ConfirmSms = (props) => {
 					Ao se cadastrar você automaticamente
 					<br />
 					concorda com os
-					<div style={{ cursor: 'pointer', textDecoration: 'underline' }}>
+					<div
+						onClick={() => {
+							props.handlepagestate('termos')
+						}}
+						style={{ cursor: 'pointer', textDecoration: 'underline' }}
+					>
 						{' '}
 						{'Termos de Uso'}
 					</div>

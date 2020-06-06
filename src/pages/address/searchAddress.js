@@ -182,7 +182,6 @@ const searchAddress = () => {
 								}}
 								onClick={() => {
 									history.push('/home')
-									console.log('salvar')
 								}}
 							>
 								Salvar

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 import Loader from 'react-loader-spinner'
 import { withRouter } from 'react-router-dom'
 import LoginBg from './bglogin'
@@ -12,6 +12,7 @@ import ConfirmTempPassword from './confirmTempPassword'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
 import Api from '../../services/Api'
 import history from '../../util/history-util'
+import TermosAdesao from './termosAdesao'
 const LoginPage = () => {
 	const fulluser = useStore((state) => state.user)
 	const setauthtoken = useStoreActions((state) => state.user.setauthtoken)
@@ -34,6 +35,7 @@ const LoginPage = () => {
 		confirmtempassword: false,
 		confirmsms: false,
 		tempassword: false,
+		termos: false,
 	})
 	useEffect(() => {
 		if (jsonpagestate.main) {
@@ -101,6 +103,7 @@ const LoginPage = () => {
 				confirmtempassword: false,
 				confirmsms: false,
 				tempassword: false,
+				termos: false,
 			}
 			prev = cp
 
@@ -122,260 +125,273 @@ const LoginPage = () => {
 			setbackarrowstate('main')
 		}
 	}
+
 	let handlearrowbackclick = () => {
 		handlejsonpage(backarrowstate)
 	}
 	return (
-		<LoginBg>
-			{backarrowstate}
-			{backarrowstate && (
-				<div style={{ display: 'flex', flexDirection: 'row' }}>
-					<Button
-						onClick={() => {
-							handlearrowbackclick()
-						}}
-						style={{
-							marginLeft: '3vw',
-							marginTop: '3vh',
-							borderStyle: 'none',
-							backgroundColor: '#FF805D',
-							borderRadius: '8px',
-							height: '7vh',
-							width: '7vh',
-						}}
-					>
-						<ArrowBackIosIcon style={{ color: '#FFFF' }} />
-					</Button>
-				</div>
-			)}
-			{jsonpagestate.confirmsms && (
-				<div
-					style={{
-						alignContent: 'center',
-						display: 'flex',
-						justifyContent: 'center',
-						flexDirection: 'row',
-						marginTop: '60vh',
-					}}
-				>
-					<ConfirmSms
-						handlestate={handleloginstate}
-						loginstate={loginstate}
-						handlepagestate={handlejsonpage}
-						setbackarrow={setbackarrowstate}
-						backarrowstate={backarrowstate}
-					/>
-				</div>
-			)}
-			{jsonpagestate.passwordrecover && (
-				<div
-					style={{
-						alignContent: 'center',
-						display: 'flex',
-						justifyContent: 'center',
-						flexDirection: 'row',
-						marginTop: '60vh',
-					}}
-				>
-					<ForgotPassword
-						handlestate={handleloginstate}
-						loginstate={loginstate}
-						handlepagestate={handlejsonpage}
-						setbackarrow={setbackarrowstate}
-						backarrowstate={backarrowstate}
-					/>
-				</div>
-			)}
-			{jsonpagestate.tempassword && (
-				<div
-					style={{
-						alignContent: 'center',
-						display: 'flex',
-						justifyContent: 'center',
-						flexDirection: 'row',
-						marginTop: '60vh',
-					}}
-				>
-					<TempPassword
-						handlestate={handleloginstate}
-						loginstate={loginstate}
-						handlepagestate={handlejsonpage}
-						setbackarrow={setbackarrowstate}
-						backarrowstate={backarrowstate}
-					/>
-				</div>
-			)}
-			{jsonpagestate.confirmtempassword && (
-				<div
-					style={{
-						alignContent: 'center',
-						display: 'flex',
-						justifyContent: 'center',
-						flexDirection: 'row',
-						marginTop: '75vh',
-					}}
-				>
-					<ConfirmTempPassword
-						handlestate={handleloginstate}
-						loginstate={loginstate}
-						handlepagestate={handlejsonpage}
-						setbackarrow={setbackarrowstate}
-						backarrowstate={backarrowstate}
-					/>
-				</div>
-			)}
+		<Fragment>
+			{jsonpagestate.termos ? (
+				<TermosAdesao handlepagestate={handlejsonpage} />
+			) : (
+				<LoginBg>
+					{/* {backarrowstate} */}
+					{backarrowstate && (
+						<div style={{ display: 'flex', flexDirection: 'row' }}>
+							<Button
+								onClick={() => {
+									handlearrowbackclick()
+								}}
+								style={{
+									marginLeft: '3vw',
+									marginTop: '3vh',
+									borderStyle: 'none',
+									backgroundColor: '#FF805D',
+									borderRadius: '8px',
+									height: '7vh',
+									width: '7vh',
+								}}
+							>
+								<ArrowBackIosIcon style={{ color: '#FFFF' }} />
+							</Button>
+						</div>
+					)}
+					{jsonpagestate.confirmsms && (
+						<div
+							style={{
+								alignContent: 'center',
+								display: 'flex',
+								justifyContent: 'center',
+								flexDirection: 'row',
+								marginTop: '60vh',
+							}}
+						>
+							<ConfirmSms
+								handlestate={handleloginstate}
+								loginstate={loginstate}
+								handlepagestate={handlejsonpage}
+								setbackarrow={setbackarrowstate}
+								backarrowstate={backarrowstate}
+							/>
+						</div>
+					)}
+					{jsonpagestate.passwordrecover && (
+						<div
+							style={{
+								alignContent: 'center',
+								display: 'flex',
+								justifyContent: 'center',
+								flexDirection: 'row',
+								marginTop: '60vh',
+							}}
+						>
+							<ForgotPassword
+								handlestate={handleloginstate}
+								loginstate={loginstate}
+								handlepagestate={handlejsonpage}
+								setbackarrow={setbackarrowstate}
+								backarrowstate={backarrowstate}
+							/>
+						</div>
+					)}
+					{jsonpagestate.tempassword && (
+						<div
+							style={{
+								alignContent: 'center',
+								display: 'flex',
+								justifyContent: 'center',
+								flexDirection: 'row',
+								marginTop: '60vh',
+							}}
+						>
+							<TempPassword
+								handlestate={handleloginstate}
+								loginstate={loginstate}
+								handlepagestate={handlejsonpage}
+								setbackarrow={setbackarrowstate}
+								backarrowstate={backarrowstate}
+							/>
+						</div>
+					)}
+					{jsonpagestate.confirmtempassword && (
+						<div
+							style={{
+								alignContent: 'center',
+								display: 'flex',
+								justifyContent: 'center',
+								flexDirection: 'row',
+								marginTop: '75vh',
+							}}
+						>
+							<ConfirmTempPassword
+								handlestate={handleloginstate}
+								loginstate={loginstate}
+								handlepagestate={handlejsonpage}
+								setbackarrow={setbackarrowstate}
+								backarrowstate={backarrowstate}
+							/>
+						</div>
+					)}
 
-			{jsonpagestate.newaccount && (
-				<div
-					style={{
-						alignContent: 'center',
-						display: 'flex',
-						justifyContent: 'center',
-						flexDirection: 'row',
-						marginTop: '40vh',
-					}}
-				>
-					<NewUser
-						handlestate={handleloginstate}
-						loginstate={loginstate}
-						handlepagestate={handlejsonpage}
-						setbackarrow={setbackarrowstate}
-						backarrowstate={backarrowstate}
-						handlenewuser={handlenewuserpost}
-					/>
-				</div>
-			)}
-			{jsonpagestate.main && (
-				<div
-					style={{
-						position: 'relative',
-						display: 'flex',
-						flexDirection: 'row',
-					}}
-				>
-					<div
-						style={{
-							textAlign: 'center',
-							borderRadius: '20px',
-							marginTop: '50vh',
-							top: '50vh',
-							width: '100vw',
-							backgroundColor: '#fff',
-							height: '50vh',
-						}}
-					>
-						<h3
+					{jsonpagestate.newaccount && (
+						<div
 							style={{
-								marginTop: '3vh',
-								fontSize: '14px',
-								fontWeight: 'bold',
-								color: '#FF805D',
+								alignContent: 'center',
+								display: 'flex',
+								justifyContent: 'center',
+								flexDirection: 'row',
+								marginTop: '40vh',
 							}}
 						>
-							Realize seu login e<br /> aproveite nosso Aplicativo.
-						</h3>
-						<Input
-							style={{
-								backgroundColor: '#EDF1F7',
-								borderRadius: '10px',
-								margin: '0 auto',
-								width: '80vw',
-								height: '8vh',
-								marginTop: '3vh',
-							}}
-							placeholder="Seu celular"
-							onChange={(e) => {
-								handleloginstate('celnumber', e.target.value)
-								console.log(e.target.value)
-							}}
-						/>
-						<Input
-							type={showpassword ? 'text' : 'password'}
-							style={{
-								backgroundColor: '#EDF1F7',
-								borderRadius: '10px',
-								margin: '0 auto',
-								width: '80vw',
-								height: '8vh',
-								marginTop: '1vh',
-							}}
-							placeholder="Senha"
-							onChange={(e) => {
-								handleloginstate('password', e.target.value)
-							}}
-						/>
+							<NewUser
+								handlestate={handleloginstate}
+								loginstate={loginstate}
+								handlepagestate={handlejsonpage}
+								setbackarrow={setbackarrowstate}
+								backarrowstate={backarrowstate}
+								handlenewuser={handlenewuserpost}
+							/>
+						</div>
+					)}
+					{jsonpagestate.main && (
 						<div
-							onClick={() => {
-								handlejsonpage('passwordrecover')
-								setbackarrowstate('main')
-							}}
 							style={{
-								cursor: 'pointer',
-								justifyContent: 'flex-end',
+								position: 'relative',
 								display: 'flex',
 								flexDirection: 'row',
-								color: '#413131',
-								fontSize: '10px',
-								width: '90vw',
 							}}
 						>
-							Esqueci minha senha
-						</div>
-						<div
-							onClick={() => {
-								handlejsonpage('newaccount')
-								setbackarrowstate('main')
-							}}
-							style={{
-								cursor: 'poniter',
-								justifyContent: 'center',
-								display: 'flex',
-								flexDirection: 'row',
-								color: '#FF805D',
-								fontSize: '12px',
-								marginTop: '4vh',
-								fontWeight: 'bold',
-							}}
-						>
-							<div> {'Ainda não tem conta?'}</div>
-							<div> {'Crie agora mesmo!'}</div>
-						</div>
-						<div
-							onClick={() => {
-								handlepostlogin()
-							}}
-							style={{
-								cursor: 'poniter',
-								alignItems: 'center',
-								justifyContent: 'center',
-								textAlign: 'center',
-								flex: 1,
-								width: '100vw',
-								borderRadius: '32px 32px 0px 0px',
-								marginTop: '10vh',
-								height: '12vh',
-								display: 'flex',
-								backgroundColor: '#FF805D',
-							}}
-						>
-							{loadingreq ? (
-								<Loader type="Oval" color={'#FFF'} height="5vh" width="5vh" />
-							) : (
-								<h4
+							<div
+								style={{
+									textAlign: 'center',
+									borderRadius: '20px',
+									marginTop: '50vh',
+									top: '50vh',
+									width: '100vw',
+									backgroundColor: '#fff',
+									height: '50vh',
+								}}
+							>
+								<h3
 									style={{
-										color: '#FFF',
+										marginTop: '3vh',
+										fontSize: '14px',
 										fontWeight: 'bold',
-										fontSize: '15px',
+										color: '#FF805D',
 									}}
 								>
-									Entrar
-								</h4>
-							)}
+									Realize seu login e<br /> aproveite nosso Aplicativo.
+								</h3>
+								<Input
+									style={{
+										backgroundColor: '#EDF1F7',
+										borderRadius: '10px',
+										margin: '0 auto',
+										width: '80vw',
+										height: '8vh',
+										marginTop: '3vh',
+									}}
+									placeholder="Seu celular"
+									onChange={(e) => {
+										handleloginstate('celnumber', e.target.value)
+										console.log(e.target.value)
+									}}
+								/>
+								<Input
+									type={showpassword ? 'text' : 'password'}
+									style={{
+										backgroundColor: '#EDF1F7',
+										borderRadius: '10px',
+										margin: '0 auto',
+										width: '80vw',
+										height: '8vh',
+										marginTop: '1vh',
+									}}
+									placeholder="Senha"
+									onChange={(e) => {
+										handleloginstate('password', e.target.value)
+									}}
+								/>
+								<div
+									onClick={() => {
+										handlejsonpage('passwordrecover')
+										setbackarrowstate('main')
+									}}
+									style={{
+										cursor: 'pointer',
+										justifyContent: 'flex-end',
+										display: 'flex',
+										flexDirection: 'row',
+										color: '#413131',
+										fontSize: '10px',
+										width: '90vw',
+									}}
+								>
+									Esqueci minha senha
+								</div>
+								<div
+									onClick={() => {
+										handlejsonpage('newaccount')
+										setbackarrowstate('main')
+									}}
+									style={{
+										cursor: 'poniter',
+										justifyContent: 'center',
+										display: 'flex',
+										flexDirection: 'row',
+										color: '#FF805D',
+										fontSize: '12px',
+										marginTop: '4vh',
+										fontWeight: 'bold',
+									}}
+								>
+									<div> {'Ainda não tem conta?'}</div>
+									<div> {'Crie agora mesmo!'}</div>
+								</div>
+								<div
+									onClick={() => {
+										triestologin()
+										handlepostlogin()
+									}}
+									style={{
+										cursor: 'poniter',
+										alignItems: 'center',
+										justifyContent: 'center',
+										textAlign: 'center',
+										flex: 1,
+										width: '100vw',
+										borderRadius: '32px 32px 0px 0px',
+										marginTop: '10vh',
+										height: '12vh',
+										display: 'flex',
+										backgroundColor: '#FF805D',
+									}}
+								>
+									{loadingreq ? (
+										<Loader
+											type="Oval"
+											color={'#FFF'}
+											height="5vh"
+											width="5vh"
+										/>
+									) : (
+										<h4
+											style={{
+												color: '#FFF',
+												fontWeight: 'bold',
+												fontSize: '15px',
+											}}
+										>
+											Entrar
+										</h4>
+									)}
+								</div>
+							</div>
 						</div>
-					</div>
-				</div>
+					)}
+				</LoginBg>
 			)}
-		</LoginBg>
+		</Fragment>
 	)
 }
 export default withRouter(LoginPage)
