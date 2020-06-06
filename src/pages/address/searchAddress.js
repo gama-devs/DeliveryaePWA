@@ -20,13 +20,15 @@ const searchAddress = () => {
 	const [number, setnumber] = useState('')
 	let [lodaded, setloaded] = useState([
 		{
+			description: 'Casa',
 			str: 'Casa Kratos no god 4',
 			fullresp: 'Perto da casa da bruxa, Midgard',
 			numero: '',
-			complemento: '',
+			complement: 'Apto 1',
 			lat: '22',
 			long: '22',
-			cep: '71100077',
+			zip_code: '91712150',
+			address: 'completo',
 		},
 	])
 	const cleanPage = () => {
@@ -36,17 +38,24 @@ const searchAddress = () => {
 		setnumber('')
 	}
 	useEffect(() => {
-		console.log(fulluser)
-	}, [])
+		console.log('o')
+	}, [fulluser])
+
+	let functionbackarrow = (str) => {
+		if (str == 'clear') {
+			cleanPage()
+		} else {
+			history.push('/checkaddres')
+		}
+	}
 
 	return (
 		<div>
 			<SerachBar
+				setloadeds={setloaded}
 				type="address"
 				success={isValidAddress}
-				backroute={() => {
-					return '/checkaddres'
-				}}
+				backroute={functionbackarrow}
 			/>
 			<div
 				style={{
@@ -64,25 +73,28 @@ const searchAddress = () => {
 								justifyContent: 'center',
 								flexDirection: 'column',
 								alignItems: 'center',
+								textAlign: 'center',
 							}}
 						>
-							<h3
+							<div
 								style={{
+									maxWidth: '100vw',
 									marginTop: '8vh',
 									fontSize: '15px',
 									fontWeight: 'bold',
 								}}
 							>
 								Que tal já salvar o endereço
-							</h3>
-							<h3
+							</div>
+							<div
 								style={{
+									maxWidth: '85vw',
 									fontSize: '15px',
 									fontWeight: 'bold',
 								}}
 							>
 								para suas compras?
-							</h3>
+							</div>
 							<h3
 								style={{
 									fontSize: '15px',
@@ -219,6 +231,7 @@ const searchAddress = () => {
 													className="form-check-input"
 													style={{ marginTop: '-0.5vh' }}
 													type="checkbox"
+													onChange={() => {}}
 													onClick={() => {
 														if (number == -1) {
 															setnumber('')

@@ -1,7 +1,26 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import { withRouter } from 'react-router-dom'
 import { Input } from 'reactstrap'
+import history from '../../util/history-util'
 const ConfirmSms = (props) => {
+	const [codigo0, setcodigo0] = useState('')
+	const [codigo1, setcodigo1] = useState('')
+	const [codigo2, setcodigo2] = useState('')
+	const [codigo3, setcodigo3] = useState('')
+
+	const useFocus = () => {
+		const htmlElRef = useRef(null)
+		const setFocus = () => {
+			htmlElRef.current && htmlElRef.current.focus()
+		}
+		const [inputRef, setInputFocus] = useFocus()
+		return [htmlElRef, setFocus]
+	}
+	let handlesave = async () => {
+		console.log('hehe')
+		history.push('/home')
+	}
+
 	return (
 		<div
 			style={{
@@ -46,8 +65,8 @@ const ConfirmSms = (props) => {
 					}}
 				>
 					<Input
-						onClick={(e) => {
-							console.log(e)
+						onChange={(e) => {
+							setcodigo0(e.target.value)
 						}}
 						style={{
 							borderRadius: '12px',
@@ -74,8 +93,8 @@ const ConfirmSms = (props) => {
 					}}
 				>
 					<Input
-						onClick={(e) => {
-							console.log(e)
+						onChange={(e) => {
+							setcodigo1(e.target.value)
 						}}
 						style={{
 							borderRadius: '12px',
@@ -102,8 +121,8 @@ const ConfirmSms = (props) => {
 					}}
 				>
 					<Input
-						onClick={(e) => {
-							console.log(e)
+						onChange={(e) => {
+							setcodigo2(e.target.value)
 						}}
 						style={{
 							borderRadius: '12px',
@@ -130,8 +149,8 @@ const ConfirmSms = (props) => {
 					}}
 				>
 					<Input
-						onClick={(e) => {
-							console.log(e)
+						onChange={(e) => {
+							setcodigo3(e.target.value)
 						}}
 						style={{
 							borderRadius: '12px',
@@ -187,6 +206,9 @@ const ConfirmSms = (props) => {
 			</div>
 
 			<div
+				onClick={() => {
+					handlesave()
+				}}
 				style={{
 					cursor: 'pointer',
 					alignItems: 'center',

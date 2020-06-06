@@ -12,8 +12,8 @@ const LoginBG = (props) => {
 					height: '100vh',
 					width: '100vw',
 					position: 'relative',
-					top: '0',
-					left: '0',
+					top: 0,
+					left: 0,
 				}}
 				src={bgpizza}
 			/>
@@ -23,8 +23,8 @@ const LoginBG = (props) => {
 					height: '100vh',
 					width: '100vw',
 					position: 'absolute',
-					top: '0',
-					left: '0',
+					top: 0,
+					left: 0,
 				}}
 				src={bgfolha}
 			/>
@@ -33,8 +33,8 @@ const LoginBG = (props) => {
 					height: '100vh',
 					width: '100vw',
 					position: 'absolute',
-					top: '0',
-					left: '0',
+					top: 0,
+					left: 0,
 				}}
 			>
 				{props.children}

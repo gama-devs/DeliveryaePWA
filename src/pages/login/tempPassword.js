@@ -1,6 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { Input } from 'reactstrap'
+import history from '../../util/history-util'
 const TempPassword = (props) => {
 	return (
 		<div
@@ -59,7 +60,11 @@ const TempPassword = (props) => {
 				}}
 			/>
 			<div
+				onClick={() => {
+					history.push('/home')
+				}}
 				style={{
+					cursor: 'pointer',
 					textDecoration: 'underline',
 					justifyContent: 'center',
 					display: 'flex',
@@ -87,6 +92,10 @@ const TempPassword = (props) => {
 				}}
 			>
 				<h4
+					onClick={() => {
+						props.handlepagestate('confirmtempassword')
+						props.setbackarrow('main')
+					}}
 					style={{
 						color: '#FFF',
 						fontWeight: 'bold',

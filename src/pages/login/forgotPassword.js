@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import { withRouter } from 'react-router-dom'
 import { Input } from 'reactstrap'
 const ForgotPassword = (props) => {
+	let sendrecoverpass = () => {
+		props.setbackarrow('')
+		props.handlepagestate('main')
+	}
 	return (
 		<div
 			style={{
@@ -59,6 +63,9 @@ const ForgotPassword = (props) => {
 			/>
 
 			<div
+				onClick={() => {
+					sendrecoverpass()
+				}}
 				style={{
 					cursor: 'pointer',
 					alignItems: 'center',

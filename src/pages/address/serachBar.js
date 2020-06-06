@@ -1,4 +1,5 @@
 import React, { useEffect, useState, Fragment } from 'react'
+import axios from 'axios'
 import { useStore, useStoreActions, useStoreState } from 'easy-peasy'
 import { Form, Field } from 'react-final-form'
 import { withRouter } from 'react-router-dom'
@@ -24,6 +25,34 @@ const SearchBar = (props) => {
 
 	const loadAdresses = async (addresstring) => {
 		console.log('sim, eu chamei api com isso' + addresstring)
+
+		let resp = await axios.get(
+			`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURI(
+				addresstring
+			)}.json?bbox=-73,-33,-34.0,5.5&access_token=pk.eyJ1IjoiZGVsaXZlcnlhZSIsImEiOiJja2F3eHlnZ2IwMDB3MnBudzV3OGx3eDA5In0.42k6GoeW3xZIySLKeBx22Q `
+		)
+		console.log('###################################')
+		let arr = []
+		resp.data.features.map((s) => {
+			arr.push({
+				description: ' ',
+				str: addresstring,
+				fullresp: s.place_name,
+				numero: '',
+				complement: 'Apto 1',
+				lat: s.center[0],
+				long: s.center[1],
+				zip_code: s.context ? s.context[0].text : '',
+				address: 'completo',
+				fullobj: s,
+			})
+		})
+		props.setloadeds(arr)
+		// console.log(
+		// 	navigator.geolocation.getCurrentPosition((isso) => {
+		// 		console.log(isso)
+		// 	})
+		// )
 	}
 	return (
 		<div>
@@ -63,7 +92,7 @@ const SearchBar = (props) => {
 									}}
 								/>
 								<Input
-									onChange={(e) => {
+									onChange={async (e) => {
 										settext(e.target.value)
 										let cp = fulluser.address
 										cp.str = e.target.value

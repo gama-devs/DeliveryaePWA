@@ -7,7 +7,17 @@ const initialState = {
 	lyrics: '',
 	artist: '',
 	song: '',
-	address: { str: '', fullresp: '', lat: '', long: '', cep: '' },
+	address: {
+		description: '',
+		str: '',
+		fullresp: '',
+		numero: '',
+		complement: '',
+		lat: '',
+		long: '',
+		zip_code: '',
+		address: '',
+	},
 }
 
 // lift the observable stream into a variable

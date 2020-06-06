@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 import { Input } from 'reactstrap'
 const NewUser = (props) => {
+	useEffect(() => {
+		console.log('usereffect try')
+		console.log(props.backarrowstate, 'estadoo')
+		if (props.backarrowstate === 'newaccount') {
+			console.log('em tese foi')
+			props.setbackarrow('main')
+		}
+	}, [props.backarrowstate])
 	return (
 		<div
 			style={{
@@ -12,7 +20,7 @@ const NewUser = (props) => {
 				position: 'relative',
 				height: '60vh',
 				borderRadius: '20px',
-				backgroundColor: '#EDF1F7',
+				backgroundColor: '#FFF',
 			}}
 		>
 			<div
@@ -96,7 +104,12 @@ const NewUser = (props) => {
 				}}
 			/>
 			<div
+				onClick={() => {
+					props.handlepagestate('confirmsms')
+					props.setbackarrow('newaccount')
+				}}
 				style={{
+					cursor: 'pointer',
 					alignItems: 'center',
 					justifyContent: 'center',
 					textAlign: 'center',
