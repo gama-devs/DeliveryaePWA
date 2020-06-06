@@ -39,7 +39,7 @@ const SearchBar = (props) => {
 				let zip = ''
 				if (s.context) {
 					s.context.map((j) => {
-						j.id.includes('postcode') ? (zip = j.text) : // console.log('não')
+						j.id.includes('postcode') ? (zip = j.text) : console.log('não')
 					})
 				}
 				arr.push({
