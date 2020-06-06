@@ -16,7 +16,7 @@ const LoadedAddresses = (props) => {
 		<div>
 			{props.loadeds.map((s, index) => {
 				return (
-					<div className="py-2">
+					<div key={index} className="py-2">
 						<div
 							onClick={() => {
 								props.setselected('bruxo')

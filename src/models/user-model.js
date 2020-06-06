@@ -8,7 +8,9 @@ const initialState = {
 	artist: '',
 	song: '',
 	authtoken: '',
+	savedaddresses: [],
 	address: {
+		nome: '',
 		description: '',
 		str: '',
 		fullresp: '',
@@ -32,6 +34,12 @@ export const userModel = createStore({
 		}),
 		setauthtoken: action((state, payload) => {
 			state.authtoken = payload
+		}),
+		clearcurrentaddress: action((state, payload) => {
+			state.address = initialState.address
+		}),
+		saveanotheraddress: action((state, payload) => {
+			state.savedaddresses = [...state.savedaddresses, payload]
 		}),
 	},
 })
