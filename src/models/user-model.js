@@ -7,6 +7,7 @@ const initialState = {
 	lyrics: '',
 	artist: '',
 	song: '',
+	authtoken: '',
 	address: {
 		description: '',
 		str: '',
@@ -28,6 +29,9 @@ export const userModel = createStore({
 		...initialState,
 		setaddress: action((state, payload) => {
 			state.address = payload
+		}),
+		setauthtoken: action((state, payload) => {
+			state.authtoken = payload
 		}),
 	},
 })

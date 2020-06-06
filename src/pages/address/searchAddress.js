@@ -8,6 +8,7 @@ import SearchIcon from '@material-ui/icons/Search'
 import history from '../../util/history-util'
 import LoadedAddresses from './loadedAddresses'
 import SearchBar from './serachBar'
+import Loader from 'react-loader-spinner'
 
 const searchAddress = () => {
 	const fulluser = useStoreState((state) => {
@@ -18,18 +19,19 @@ const searchAddress = () => {
 	const [isValidAddress, handleValidAddress] = useState(false)
 	const [adresschecked, setaddresschecked] = useState(false)
 	const [number, setnumber] = useState('')
+	const [loadingreq, setloading] = useState(false)
 	let [lodaded, setloaded] = useState([
-		{
-			description: 'Casa',
-			str: 'Casa Kratos no god 4',
-			fullresp: 'Perto da casa da bruxa, Midgard',
-			numero: '',
-			complement: 'Apto 1',
-			lat: '22',
-			long: '22',
-			zip_code: '91712150',
-			address: 'completo',
-		},
+		// {
+		// 	description: 'Casa',
+		// 	str: 'Casa Kratos no god 4',
+		// 	fullresp: 'Perto da casa da bruxa, Midgard',
+		// 	numero: '',
+		// 	complement: 'Apto 1',
+		// 	lat: '22',
+		// 	long: '22',
+		// 	zip_code: '91712150',
+		// 	address: 'completo',
+		// },
 	])
 	const cleanPage = () => {
 		handleValidAddress(false)
@@ -38,8 +40,10 @@ const searchAddress = () => {
 		setnumber('')
 	}
 	useEffect(() => {
-		console.log('o')
-	}, [fulluser])
+		if (fulluser.address.str === '') {
+			setloaded([])
+		}
+	}, [fulluser.address])
 
 	let functionbackarrow = (str) => {
 		if (str == 'clear' || selected) {
@@ -65,6 +69,29 @@ const searchAddress = () => {
 					height: '90vh',
 				}}
 			>
+				{lodaded.length == 0 && !selected && (
+					<Row
+						style={{
+							display: 'flex',
+							justifyContent: 'center',
+							flexDirection: 'column',
+							alignItems: 'center',
+							textAlign: 'center',
+						}}
+					>
+						<div
+							style={{
+								color: '#FF805D',
+								maxWidth: '100vw',
+								marginTop: '8vh',
+								fontSize: '15px',
+								fontWeight: 'bold',
+							}}
+						>
+							Pesquise um endereço
+						</div>
+					</Row>
+				)}
 				{selected ? (
 					adresschecked && isValidAddress ? (
 						<Row
@@ -95,31 +122,33 @@ const searchAddress = () => {
 							>
 								para suas compras?
 							</div>
-							<h3
+							<div
 								style={{
 									fontSize: '15px',
 									marginTop: '3vh',
 									color: '#FF805D',
+									maxWidth: '85vw',
 								}}
 							>
 								{fulluser.address.str}
-							</h3>
-							<h3
+							</div>
+							<div
 								style={{
 									fontSize: '15px',
 									color: '#FF805D',
+									maxWidth: '85vw',
 								}}
 							>
 								{fulluser.address.fullresp}
-							</h3>
-							<h3
+							</div>
+							<div
 								style={{
 									fontSize: '15px',
 									color: '#FF805D',
 								}}
 							>
 								{'CEP: ' + fulluser.address.cep}
-							</h3>
+							</div>
 							<Input
 								style={{
 									backgroundColor: '#EDF1F7',

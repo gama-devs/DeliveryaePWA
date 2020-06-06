@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
+import Loader from 'react-loader-spinner'
 import { withRouter } from 'react-router-dom'
 import LoginBg from './bglogin'
+import { useStoreActions, useStore } from 'easy-peasy'
 import { Input, Button } from 'reactstrap'
 import NewUser from './newuser'
 import ConfirmSms from './confirmSms'
@@ -8,8 +10,13 @@ import ForgotPassword from './forgotPassword'
 import TempPassword from './tempPassword'
 import ConfirmTempPassword from './confirmTempPassword'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
+import Api from '../../services/Api'
+import history from '../../util/history-util'
 const LoginPage = () => {
+	const fulluser = useStore((state) => state.user)
+	const setauthtoken = useStoreActions((state) => state.user.setauthtoken)
 	const [backarrowstate, setbackarrowstate] = useState('')
+	const [loadingreq, setloading] = useState(false)
 	const [showpassword, setshowpass] = useState(false)
 	const [loginstate, setloginstate] = useState({
 		celnumber: '',
@@ -18,6 +25,7 @@ const LoginPage = () => {
 		email: '',
 		nome: '',
 	})
+
 	const [jsonpagestate, setpagestate] = useState({
 		main: true,
 		newaccount: false,
@@ -32,6 +40,56 @@ const LoginPage = () => {
 			setbackarrowstate('')
 		}
 	}, [jsonpagestate])
+	let handlepostlogin = async () => {
+		await setloading(true)
+		try {
+			const results = await Api.post(
+				'/auth/login/app',
+				{
+					company_id: 2,
+					phone: loginstate.celnumber,
+					password: loginstate.password,
+				},
+
+				{
+					headers: {
+						'content-type': 'application/json',
+					},
+				}
+			)
+			console.log(results, 'resultado logiinnnn')
+			if (results.data.data.access_token) {
+				localStorage.setItem('authtoken', results.data.data.access_token)
+				setauthtoken(results.data.data.access_token)
+				console.log(JSON.stringify(fulluser))
+				history.push('/home')
+			}
+		} catch (e) {
+			await setloading(false)
+		}
+		await setloading(false)
+	}
+	let handlenewuserpost = async () => {
+		const results = await Api.post('/customers', {
+			company_id: 2,
+			name: loginstate.nome,
+			email: loginstate.email,
+			phone: loginstate.celnumber,
+			password: loginstate.password,
+			password_confirmation: loginstate.password,
+			addresses: [
+				{
+					description: 'Casa',
+					complement: 'Apto 102',
+					zip_code: '91712150',
+					address: 'Rua Primordial 103 - Gloria - Porto Alegre - RS',
+					latitude: '-30.09045170',
+					longitude: '-51.1067240',
+				},
+			],
+		})
+		console.log(results, 'resultado do nosso amigo')
+	}
 	let handlejsonpage = (str) => {
 		console.log(str, jsonpagestate[str])
 		setpagestate((prev) => {
@@ -183,6 +241,7 @@ const LoginPage = () => {
 						handlepagestate={handlejsonpage}
 						setbackarrow={setbackarrowstate}
 						backarrowstate={backarrowstate}
+						handlenewuser={handlenewuserpost}
 					/>
 				</div>
 			)}
@@ -283,7 +342,7 @@ const LoginPage = () => {
 						</div>
 						<div
 							onClick={() => {
-								triestologin()
+								handlepostlogin()
 							}}
 							style={{
 								cursor: 'poniter',
@@ -299,15 +358,19 @@ const LoginPage = () => {
 								backgroundColor: '#FF805D',
 							}}
 						>
-							<h4
-								style={{
-									color: '#FFF',
-									fontWeight: 'bold',
-									fontSize: '15px',
-								}}
-							>
-								Entrar
-							</h4>
+							{loadingreq ? (
+								<Loader type="Oval" color={'#FFF'} height="5vh" width="5vh" />
+							) : (
+								<h4
+									style={{
+										color: '#FFF',
+										fontWeight: 'bold',
+										fontSize: '15px',
+									}}
+								>
+									Entrar
+								</h4>
+							)}
 						</div>
 					</div>
 				</div>

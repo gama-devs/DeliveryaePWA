@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { withRouter } from 'react-router-dom'
+import Loader from 'react-loader-spinner'
 import { Input } from 'reactstrap'
 const NewUser = (props) => {
+	const [loadingreq, setloading] = useState(false)
 	useEffect(() => {
 		console.log('usereffect try')
 		console.log(props.backarrowstate, 'estadoo')
@@ -58,7 +60,7 @@ const NewUser = (props) => {
 				}}
 				placeholder="Seu número de celular"
 				onChange={(e) => {
-					console.log(e.target.value)
+					props.handlestate('celnumber', e.target.value)
 				}}
 			/>
 			<Input
@@ -72,7 +74,7 @@ const NewUser = (props) => {
 				}}
 				placeholder="Seu e-mail"
 				onChange={(e) => {
-					console.log(e)
+					props.handlestate('email', e.target.value)
 				}}
 			/>
 			<Input
@@ -86,7 +88,7 @@ const NewUser = (props) => {
 				}}
 				placeholder="Seu nome"
 				onChange={(e) => {
-					console.log(e.target.value)
+					props.handlestate('nome', e.target.value)
 				}}
 			/>
 			<Input
@@ -100,13 +102,21 @@ const NewUser = (props) => {
 				}}
 				placeholder="Escolha uma senha"
 				onChange={(e) => {
-					console.log(e)
+					props.handlestate('password', e.target.value)
 				}}
 			/>
 			<div
-				onClick={() => {
-					props.handlepagestate('confirmsms')
-					props.setbackarrow('newaccount')
+				onClick={async () => {
+					try {
+						setloading(true)
+						console.log(props.loginstate, 'estadoooooo')
+						await props.handlenewuser()
+						props.handlepagestate('confirmsms')
+						props.setbackarrow('newaccount')
+						setloading(false)
+					} catch {
+						setloading(false)
+					}
 				}}
 				style={{
 					cursor: 'pointer',
@@ -122,15 +132,19 @@ const NewUser = (props) => {
 					backgroundColor: '#FF805D',
 				}}
 			>
-				<h4
-					style={{
-						color: '#FFF',
-						fontWeight: 'bold',
-						fontSize: '15px',
-					}}
-				>
-					Cadastrar
-				</h4>
+				{loadingreq ? (
+					<Loader type="Oval" color={'#FFF'} height="5vh" width="5vh" />
+				) : (
+					<h4
+						style={{
+							color: '#FFF',
+							fontWeight: 'bold',
+							fontSize: '15px',
+						}}
+					>
+						Cadastrar
+					</h4>
+				)}
 			</div>
 		</div>
 	)

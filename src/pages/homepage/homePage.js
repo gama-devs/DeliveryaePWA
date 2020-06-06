@@ -9,7 +9,9 @@ const HomePage = () => {
 	return (
 		<div>
 			<HeaderHome />
-			<h2>homepage paga nois pois não ta na porra a primeira entrega</h2>
+			<h2 style={{ marginLeft: '20vw', marginTop: '30vh', maxWidth: '80vw' }}>
+				Homepage em progresso para a próxima entrega!
+			</h2>
 		</div>
 	)
 }

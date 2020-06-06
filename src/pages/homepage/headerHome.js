@@ -21,7 +21,9 @@ const HeaderHome = () => {
 				src={pizzalogo}
 				style={{ paddingLeft: '3vw', height: '6vh', flex: 1 }}
 			></img>
-			<div style={{ flex: 5 }}> </div>
+			<div onClick={history.push('/searchaddres')} style={{ flex: 5 }}>
+				{' '}
+			</div>
 			<SearchIcon style={{ flex: 1, color: '#FF805D' }} />
 			<div
 				onClick={() => {
