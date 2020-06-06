@@ -1,10 +1,11 @@
-import React, { useEffect, useState, Fragment } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useStore, useStoreActions, useStoreState } from 'easy-peasy'
 import { Form, Field } from 'react-final-form'
 import { withRouter } from 'react-router-dom'
 import { Row, Col, Button, Input } from 'reactstrap'
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import SearchIcon from '@material-ui/icons/Search'
+import IconButton from '@material-ui/core/IconButton'
 import history from '../../util/history-util'
 import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined'
 import motoca from '../../assets/motoca.svg'
@@ -31,35 +32,50 @@ const SearchBar = (props) => {
 				style={{
 					backgroundColor: props.success ? '#1BD09A' : '#F8F6F8',
 					paddingBottom: props.success ? '10vh' : '10vh',
+					paddingTop: '5vh',
 					maxWidth: '100%',
 				}}
 			>
-				<Row className=" pt-4 mx-2" xs="12" sm="12" lg="12" md="12">
-					<Col>
-						<Button
+				<div style={{
+					display: 'flex',
+					alignItems: 'center',
+					margin: '0 12px',
+					justifyContent: 'space-between'
+					
+				}}>
+					<div>
+						<IconButton
 							onClick={() => {
 								history.push(props.backroute())
 							}}
 							style={{
 								backgroundColor: '#FFFF',
 								borderRadius: '8px',
-								height: '7vh',
-								width: '7vh',
+								height: '5.5vh',
+								width: '5.5vh',
+								border: 'none',
+								boxShadow:'0 0 0'
 							}}
 						>
-							<ArrowBackIosIcon style={{ color: '#FF805D' }} />
-						</Button>
-					</Col>
-					<Col xs="10">
+							<ChevronLeftIcon style={{ 
+								color: '#FF805D',
+								fontSize: '1.3em'
+						 	}} />
+						</IconButton>
+					</div>
+					<div style={{width: '85%'}}>
 						{!props.success ? (
-							<Fragment>
+							<div style={{
+								display: 'flex',
+								alignItems: 'center',
+								backgroundColor: '#fff',
+								borderRadius: '12px'
+							}}>
 								<SearchIcon
 									style={{
-										marginTop: '2vh',
 										marginLeft: '1vh',
 										color: '#FF805D',
-										fontSize: '30px',
-										position: 'absolute',
+										fontSize: '30px'
 									}}
 								/>
 								<Input
@@ -71,14 +87,15 @@ const SearchBar = (props) => {
 									}}
 									value={fulluser.address.str}
 									style={{
-										height: '7vh',
-										borderRadius: '8px',
+										height: '5.5vh',
+										border: 'none',
+										borderRadius: '12px'
 									}}
 								></Input>
-							</Fragment>
+							</div>
 						) : null}
-					</Col>
-				</Row>
+					</div>
+				</div>
 				{props.success ? (
 					<Row
 						style={{

@@ -7,7 +7,7 @@ import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
 import SearchIcon from '@material-ui/icons/Search'
 import history from '../../util/history-util'
 import LoadedAddresses from './loadedAddresses'
-import SerachBar from './serachBar'
+import SearchBar from './serachBar'
 
 const searchAddress = () => {
 	const fulluser = useStoreState((state) => {
@@ -41,7 +41,7 @@ const searchAddress = () => {
 
 	return (
 		<div>
-			<SerachBar
+			<SearchBar
 				type="address"
 				success={isValidAddress}
 				backroute={() => {
