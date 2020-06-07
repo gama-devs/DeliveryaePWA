@@ -20,19 +20,15 @@ const searchAddress = () => {
 	const [adresschecked, setaddresschecked] = useState(false)
 	const [number, setnumber] = useState('')
 	const [loadingreq, setloading] = useState(false)
-	let [lodaded, setloaded] = useState([
-		// {
-		// 	description: 'Casa',
-		// 	str: 'Casa Kratos no god 4',
-		// 	fullresp: 'Perto da casa da bruxa, Midgard',
-		// 	numero: '',
-		// 	complement: 'Apto 1',
-		// 	lat: '22',
-		// 	long: '22',
-		// 	zip_code: '91712150',
-		// 	address: 'completo',
-		// },
-	])
+	let [lodaded, setloaded] = useState(fulluser.savedaddresses)
+	const saveanotheraddress = useStoreActions(
+		(actions) => actions.user.saveanotheraddress
+	)
+	const clearcurrentaddress = useStoreActions(
+		(actions) => actions.user.clearcurrentaddress
+	)
+	const setaddresbase = useStoreActions((actions) => actions.user.setaddress)
+
 	const cleanPage = () => {
 		handleValidAddress(false)
 		setaddresschecked(false)
@@ -41,9 +37,9 @@ const searchAddress = () => {
 	}
 	useEffect(() => {
 		if (fulluser.address.str === '') {
-			setloaded([])
+			setloaded(fulluser.savedaddresses)
 		}
-	}, [fulluser.address])
+	}, [JSON.stringify(fulluser.address)])
 
 	let functionbackarrow = (str) => {
 		if (str == 'clear' || selected) {
@@ -62,6 +58,9 @@ const searchAddress = () => {
 				backroute={functionbackarrow}
 			/>
 			<div
+				onClick={() => {
+					// console.log(fulluser)
+				}}
 				style={{
 					backgroundColor: '#ffff',
 					borderRadius: '32px',
@@ -141,15 +140,23 @@ const searchAddress = () => {
 							>
 								{fulluser.address.fullresp}
 							</div>
+
 							<div
 								style={{
 									fontSize: '15px',
 									color: '#FF805D',
 								}}
 							>
-								{'CEP: ' + fulluser.address.cep}
+								{fulluser.address.zip_code
+									? 'CEP: ' + fulluser.address.zip_code
+									: null}
 							</div>
 							<Input
+								onChange={(e) => {
+									let cp = fulluser.address
+									cp.complement = e.target.value
+									setaddresbase(cp)
+								}}
 								style={{
 									backgroundColor: '#EDF1F7',
 									borderRadius: '10px',
@@ -161,6 +168,11 @@ const searchAddress = () => {
 								placeholder="Complemento (caso tenha)"
 							></Input>
 							<Input
+								onChange={(e) => {
+									let cp = fulluser.address
+									cp.nome = e.target.value
+									setaddresbase(cp)
+								}}
 								style={{
 									backgroundColor: '#EDF1F7',
 									borderRadius: '10px',
@@ -180,8 +192,11 @@ const searchAddress = () => {
 									borderRadius: '12px',
 									backgroundColor: '#FF805D',
 								}}
-								onClick={() => {
-									history.push('/home')
+								onClick={async () => {
+									await saveanotheraddress(fulluser.address)
+									await clearcurrentaddress()
+									await history.push('/home')
+									// console.log(fulluser)
 								}}
 							>
 								Salvar
@@ -189,7 +204,7 @@ const searchAddress = () => {
 							<div
 								onClick={() => {
 									history.push('/home')
-									console.log('comentando ')
+									// console.log('comentando ')
 								}}
 								style={{ cursor: 'pointer' }}
 							>
@@ -231,15 +246,19 @@ const searchAddress = () => {
 											borderRadius: '10px',
 											margin: '0 auto',
 											width: '80vw',
-											height: '8vh',
+											height: '7vh',
 											marginTop: '8vh',
+											border: 'none',
 										}}
 										value={number === -1 ? 'Número não necessário' : number}
 										placeholder="Número"
 										disabled={number === -1 ? true : false}
 										onChange={(e) => {
 											setnumber(e.target.value)
-											console.log(e.target.value)
+											let cp = fulluser.address
+											cp.numero = e.target.value
+											setaddresbase(cp)
+											// console.log(e.target.value)
 										}}
 									/>
 									<div
@@ -276,7 +295,6 @@ const searchAddress = () => {
 							</Row>
 							<Row
 								style={{
-									marginTop: '30vh',
 									textAlign: 'center',
 									display: 'flex',
 								}}
@@ -290,17 +308,18 @@ const searchAddress = () => {
 												width: '80vw',
 												borderRadius: '12px',
 												backgroundColor: '#FF805D',
+												border: 'none',
 											}}
 											disabled={
 												number === -1 || number.length > 0 ? false : true
 											}
 											onClick={() => {
 												setaddresschecked(true)
-												number === '69'
+												number === '203'
 													? handleValidAddress(true)
 													: handleValidAddress(false)
 
-												console.log('simcomovc clickou')
+												// console.log('simcomovc clickou')
 											}}
 										>
 											Confirmar
@@ -314,6 +333,10 @@ const searchAddress = () => {
 											backgroundColor: `#FA5C5C`,
 											height: '33vh',
 											flex: '1',
+											position: 'fixed',
+											width: '100vw',
+											bottom: '0',
+											left: '0',
 										}}
 									>
 										<div
@@ -337,6 +360,7 @@ const searchAddress = () => {
 												borderRadius: '12px',
 												backgroundColor: '#FFF',
 												color: '#000',
+												border: 'none',
 											}}
 											onClick={() => {
 												history.push('/home')

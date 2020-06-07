@@ -1,24 +1,32 @@
 import React, { useState, useEffect, Fragment } from 'react'
 import Loader from 'react-loader-spinner'
 import { withRouter } from 'react-router-dom'
+import jwt from 'jsonwebtoken'
 import LoginBg from './bglogin'
-import { useStoreActions, useStore } from 'easy-peasy'
+import { useStoreActions, useStore, useStoreState } from 'easy-peasy'
 import { Input, Button } from 'reactstrap'
+
+import NumberFormat from 'react-number-format'
+
 import NewUser from './newuser'
 import ConfirmSms from './confirmSms'
 import ForgotPassword from './forgotPassword'
 import TempPassword from './tempPassword'
 import ConfirmTempPassword from './confirmTempPassword'
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import Api from '../../services/Api'
 import history from '../../util/history-util'
 import TermosAdesao from './termosAdesao'
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
+import VisibilityIcon from '@material-ui/icons/Visibility'
+
 const LoginPage = () => {
-	const fulluser = useStore((state) => state.user)
-	const setauthtoken = useStoreActions((state) => state.user.setauthtoken)
+	const fulluser = useStoreState((state) => state.user)
+	const setauthtoken = useStoreActions((actions) => actions.user.setauthtoken)
 	const [backarrowstate, setbackarrowstate] = useState('')
 	const [loadingreq, setloading] = useState(false)
 	const [showpassword, setshowpass] = useState(false)
+	const [logged, setlogged] = useState(false)
 	const [loginstate, setloginstate] = useState({
 		celnumber: '',
 		password: '',
@@ -38,10 +46,39 @@ const LoginPage = () => {
 		termos: false,
 	})
 	useEffect(() => {
+		console.log(loginstate)
+	}, [JSON.stringify(loginstate)])
+	useEffect(() => {
+		if (logged) {
+			console.log('já logado!')
+			history.push('/home')
+		}
+	}, [logged])
+	useEffect(() => {
 		if (jsonpagestate.main) {
 			setbackarrowstate('')
 		}
-	}, [jsonpagestate])
+	}, [JSON.stringify(jsonpagestate)])
+
+	useEffect(() => {
+		console.log('montou!')
+
+		try {
+			let token = localStorage.getItem('authtoken')
+			// console.log(token)
+			// console.log(fulluser)
+			let decoded = jwt.decode(token)
+			// console.log(decoded)
+			if (decoded) {
+				if (decoded.exp) {
+					history.push('/profile')
+				}
+			}
+		} catch (e) {
+			console.log(e, fulluser.authtoken, 'erro que foi pego')
+		}
+	}, [])
+
 	let handlepostlogin = async () => {
 		await setloading(true)
 		try {
@@ -59,12 +96,13 @@ const LoginPage = () => {
 					},
 				}
 			)
-			console.log(results, 'resultado logiinnnn')
+			// console.log(results, 'resultado logiinnnn')
 			if (results.data.data.access_token) {
-				localStorage.setItem('authtoken', results.data.data.access_token)
-				setauthtoken(results.data.data.access_token)
-				console.log(JSON.stringify(fulluser))
-				history.push('/home')
+				await localStorage.setItem('authtoken', results.data.data.access_token)
+				await setauthtoken(results.data.data.access_token)
+				// await console.log(JSON.stringify(fulluser))
+				await setlogged(true)
+				await setpagestate('main')
 			}
 		} catch (e) {
 			await setloading(false)
@@ -72,6 +110,7 @@ const LoginPage = () => {
 		await setloading(false)
 	}
 	let handlenewuserpost = async () => {
+		console.log(fulluser)
 		const results = await Api.post('/customers', {
 			company_id: 2,
 			name: loginstate.nome,
@@ -90,10 +129,10 @@ const LoginPage = () => {
 				},
 			],
 		})
-		console.log(results, 'resultado do nosso amigo')
+		// console.log(results, 'resultado do nosso amigo')
 	}
 	let handlejsonpage = (str) => {
-		console.log(str, jsonpagestate[str])
+		// console.log(str, jsonpagestate[str])
 		setpagestate((prev) => {
 			let cp = {
 				main: false,
@@ -115,7 +154,7 @@ const LoginPage = () => {
 		setloginstate((prev) => {
 			let cp = prev
 			prev[str] = value
-			console.log(prev)
+			// console.log(prev)
 			return cp
 		})
 	}
@@ -137,24 +176,30 @@ const LoginPage = () => {
 				<LoginBg>
 					{/* {backarrowstate} */}
 					{backarrowstate && (
-						<div style={{ display: 'flex', flexDirection: 'row' }}>
-							<Button
-								onClick={() => {
-									handlearrowbackclick()
-								}}
-								style={{
-									marginLeft: '3vw',
-									marginTop: '3vh',
-									borderStyle: 'none',
-									backgroundColor: '#FF805D',
-									borderRadius: '8px',
-									height: '7vh',
-									width: '7vh',
-								}}
-							>
-								<ArrowBackIosIcon style={{ color: '#FFFF' }} />
-							</Button>
-						</div>
+						<Button
+							onClick={() => {
+								handlearrowbackclick()
+							}}
+							style={{
+								display: 'flex',
+								alignItems: 'center',
+								justifyContent: 'center',
+								textAlign: 'center',
+								borderStyle: 'none',
+								boxShadow: '0 0 0',
+								position: 'absolute',
+								left: '3vw',
+								top: '3vh',
+								backgroundColor: '#FF805D',
+								borderRadius: '12px',
+								height: '5vh',
+								width: '5vh',
+							}}
+						>
+							<ChevronLeftIcon
+								style={{ color: '#FFFF', height: '3vh', width: 'auto' }}
+							/>
+						</Button>
 					)}
 					{jsonpagestate.confirmsms && (
 						<div
@@ -264,7 +309,7 @@ const LoginPage = () => {
 							<div
 								style={{
 									textAlign: 'center',
-									borderRadius: '20px',
+									borderRadius: '32px',
 									marginTop: '50vh',
 									top: '50vh',
 									width: '100vw',
@@ -282,36 +327,81 @@ const LoginPage = () => {
 								>
 									Realize seu login e<br /> aproveite nosso Aplicativo.
 								</h3>
-								<Input
+								<NumberFormat
 									style={{
 										backgroundColor: '#EDF1F7',
-										borderRadius: '10px',
-										margin: '0 auto',
+										borderRadius: '12px',
+										margin: '3vh auto 0',
 										width: '80vw',
-										height: '8vh',
-										marginTop: '3vh',
+										height: '7vh',
+										border: 'none',
+									}}
+									className="form-control"
+									value={loginstate.celnumber}
+									placeholder="Seu celular"
+									format="(##) # ####-####"
+									mask="_"
+									onChange={async (e) => {
+										let real = e.target.value
+										real = real.split('.').join('')
+										real = real.split('/').join('')
+										real = real.split('-').join('')
+										real = real.split('(').join('')
+										real = real.split(')').join('')
+										real = real.split(' ').join('')
+										real = real.split('X').join('')
+										await handleloginstate('celnumber', real)
+									}}
+								/>
+								{/* <Input
+									style={{
+										backgroundColor: '#EDF1F7',
+										borderRadius: '12px',
+										margin: '3vh auto 0',
+										width: '80vw',
+										height: '7vh',
+										border: 'none',
 									}}
 									placeholder="Seu celular"
 									onChange={(e) => {
 										handleloginstate('celnumber', e.target.value)
-										console.log(e.target.value)
+										// console.log(e.target.value)
 									}}
-								/>
-								<Input
-									type={showpassword ? 'text' : 'password'}
+								/> */}
+								<div
 									style={{
+										display: 'flex',
+										alignItems: 'center',
 										backgroundColor: '#EDF1F7',
-										borderRadius: '10px',
-										margin: '0 auto',
+										borderRadius: '12px',
+										margin: '1vh auto 0',
 										width: '80vw',
-										height: '8vh',
-										marginTop: '1vh',
+										height: '7vh',
 									}}
-									placeholder="Senha"
-									onChange={(e) => {
-										handleloginstate('password', e.target.value)
-									}}
-								/>
+								>
+									<Input
+										type={showpassword ? 'text' : 'password'}
+										style={{
+											backgroundColor: '#EDF1F7',
+											border: 'none',
+										}}
+										placeholder="Senha"
+										onChange={(e) => {
+											handleloginstate('password', e.target.value)
+										}}
+									/>
+									<div
+										style={{ marginRight: '2vw' }}
+										onClick={() => {
+											setshowpass(() => {
+												console.log(showpassword)
+												return !showpassword
+											})
+										}}
+									>
+										{showpassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+									</div>
+								</div>
 								<div
 									onClick={() => {
 										handlejsonpage('passwordrecover')
@@ -323,6 +413,7 @@ const LoginPage = () => {
 										display: 'flex',
 										flexDirection: 'row',
 										color: '#413131',
+										marginTop: '1vh',
 										fontSize: '10px',
 										width: '90vw',
 									}}
@@ -345,8 +436,15 @@ const LoginPage = () => {
 										fontWeight: 'bold',
 									}}
 								>
-									<div> {'Ainda não tem conta?'}</div>
-									<div> {'Crie agora mesmo!'}</div>
+									<span>Ainda não tem conta?</span>
+									<span
+										style={{
+											textDecoration: 'underline',
+											marginLeft: '0.3em',
+										}}
+									>
+										Crie agora mesmo!
+									</span>
 								</div>
 								<div
 									onClick={() => {
@@ -357,14 +455,14 @@ const LoginPage = () => {
 										cursor: 'poniter',
 										alignItems: 'center',
 										justifyContent: 'center',
-										textAlign: 'center',
 										flex: 1,
 										width: '100vw',
 										borderRadius: '32px 32px 0px 0px',
-										marginTop: '10vh',
 										height: '12vh',
 										display: 'flex',
 										backgroundColor: '#FF805D',
+										position: 'fixed',
+										bottom: '0',
 									}}
 								>
 									{loadingreq ? (

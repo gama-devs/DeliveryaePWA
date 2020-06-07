@@ -18,7 +18,7 @@ const SearchBar = (props) => {
 	const [selected, setselected] = useState('')
 	useEffect(() => {
 		let tpmfunc = async () => {
-			console.log('o totalmudou')
+			// console.log('o totalmudou')
 			await loadAdresses(fulluser.address.str)
 		}
 		tpmfunc()
@@ -26,16 +26,22 @@ const SearchBar = (props) => {
 
 	const loadAdresses = async (addresstring) => {
 		if (addresstring !== '') {
-			console.log('sim, eu chamei api com isso' + addresstring)
+			// console.log('sim, eu chamei api com isso' + addresstring)
 
 			let resp = await axios.get(
 				`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURI(
 					addresstring
 				)}.json?bbox=-73,-33,-34.0,5.5&access_token=pk.eyJ1IjoiZGVsaXZlcnlhZSIsImEiOiJja2F3eHlnZ2IwMDB3MnBudzV3OGx3eDA5In0.42k6GoeW3xZIySLKeBx22Q `
 			)
-			console.log('###################################')
+			// console.log('###################################')
 			let arr = []
 			resp.data.features.map((s) => {
+				let zip = ''
+				if (s.context) {
+					s.context.map((j) => {
+						j.id.includes('postcode') ? (zip = j.text) : console.log('')
+					})
+				}
 				arr.push({
 					description: ' ',
 					str: addresstring,
@@ -44,15 +50,15 @@ const SearchBar = (props) => {
 					complement: 'Apto 1',
 					lat: s.center[0],
 					long: s.center[1],
-					zip_code: s.context ? s.context[0].text : '',
+					zip_code: zip,
 					address: 'completo',
 					fullobj: s,
 				})
 			})
 			props.setloadeds(arr)
-			// console.log(
+			// // console.log(
 			// 	navigator.geolocation.getCurrentPosition((isso) => {
-			// 		console.log(isso)
+			// 		// console.log(isso)
 			// 	})
 			// )
 		}
@@ -118,11 +124,12 @@ const SearchBar = (props) => {
 									onChange={async (e) => {
 										settext(e.target.value)
 										if (e.target.value === '') {
-											console.log('emptystring!')
+											// console.log('emptystring!')
 											props.setloadeds([])
 										}
 										let cp = fulluser.address
 										cp.str = e.target.value
+										// console.log(cp.str)
 										setaddresbase(cp)
 									}}
 									value={fulluser.address.str}
@@ -148,16 +155,14 @@ const SearchBar = (props) => {
 						<div
 							className="my-1"
 							style={{
+								display: 'flex',
 								borderRadius: '12px',
 								height: '8vh',
 								width: '8vh',
 								backgroundColor: '#FFF',
 							}}
 						>
-							<img
-								style={{ marginLeft: '2vw', marginTop: '1vh' }}
-								src={motoca}
-							></img>
+							<img style={{ margin: 'auto' }} src={motoca}></img>
 						</div>
 						<h3 style={{ fontSize: '15px', fontWeight: 'bold', color: '#fff' }}>
 							Maravilha!

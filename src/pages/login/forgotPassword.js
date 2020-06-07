@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { withRouter } from 'react-router-dom'
 import { Input } from 'reactstrap'
+import NumberFormat from 'react-number-format'
 const ForgotPassword = (props) => {
 	let sendrecoverpass = () => {
 		props.setbackarrow('')
@@ -10,12 +11,12 @@ const ForgotPassword = (props) => {
 		<div
 			style={{
 				textAlign: 'center',
-				flex: 1,
-				top: 0,
-				left: 0,
-				position: 'relative',
-				height: '40vh',
-				borderRadius: '20px',
+				width: '100vw',
+				position: 'fixed',
+				bottom: '0',
+				left: '0',
+				height: '45vh',
+				borderRadius: '32px',
 				backgroundColor: '#fff',
 			}}
 		>
@@ -46,21 +47,47 @@ const ForgotPassword = (props) => {
 					para enviarmos uma senha provisória.
 				</div>
 			</div>
-
-			<Input
+			<NumberFormat
 				style={{
 					backgroundColor: '#EDF1F7',
 					borderRadius: '10px',
 					margin: '0 auto',
 					width: '80vw',
-					height: '8vh',
+					height: '7vh',
 					marginTop: '3vh',
+					border: 'none',
+				}}
+				className="form-control"
+				placeholder="Seu número de celular"
+				format="(##) # ####-####"
+				mask="_"
+				onChange={async (e) => {
+					let real = e.target.value
+					real = real.split('.').join('')
+					real = real.split('/').join('')
+					real = real.split('-').join('')
+					real = real.split('(').join('')
+					real = real.split(')').join('')
+					real = real.split(' ').join('')
+					real = real.split('X').join('')
+					console.log(real)
+				}}
+			/>
+			{/* <Input
+				style={{
+					backgroundColor: '#EDF1F7',
+					borderRadius: '10px',
+					margin: '0 auto',
+					width: '80vw',
+					height: '7vh',
+					marginTop: '3vh',
+					border: 'none'
 				}}
 				placeholder="Seu número de celular"
 				onChange={(e) => {
 					console.log(e.target.value)
 				}}
-			/>
+			/> */}
 
 			<div
 				onClick={() => {
@@ -71,13 +98,14 @@ const ForgotPassword = (props) => {
 					alignItems: 'center',
 					justifyContent: 'center',
 					textAlign: 'center',
-					flex: 1,
 					width: '100vw',
 					borderRadius: '32px 32px 0px 0px',
-					marginTop: '7vh',
 					height: '12vh',
 					display: 'flex',
 					backgroundColor: '#FF805D',
+					position: 'fixed',
+					bottom: '0',
+					left: '0',
 				}}
 			>
 				<h4

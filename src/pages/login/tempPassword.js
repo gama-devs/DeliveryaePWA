@@ -1,18 +1,22 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { withRouter } from 'react-router-dom'
 import { Input } from 'reactstrap'
 import history from '../../util/history-util'
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
+import VisibilityIcon from '@material-ui/icons/Visibility'
+
 const TempPassword = (props) => {
+	const [showpassword, setshowpass] = useState(false)
 	return (
 		<div
 			style={{
 				textAlign: 'center',
-				flex: 1,
-				top: 0,
+				position: 'fixed',
+				bottom: 0,
 				left: 0,
-				position: 'relative',
-				height: '40vh',
-				borderRadius: '20px',
+				height: '50vh',
+				width: '100vw',
+				borderRadius: '32px',
 				backgroundColor: '#fff',
 			}}
 		>
@@ -44,21 +48,37 @@ const TempPassword = (props) => {
 					<br /> cadastre uma nova senha
 				</div>
 			</div>
-
-			<Input
-				style={{
+			<div style= 
+				{{
+					display: 'flex',
+					alignItems: 'center',
 					backgroundColor: '#EDF1F7',
-					borderRadius: '10px',
-					margin: '0 auto',
+					borderRadius: '12px',
+					margin: '1vh auto 0',
 					width: '80vw',
-					height: '8vh',
-					marginTop: '3vh',
+					height: '7vh',
 				}}
-				placeholder="Nova Senha"
-				onChange={(e) => {
-					console.log(e.target.value)
-				}}
-			/>
+			>
+				<Input
+					type={showpassword ? 'text' : 'password'}
+					style={{
+						backgroundColor: '#EDF1F7',
+						border: 'none'
+					}}
+					placeholder="Nova senha"
+				/>
+				<div
+					style={{marginRight: '2vw'}}
+					onClick={() => {
+						setshowpass(() => {
+							console.log(showpassword)
+							return !showpassword
+						})
+					}}
+				>
+					{showpassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+				</div>
+			</div>
 			<div
 				onClick={() => {
 					history.push('/home')
@@ -82,13 +102,13 @@ const TempPassword = (props) => {
 					alignItems: 'center',
 					justifyContent: 'center',
 					textAlign: 'center',
-					flex: 1,
 					width: '100vw',
 					borderRadius: '32px 32px 0px 0px',
-					marginTop: '7vh',
 					height: '12vh',
 					display: 'flex',
 					backgroundColor: '#FF805D',
+					position: 'fixed',
+					bottom: '0'
 				}}
 			>
 				<h4

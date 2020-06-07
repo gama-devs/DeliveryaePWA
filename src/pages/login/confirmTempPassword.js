@@ -13,7 +13,7 @@ const ConfirmTempPassword = (props) => {
 				position: 'relative',
 				display: 'flex',
 				height: '25vh',
-				borderRadius: '20px 20px 0px 0px',
+				borderRadius: '32px 32px 0px 0px',
 				backgroundColor: '#1BD09A',
 				flexDirection: 'column',
 
