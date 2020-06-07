@@ -2,8 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { withRouter } from 'react-router-dom'
 import Loader from 'react-loader-spinner'
 import { Input } from 'reactstrap'
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
+import VisibilityIcon from '@material-ui/icons/Visibility'
+
 const NewUser = (props) => {
 	const [loadingreq, setloading] = useState(false)
+	const [showpassword, setshowpass] = useState(false)
+
 	useEffect(() => {
 		// console.log('usereffect try')
 		// console.log(props.backarrowstate, 'estadoo')
@@ -17,11 +22,11 @@ const NewUser = (props) => {
 			style={{
 				textAlign: 'center',
 				flex: 1,
-				top: 0,
-				left: 0,
-				position: 'relative',
-				height: '60vh',
-				borderRadius: '20px',
+				position: 'fixed',
+				bottom: '0',
+				height: '70vh',
+				width: '100vw',
+				borderRadius: '32px',
 				backgroundColor: '#FFF',
 			}}
 		>
@@ -55,8 +60,9 @@ const NewUser = (props) => {
 					borderRadius: '10px',
 					margin: '0 auto',
 					width: '80vw',
-					height: '8vh',
+					height: '7vh',
 					marginTop: '3vh',
+					border: 'none'
 				}}
 				placeholder="Seu número de celular"
 				onChange={(e) => {
@@ -69,8 +75,9 @@ const NewUser = (props) => {
 					borderRadius: '10px',
 					margin: '0 auto',
 					width: '80vw',
-					height: '8vh',
+					height: '7vh',
 					marginTop: '1vh',
+					border: 'none'
 				}}
 				placeholder="Seu e-mail"
 				onChange={(e) => {
@@ -83,28 +90,46 @@ const NewUser = (props) => {
 					borderRadius: '10px',
 					margin: '0 auto',
 					width: '80vw',
-					height: '8vh',
+					height: '7vh',
 					marginTop: '1vh',
+					border: 'none'
 				}}
 				placeholder="Seu nome"
 				onChange={(e) => {
 					props.handlestate('nome', e.target.value)
 				}}
 			/>
-			<Input
-				style={{
+			<div style= 
+				{{
+					display: 'flex',
+					alignItems: 'center',
 					backgroundColor: '#EDF1F7',
-					borderRadius: '10px',
-					margin: '0 auto',
+					borderRadius: '12px',
+					margin: '1vh auto 0',
 					width: '80vw',
-					height: '8vh',
-					marginTop: '1vh',
+					height: '7vh',
 				}}
-				placeholder="Escolha uma senha"
-				onChange={(e) => {
-					props.handlestate('password', e.target.value)
-				}}
-			/>
+			>
+				<Input
+					type={showpassword ? 'text' : 'password'}
+					style={{
+						backgroundColor: '#EDF1F7',
+						border: 'none'
+					}}
+					placeholder="Escolha uma senha"
+				/>
+				<div
+					style={{marginRight: '2vw'}}
+					onClick={() => {
+						setshowpass(() => {
+							console.log(showpassword)
+							return !showpassword
+						})
+					}}
+				>
+					{showpassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+				</div>
+			</div>
 			<div
 				onClick={async () => {
 					try {
@@ -123,13 +148,14 @@ const NewUser = (props) => {
 					alignItems: 'center',
 					justifyContent: 'center',
 					textAlign: 'center',
-					flex: 1,
 					width: '100vw',
 					borderRadius: '32px 32px 0px 0px',
-					marginTop: '10vh',
 					height: '12vh',
 					display: 'flex',
 					backgroundColor: '#FF805D',
+					position: 'fixed',
+					left: '0',
+					bottom: '0'
 				}}
 			>
 				{loadingreq ? (
