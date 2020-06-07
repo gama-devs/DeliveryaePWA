@@ -246,8 +246,9 @@ const searchAddress = () => {
 											borderRadius: '10px',
 											margin: '0 auto',
 											width: '80vw',
-											height: '8vh',
+											height: '7vh',
 											marginTop: '8vh',
+											border: 'none'
 										}}
 										value={number === -1 ? 'Número não necessário' : number}
 										placeholder="Número"

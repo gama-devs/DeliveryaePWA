@@ -117,6 +117,9 @@ const NewUser = (props) => {
 						border: 'none'
 					}}
 					placeholder="Escolha uma senha"
+					onChange={(e) => {
+						props.handlestate('password', e.target.value)
+					}}
 				/>
 				<div
 					style={{marginRight: '2vw'}}

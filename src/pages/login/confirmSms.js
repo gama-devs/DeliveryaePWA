@@ -25,11 +25,11 @@ const ConfirmSms = (props) => {
 		<div
 			style={{
 				textAlign: 'center',
-				flex: 1,
-				top: 0,
+				bottom: 0,
 				left: 0,
-				position: 'relative',
-				height: '40vh',
+				position: 'fixed',
+				width: '100vw',
+				height: '50vh',
 				borderRadius: '32px',
 				backgroundColor: '#fff',
 			}}
@@ -177,10 +177,13 @@ const ConfirmSms = (props) => {
 				}}
 			>
 				<div> {'Não recebeu?'}</div>
-				<div style={{ cursor: 'pointer', textDecoration: 'underline' }}>
-					{' '}
-					{'Reenviar código'}
-				</div>
+				<span style={{
+					cursor: 'pointer',
+					textDecoration: 'underline',
+					marginLeft: '0.3em' 
+				}}>
+					Reenviar código
+				</span>
 			</div>
 
 			<div
@@ -191,7 +194,6 @@ const ConfirmSms = (props) => {
 					color: '#000',
 					fontSize: '12px',
 					marginTop: '4vh',
-					fontWeight: 'bold',
 				}}
 			>
 				<div>
@@ -199,15 +201,18 @@ const ConfirmSms = (props) => {
 					Ao se cadastrar você automaticamente
 					<br />
 					concorda com os
-					<div
+					<span
 						onClick={() => {
 							props.handlepagestate('termos')
 						}}
-						style={{ cursor: 'pointer', textDecoration: 'underline' }}
+						style={{ 
+							cursor: 'pointer',
+							textDecoration: 'underline',
+							marginLeft: '0.3em'
+						}}
 					>
-						{' '}
 						{'Termos de Uso'}
-					</div>
+					</span>
 				</div>
 			</div>
 
@@ -222,8 +227,9 @@ const ConfirmSms = (props) => {
 					textAlign: 'center',
 					flex: 1,
 					width: '100vw',
+					position: 'fixed',
+					bottom: '0',
 					borderRadius: '32px 32px 0px 0px',
-					marginTop: '3vh',
 					height: '12vh',
 					display: 'flex',
 					backgroundColor: '#FF805D',

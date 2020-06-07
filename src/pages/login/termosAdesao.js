@@ -3,65 +3,59 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { Button } from 'reactstrap'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 
 const TermosAdesao = (props) => {
 	return (
-		<div>
+		<div style={{height: '100vh'}}>
 			<div
-				style={{
-					display: 'flex',
-					height: '25vh',
-					backgroundColor: '#E5E5E5',
-					flexDirection: 'row',
-					alignItems: 'center',
-					justifyContent: 'center',
-				}}
+				style={{backgroundColor: '#E5E5E5', display: 'flex'}}
 			>
-				<div style={{ flex: 1 }}>
-					<Button
-						onClick={() => {
-							props.handlepagestate('confirmsms')
-						}}
-						style={{
-							marginLeft: '5vw',
-							marginBottom: '3vh',
-							borderStyle: 'none',
-							backgroundColor: '#FFF',
-							borderRadius: '8px',
-							height: '7vh',
-							width: '7vh',
-						}}
-					>
-						<ArrowBackIosIcon style={{ color: '#FF805D' }} />
-					</Button>
-				</div>
+				<Button
+					onClick={() => {
+						props.handlepagestate('confirmsms')
+					}}
+					style={{
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+						textAlign: 'center',
+						borderStyle: 'none',
+						boxShadow: '0 0 0',
+						backgroundColor: '#FFF',
+						borderRadius: '12px',
+						marginLeft: '3vh',
+						height: '5vh',
+						width: '5vh',
+					}}
+				>
+					<ChevronLeftIcon style={{ color: '#FF805D', height: '3vh', width: 'auto' }} />
+				</Button>
 				<div
 					style={{
 						textAlign: 'center',
-						flex: 5,
 						fontSize: '20px',
 						fontWeight: 'bold',
 						color: '#FF805D',
+						padding: '5vh 0',
+						flex: '1',
+    					marginRight: '8vh'
 					}}
 				>
-					<div style={{ marginBottom: '3vh', marginRight: '6vw' }}>
-						Termos de uso
-					</div>
+					Termos de uso
 				</div>
 			</div>
 
 			<div
 				style={{
-					textAlign: 'center',
-					flex: 1,
-					display: 'flex',
-					height: '70vh',
-					marginTop: '-5vh',
+					textAlign: 'left',
 					borderRadius: '32px',
 					backgroundColor: '#fff',
+					padding: '5vh 5vw',
+					overflow: 'scroll'
 				}}
 			>
-				<div style={{ flex: 1, maxWidth: '85vw' }}>
+				<div style={{ flex: 1 }}>
 					/* Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
 					commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
 					et magnis dis parturient montes, nascetur ridiculus mus. Donec quam
