@@ -295,7 +295,6 @@ const searchAddress = () => {
 							</Row>
 							<Row
 								style={{
-									marginTop: '30vh',
 									textAlign: 'center',
 									display: 'flex',
 								}}
@@ -309,6 +308,7 @@ const searchAddress = () => {
 												width: '80vw',
 												borderRadius: '12px',
 												backgroundColor: '#FF805D',
+												border: 'none'
 											}}
 											disabled={
 												number === -1 || number.length > 0 ? false : true
@@ -333,6 +333,10 @@ const searchAddress = () => {
 											backgroundColor: `#FA5C5C`,
 											height: '33vh',
 											flex: '1',
+											position: 'fixed',
+											width: '100vw',
+											bottom: '0',
+											left: "0"
 										}}
 									>
 										<div
@@ -356,6 +360,7 @@ const searchAddress = () => {
 												borderRadius: '12px',
 												backgroundColor: '#FFF',
 												color: '#000',
+												border: 'none'
 											}}
 											onClick={() => {
 												history.push('/home')

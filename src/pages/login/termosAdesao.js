@@ -9,7 +9,7 @@ const TermosAdesao = (props) => {
 	return (
 		<div style={{height: '100vh'}}>
 			<div
-				style={{backgroundColor: '#E5E5E5', display: 'flex'}}
+				style={{backgroundColor: '#E5E5E5', display: 'flex', alignItems: 'center'}}
 			>
 				<Button
 					onClick={() => {
