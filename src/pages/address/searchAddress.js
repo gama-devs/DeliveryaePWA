@@ -140,13 +140,16 @@ const searchAddress = () => {
 							>
 								{fulluser.address.fullresp}
 							</div>
+
 							<div
 								style={{
 									fontSize: '15px',
 									color: '#FF805D',
 								}}
 							>
-								{'CEP: ' + fulluser.address.zip_code}
+								{fulluser.address.zip_code
+									? 'CEP: ' + fulluser.address.zip_code
+									: null}
 							</div>
 							<Input
 								onChange={(e) => {
@@ -192,6 +195,7 @@ const searchAddress = () => {
 								onClick={async () => {
 									await saveanotheraddress(fulluser.address)
 									await clearcurrentaddress()
+									await history.push('/home')
 									// console.log(fulluser)
 								}}
 							>

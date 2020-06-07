@@ -39,7 +39,7 @@ const SearchBar = (props) => {
 				let zip = ''
 				if (s.context) {
 					s.context.map((j) => {
-						j.id.includes('postcode') ? (zip = j.text) : console.log('não')
+						j.id.includes('postcode') ? (zip = j.text) : console.log('')
 					})
 				}
 				arr.push({
@@ -155,16 +155,14 @@ const SearchBar = (props) => {
 						<div
 							className="my-1"
 							style={{
+								display: 'flex',
 								borderRadius: '12px',
 								height: '8vh',
 								width: '8vh',
 								backgroundColor: '#FFF',
 							}}
 						>
-							<img
-								style={{ marginLeft: '2vw', marginTop: '1vh' }}
-								src={motoca}
-							></img>
+							<img style={{ margin: 'auto' }} src={motoca}></img>
 						</div>
 						<h3 style={{ fontSize: '15px', fontWeight: 'bold', color: '#fff' }}>
 							Maravilha!

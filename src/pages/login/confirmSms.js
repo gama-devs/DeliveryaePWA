@@ -17,7 +17,7 @@ const ConfirmSms = (props) => {
 		return [htmlElRef, setFocus]
 	}
 	let handlesave = async () => {
-		console.log('hehe')
+		// console.log('hehe')
 		history.push('/home')
 	}
 

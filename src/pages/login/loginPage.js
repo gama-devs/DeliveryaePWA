@@ -1,8 +1,9 @@
 import React, { useState, useEffect, Fragment } from 'react'
 import Loader from 'react-loader-spinner'
 import { withRouter } from 'react-router-dom'
+import jwt from 'jsonwebtoken'
 import LoginBg from './bglogin'
-import { useStoreActions, useStore } from 'easy-peasy'
+import { useStoreActions, useStore, useStoreState } from 'easy-peasy'
 import { Input, Button } from 'reactstrap'
 import NewUser from './newuser'
 import ConfirmSms from './confirmSms'
@@ -14,11 +15,12 @@ import Api from '../../services/Api'
 import history from '../../util/history-util'
 import TermosAdesao from './termosAdesao'
 const LoginPage = () => {
-	const fulluser = useStore((state) => state.user)
-	const setauthtoken = useStoreActions((state) => state.user.setauthtoken)
+	const fulluser = useStoreState((state) => state.user)
+	const setauthtoken = useStoreActions((actions) => actions.user.setauthtoken)
 	const [backarrowstate, setbackarrowstate] = useState('')
 	const [loadingreq, setloading] = useState(false)
 	const [showpassword, setshowpass] = useState(false)
+	const [logged, setlogged] = useState(false)
 	const [loginstate, setloginstate] = useState({
 		celnumber: '',
 		password: '',
@@ -37,11 +39,38 @@ const LoginPage = () => {
 		tempassword: false,
 		termos: false,
 	})
+
+	useEffect(() => {
+		if (logged) {
+			console.log('já logado!')
+			history.push('/home')
+		}
+	}, [logged])
 	useEffect(() => {
 		if (jsonpagestate.main) {
 			setbackarrowstate('')
 		}
-	}, [jsonpagestate])
+	}, [JSON.stringify(jsonpagestate)])
+
+	useEffect(() => {
+		console.log('montou!')
+
+		try {
+			let token = localStorage.getItem('authtoken')
+			// console.log(token)
+			// console.log(fulluser)
+			let decoded = jwt.decode(token)
+			// console.log(decoded)
+			if (decoded) {
+				if (decoded.exp) {
+					history.push('/profile')
+				}
+			}
+		} catch (e) {
+			console.log(e, fulluser.authtoken, 'erro que foi pego')
+		}
+	}, [])
+
 	let handlepostlogin = async () => {
 		await setloading(true)
 		try {
@@ -59,12 +88,13 @@ const LoginPage = () => {
 					},
 				}
 			)
-			console.log(results, 'resultado logiinnnn')
+			// console.log(results, 'resultado logiinnnn')
 			if (results.data.data.access_token) {
-				localStorage.setItem('authtoken', results.data.data.access_token)
-				setauthtoken(results.data.data.access_token)
-				console.log(JSON.stringify(fulluser))
-				history.push('/home')
+				await localStorage.setItem('authtoken', results.data.data.access_token)
+				await setauthtoken(results.data.data.access_token)
+				// await console.log(JSON.stringify(fulluser))
+				await setlogged(true)
+				await setpagestate('main')
 			}
 		} catch (e) {
 			await setloading(false)
@@ -72,6 +102,7 @@ const LoginPage = () => {
 		await setloading(false)
 	}
 	let handlenewuserpost = async () => {
+		console.log(fulluser)
 		const results = await Api.post('/customers', {
 			company_id: 2,
 			name: loginstate.nome,
@@ -90,10 +121,10 @@ const LoginPage = () => {
 				},
 			],
 		})
-		console.log(results, 'resultado do nosso amigo')
+		// console.log(results, 'resultado do nosso amigo')
 	}
 	let handlejsonpage = (str) => {
-		console.log(str, jsonpagestate[str])
+		// console.log(str, jsonpagestate[str])
 		setpagestate((prev) => {
 			let cp = {
 				main: false,
@@ -115,7 +146,7 @@ const LoginPage = () => {
 		setloginstate((prev) => {
 			let cp = prev
 			prev[str] = value
-			console.log(prev)
+			// console.log(prev)
 			return cp
 		})
 	}
@@ -294,7 +325,7 @@ const LoginPage = () => {
 									placeholder="Seu celular"
 									onChange={(e) => {
 										handleloginstate('celnumber', e.target.value)
-										console.log(e.target.value)
+										// console.log(e.target.value)
 									}}
 								/>
 								<Input

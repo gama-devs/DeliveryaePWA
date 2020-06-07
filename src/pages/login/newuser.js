@@ -5,10 +5,10 @@ import { Input } from 'reactstrap'
 const NewUser = (props) => {
 	const [loadingreq, setloading] = useState(false)
 	useEffect(() => {
-		console.log('usereffect try')
-		console.log(props.backarrowstate, 'estadoo')
+		// console.log('usereffect try')
+		// console.log(props.backarrowstate, 'estadoo')
 		if (props.backarrowstate === 'newaccount') {
-			console.log('em tese foi')
+			// console.log('em tese foi')
 			props.setbackarrow('main')
 		}
 	}, [props.backarrowstate])
@@ -109,7 +109,7 @@ const NewUser = (props) => {
 				onClick={async () => {
 					try {
 						setloading(true)
-						console.log(props.loginstate, 'estadoooooo')
+						// console.log(props.loginstate, 'estadoooooo')
 						await props.handlenewuser()
 						props.handlepagestate('confirmsms')
 						props.setbackarrow('newaccount')

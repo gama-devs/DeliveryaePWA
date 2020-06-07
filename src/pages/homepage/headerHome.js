@@ -30,7 +30,11 @@ const HeaderHome = () => {
 			/>
 			<div
 				onClick={() => {
-					history.push('/login')
+					if (localStorage.getItem('authtoken')) {
+						history.push('/profile')
+					} else {
+						history.push('/login')
+					}
 				}}
 				style={{
 					cursor: 'pointer',

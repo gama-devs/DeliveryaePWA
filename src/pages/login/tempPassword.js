@@ -56,7 +56,7 @@ const TempPassword = (props) => {
 				}}
 				placeholder="Nova Senha"
 				onChange={(e) => {
-					console.log(e.target.value)
+					// console.log(e.target.value)
 				}}
 			/>
 			<div
