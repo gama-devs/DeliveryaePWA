@@ -252,7 +252,7 @@ const searchAddress = () => {
 											marginTop: '1vh',
 										}}
 									>
-										<Row style={{ textAlign: 'left' }} xs="12">
+										<Row style={{ textAlign: 'left', marginTop: '20px' }} xs="12">
 											<Col xs="10">Endereço sem número</Col>
 											<Col style={{ textAlign: 'right' }} xs="2">
 												<Input

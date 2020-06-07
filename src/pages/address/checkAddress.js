@@ -55,6 +55,7 @@ const checkAddress = () => {
 								borderRadius: '12px'
 							}}>
 							<Input
+							
 								onChange={(e) => {
 									setendereco(e.target.value)
 								}}
