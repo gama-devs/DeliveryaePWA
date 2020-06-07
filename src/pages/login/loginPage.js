@@ -14,6 +14,9 @@ import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
 import Api from '../../services/Api'
 import history from '../../util/history-util'
 import TermosAdesao from './termosAdesao'
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+
 const LoginPage = () => {
 	const fulluser = useStoreState((state) => state.user)
 	const setauthtoken = useStoreActions((actions) => actions.user.setauthtoken)
@@ -295,7 +298,7 @@ const LoginPage = () => {
 							<div
 								style={{
 									textAlign: 'center',
-									borderRadius: '20px',
+									borderRadius: '32px',
 									marginTop: '50vh',
 									top: '50vh',
 									width: '100vw',
@@ -316,11 +319,11 @@ const LoginPage = () => {
 								<Input
 									style={{
 										backgroundColor: '#EDF1F7',
-										borderRadius: '10px',
-										margin: '0 auto',
+										borderRadius: '12px',
+										margin: '3vh auto 0',
 										width: '80vw',
-										height: '8vh',
-										marginTop: '3vh',
+										height: '7vh',
+										border: 'none'
 									}}
 									placeholder="Seu celular"
 									onChange={(e) => {
@@ -328,21 +331,40 @@ const LoginPage = () => {
 										// console.log(e.target.value)
 									}}
 								/>
-								<Input
-									type={showpassword ? 'text' : 'password'}
-									style={{
+								<div style= 
+									{{
+										display: 'flex',
+										alignItems: 'center',
 										backgroundColor: '#EDF1F7',
-										borderRadius: '10px',
-										margin: '0 auto',
+										borderRadius: '12px',
+										margin: '1vh auto 0',
 										width: '80vw',
-										height: '8vh',
-										marginTop: '1vh',
+										height: '7vh',
 									}}
-									placeholder="Senha"
-									onChange={(e) => {
-										handleloginstate('password', e.target.value)
-									}}
-								/>
+								>
+									<Input
+										type={showpassword ? 'text' : 'password'}
+										style={{
+											backgroundColor: '#EDF1F7',
+											border: 'none'
+										}}
+										placeholder="Senha"
+										onChange={(e) => {
+											handleloginstate('password', e.target.value)
+										}}
+									/>
+									<div
+										style={{marginRight: '2vw'}}
+										onClick={() => {
+											setshowpass(() => {
+												console.log(showpassword)
+												return !showpassword
+											})
+										}}
+									>
+										{showpassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+									</div>
+								</div>
 								<div
 									onClick={() => {
 										handlejsonpage('passwordrecover')
@@ -354,6 +376,7 @@ const LoginPage = () => {
 										display: 'flex',
 										flexDirection: 'row',
 										color: '#413131',
+										marginTop: '1vh',
 										fontSize: '10px',
 										width: '90vw',
 									}}
@@ -376,8 +399,13 @@ const LoginPage = () => {
 										fontWeight: 'bold',
 									}}
 								>
-									<div> {'Ainda não tem conta?'}</div>
-									<div> {'Crie agora mesmo!'}</div>
+									<span>Ainda não tem conta?</span>
+									<span style=
+										{{
+											textDecoration: 'underline',
+											marginLeft: '0.3em'
+										}}
+									>Crie agora mesmo!</span>
 								</div>
 								<div
 									onClick={() => {
@@ -388,14 +416,14 @@ const LoginPage = () => {
 										cursor: 'poniter',
 										alignItems: 'center',
 										justifyContent: 'center',
-										textAlign: 'center',
 										flex: 1,
 										width: '100vw',
 										borderRadius: '32px 32px 0px 0px',
-										marginTop: '10vh',
 										height: '12vh',
 										display: 'flex',
 										backgroundColor: '#FF805D',
+										position: 'fixed',
+										bottom: '0'
 									}}
 								>
 									{loadingreq ? (
