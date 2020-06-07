@@ -30,7 +30,7 @@ const ConfirmSms = (props) => {
 				left: 0,
 				position: 'relative',
 				height: '40vh',
-				borderRadius: '20px',
+				borderRadius: '32px',
 				backgroundColor: '#fff',
 			}}
 		>
@@ -76,6 +76,7 @@ const ConfirmSms = (props) => {
 							backgroundColor: '#EDF1F7',
 							marginLeft: '1vw',
 							borderStyle: 'none',
+							border: 'none'
 						}}
 					/>
 				</div>

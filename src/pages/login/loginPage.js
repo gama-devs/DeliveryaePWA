@@ -10,12 +10,12 @@ import ConfirmSms from './confirmSms'
 import ForgotPassword from './forgotPassword'
 import TempPassword from './tempPassword'
 import ConfirmTempPassword from './confirmTempPassword'
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import Api from '../../services/Api'
 import history from '../../util/history-util'
 import TermosAdesao from './termosAdesao'
-import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
-import VisibilityIcon from '@material-ui/icons/Visibility';
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
+import VisibilityIcon from '@material-ui/icons/Visibility'
 
 const LoginPage = () => {
 	const fulluser = useStoreState((state) => state.user)
@@ -171,24 +171,28 @@ const LoginPage = () => {
 				<LoginBg>
 					{/* {backarrowstate} */}
 					{backarrowstate && (
-						<div style={{ display: 'flex', flexDirection: 'row' }}>
-							<Button
-								onClick={() => {
-									handlearrowbackclick()
-								}}
-								style={{
-									marginLeft: '3vw',
-									marginTop: '3vh',
-									borderStyle: 'none',
-									backgroundColor: '#FF805D',
-									borderRadius: '8px',
-									height: '7vh',
-									width: '7vh',
-								}}
-							>
-								<ArrowBackIosIcon style={{ color: '#FFFF' }} />
-							</Button>
-						</div>
+						<Button
+							onClick={() => {
+								handlearrowbackclick()
+							}}
+							style={{
+								display: 'flex',
+								alignItems: 'center',
+    							justifyContent: 'center',
+    							textAlign: 'center',
+								borderStyle: 'none',
+								boxShadow: '0 0 0',
+								position: 'absolute',
+								left: '3vw',
+								top: '3vh',
+								backgroundColor: '#FF805D',
+								borderRadius: '12px',
+								height: '5vh',
+								width: '5vh',
+							}}
+						>
+							<ChevronLeftIcon style={{ color: '#FFFF', height: '3vh', width: 'auto' }} />
+						</Button>
 					)}
 					{jsonpagestate.confirmsms && (
 						<div

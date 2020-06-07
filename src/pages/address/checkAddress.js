@@ -24,7 +24,7 @@ const checkAddress = () => {
 			<BaseCheck />
 			<div
 				style={{
-					borderRadius: '20px 20px 0px 0px',
+					borderRadius: '32px 32px 0px 0px',
 					backgroundColor: `#FF805D`,
 					height: '25vh',
 					position: 'fixed',

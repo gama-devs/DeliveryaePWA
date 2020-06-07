@@ -57,7 +57,7 @@ const TermosAdesao = (props) => {
 					display: 'flex',
 					height: '70vh',
 					marginTop: '-5vh',
-					borderRadius: '20px 20px 20px 20px',
+					borderRadius: '32px',
 					backgroundColor: '#fff',
 				}}
 			>
