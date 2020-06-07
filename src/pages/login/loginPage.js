@@ -5,6 +5,9 @@ import jwt from 'jsonwebtoken'
 import LoginBg from './bglogin'
 import { useStoreActions, useStore, useStoreState } from 'easy-peasy'
 import { Input, Button } from 'reactstrap'
+
+import NumberFormat from 'react-number-format'
+
 import NewUser from './newuser'
 import ConfirmSms from './confirmSms'
 import ForgotPassword from './forgotPassword'
@@ -42,7 +45,9 @@ const LoginPage = () => {
 		tempassword: false,
 		termos: false,
 	})
-
+	useEffect(() => {
+		console.log(loginstate)
+	}, [JSON.stringify(loginstate)])
 	useEffect(() => {
 		if (logged) {
 			console.log('já logado!')
@@ -178,8 +183,8 @@ const LoginPage = () => {
 							style={{
 								display: 'flex',
 								alignItems: 'center',
-    							justifyContent: 'center',
-    							textAlign: 'center',
+								justifyContent: 'center',
+								textAlign: 'center',
 								borderStyle: 'none',
 								boxShadow: '0 0 0',
 								position: 'absolute',
@@ -191,7 +196,9 @@ const LoginPage = () => {
 								width: '5vh',
 							}}
 						>
-							<ChevronLeftIcon style={{ color: '#FFFF', height: '3vh', width: 'auto' }} />
+							<ChevronLeftIcon
+								style={{ color: '#FFFF', height: '3vh', width: 'auto' }}
+							/>
 						</Button>
 					)}
 					{jsonpagestate.confirmsms && (
@@ -320,23 +327,49 @@ const LoginPage = () => {
 								>
 									Realize seu login e<br /> aproveite nosso Aplicativo.
 								</h3>
-								<Input
+								<NumberFormat
 									style={{
 										backgroundColor: '#EDF1F7',
 										borderRadius: '12px',
 										margin: '3vh auto 0',
 										width: '80vw',
 										height: '7vh',
-										border: 'none'
+										border: 'none',
+									}}
+									className="form-control"
+									value={loginstate.celnumber}
+									placeholder="Seu celular"
+									format="(##) # ####-####"
+									mask="_"
+									onChange={async (e) => {
+										let real = e.target.value
+										real = real.split('.').join('')
+										real = real.split('/').join('')
+										real = real.split('-').join('')
+										real = real.split('(').join('')
+										real = real.split(')').join('')
+										real = real.split(' ').join('')
+										real = real.split('X').join('')
+										await handleloginstate('celnumber', real)
+									}}
+								/>
+								{/* <Input
+									style={{
+										backgroundColor: '#EDF1F7',
+										borderRadius: '12px',
+										margin: '3vh auto 0',
+										width: '80vw',
+										height: '7vh',
+										border: 'none',
 									}}
 									placeholder="Seu celular"
 									onChange={(e) => {
 										handleloginstate('celnumber', e.target.value)
 										// console.log(e.target.value)
 									}}
-								/>
-								<div style= 
-									{{
+								/> */}
+								<div
+									style={{
 										display: 'flex',
 										alignItems: 'center',
 										backgroundColor: '#EDF1F7',
@@ -350,7 +383,7 @@ const LoginPage = () => {
 										type={showpassword ? 'text' : 'password'}
 										style={{
 											backgroundColor: '#EDF1F7',
-											border: 'none'
+											border: 'none',
 										}}
 										placeholder="Senha"
 										onChange={(e) => {
@@ -358,7 +391,7 @@ const LoginPage = () => {
 										}}
 									/>
 									<div
-										style={{marginRight: '2vw'}}
+										style={{ marginRight: '2vw' }}
 										onClick={() => {
 											setshowpass(() => {
 												console.log(showpassword)
@@ -404,12 +437,14 @@ const LoginPage = () => {
 									}}
 								>
 									<span>Ainda não tem conta?</span>
-									<span style=
-										{{
+									<span
+										style={{
 											textDecoration: 'underline',
-											marginLeft: '0.3em'
+											marginLeft: '0.3em',
 										}}
-									>Crie agora mesmo!</span>
+									>
+										Crie agora mesmo!
+									</span>
 								</div>
 								<div
 									onClick={() => {
@@ -427,7 +462,7 @@ const LoginPage = () => {
 										display: 'flex',
 										backgroundColor: '#FF805D',
 										position: 'fixed',
-										bottom: '0'
+										bottom: '0',
 									}}
 								>
 									{loadingreq ? (

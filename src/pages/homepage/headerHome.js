@@ -21,7 +21,16 @@ const HeaderHome = () => {
 				src={pizzalogo}
 				style={{ paddingLeft: '3vw', height: '6vh', flex: 1 }}
 			></img>
-			<div style={{ flex: 5 }}> </div>
+			<div
+				onClick={() => {
+					localStorage.removeItem('authtoken')
+					history.push('/login')
+				}}
+				style={{ marginLeft: '30vw', fontSize: '3px', flex: 5 }}
+			>
+				<div>logoff</div>{' '}
+			</div>
+
 			<SearchIcon
 				onClick={() => {
 					history.push('/searchaddres')

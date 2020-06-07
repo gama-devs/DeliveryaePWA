@@ -4,6 +4,7 @@ import Loader from 'react-loader-spinner'
 import { Input } from 'reactstrap'
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
 import VisibilityIcon from '@material-ui/icons/Visibility'
+import NumberFormat from 'react-number-format'
 
 const NewUser = (props) => {
 	const [loadingreq, setloading] = useState(false)
@@ -54,7 +55,7 @@ const NewUser = (props) => {
 				Preencha os dados abaixo e <br />
 				enviariamos uma confirmação via SMS.
 			</div>
-			<Input
+			<NumberFormat
 				style={{
 					backgroundColor: '#EDF1F7',
 					borderRadius: '10px',
@@ -62,13 +63,39 @@ const NewUser = (props) => {
 					width: '80vw',
 					height: '7vh',
 					marginTop: '3vh',
-					border: 'none'
+					border: 'none',
+				}}
+				className="form-control"
+				placeholder="Seu número de celular"
+				format="(##) # ####-####"
+				mask="_"
+				onChange={async (e) => {
+					let real = e.target.value
+					real = real.split('.').join('')
+					real = real.split('/').join('')
+					real = real.split('-').join('')
+					real = real.split('(').join('')
+					real = real.split(')').join('')
+					real = real.split(' ').join('')
+					real = real.split('X').join('')
+					props.handlestate('celnumber', real)
+				}}
+			/>
+			{/* <Input
+				style={{
+					backgroundColor: '#EDF1F7',
+					borderRadius: '10px',
+					margin: '0 auto',
+					width: '80vw',
+					height: '7vh',
+					marginTop: '3vh',
+					border: 'none',
 				}}
 				placeholder="Seu número de celular"
 				onChange={(e) => {
 					props.handlestate('celnumber', e.target.value)
 				}}
-			/>
+			/> */}
 			<Input
 				style={{
 					backgroundColor: '#EDF1F7',
@@ -77,7 +104,7 @@ const NewUser = (props) => {
 					width: '80vw',
 					height: '7vh',
 					marginTop: '1vh',
-					border: 'none'
+					border: 'none',
 				}}
 				placeholder="Seu e-mail"
 				onChange={(e) => {
@@ -92,15 +119,15 @@ const NewUser = (props) => {
 					width: '80vw',
 					height: '7vh',
 					marginTop: '1vh',
-					border: 'none'
+					border: 'none',
 				}}
 				placeholder="Seu nome"
 				onChange={(e) => {
 					props.handlestate('nome', e.target.value)
 				}}
 			/>
-			<div style= 
-				{{
+			<div
+				style={{
 					display: 'flex',
 					alignItems: 'center',
 					backgroundColor: '#EDF1F7',
@@ -114,7 +141,7 @@ const NewUser = (props) => {
 					type={showpassword ? 'text' : 'password'}
 					style={{
 						backgroundColor: '#EDF1F7',
-						border: 'none'
+						border: 'none',
 					}}
 					placeholder="Escolha uma senha"
 					onChange={(e) => {
@@ -122,7 +149,7 @@ const NewUser = (props) => {
 					}}
 				/>
 				<div
-					style={{marginRight: '2vw'}}
+					style={{ marginRight: '2vw' }}
 					onClick={() => {
 						setshowpass(() => {
 							console.log(showpassword)
@@ -158,7 +185,7 @@ const NewUser = (props) => {
 					backgroundColor: '#FF805D',
 					position: 'fixed',
 					left: '0',
-					bottom: '0'
+					bottom: '0',
 				}}
 			>
 				{loadingreq ? (
