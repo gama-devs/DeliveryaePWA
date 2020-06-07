@@ -248,7 +248,7 @@ const searchAddress = () => {
 											width: '80vw',
 											height: '7vh',
 											marginTop: '8vh',
-											border: 'none'
+											border: 'none',
 										}}
 										value={number === -1 ? 'Número não necessário' : number}
 										placeholder="Número"
@@ -308,14 +308,14 @@ const searchAddress = () => {
 												width: '80vw',
 												borderRadius: '12px',
 												backgroundColor: '#FF805D',
-												border: 'none'
+												border: 'none',
 											}}
 											disabled={
 												number === -1 || number.length > 0 ? false : true
 											}
 											onClick={() => {
 												setaddresschecked(true)
-												number === '69'
+												number === '203'
 													? handleValidAddress(true)
 													: handleValidAddress(false)
 
@@ -336,7 +336,7 @@ const searchAddress = () => {
 											position: 'fixed',
 											width: '100vw',
 											bottom: '0',
-											left: "0"
+											left: '0',
 										}}
 									>
 										<div
@@ -360,7 +360,7 @@ const searchAddress = () => {
 												borderRadius: '12px',
 												backgroundColor: '#FFF',
 												color: '#000',
-												border: 'none'
+												border: 'none',
 											}}
 											onClick={() => {
 												history.push('/home')
