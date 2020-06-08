@@ -18,7 +18,8 @@ const ConfirmSms = (props) => {
 	}
 	let handlesave = async () => {
 		// console.log('hehe')
-		history.push('/home')
+		// history.push('/home')
+		props.handlepagestate('main')
 	}
 
 	return (
@@ -181,11 +182,13 @@ const ConfirmSms = (props) => {
 				}}
 			>
 				<div> {'Não recebeu?'}</div>
-				<span style={{
-					cursor: 'pointer',
-					textDecoration: 'underline',
-					marginLeft: '0.3em' 
-				}}>
+				<span
+					style={{
+						cursor: 'pointer',
+						textDecoration: 'underline',
+						marginLeft: '0.3em',
+					}}
+				>
 					Reenviar código
 				</span>
 			</div>
@@ -209,10 +212,10 @@ const ConfirmSms = (props) => {
 						onClick={() => {
 							props.handlepagestate('termos')
 						}}
-						style={{ 
+						style={{
 							cursor: 'pointer',
 							textDecoration: 'underline',
-							marginLeft: '0.3em'
+							marginLeft: '0.3em',
 						}}
 					>
 						{'Termos de Uso'}

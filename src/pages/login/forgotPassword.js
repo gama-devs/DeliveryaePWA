@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { withRouter } from 'react-router-dom'
 import { Input } from 'reactstrap'
+import NumberFormat from 'react-number-format'
 const ForgotPassword = (props) => {
 	let sendrecoverpass = () => {
 		props.setbackarrow('')
@@ -46,8 +47,33 @@ const ForgotPassword = (props) => {
 					para enviarmos uma senha provisória.
 				</div>
 			</div>
-
-			<Input
+			<NumberFormat
+				style={{
+					backgroundColor: '#EDF1F7',
+					borderRadius: '10px',
+					margin: '0 auto',
+					width: '80vw',
+					height: '7vh',
+					marginTop: '3vh',
+					border: 'none',
+				}}
+				className="form-control"
+				placeholder="Seu número de celular"
+				format="(##) # ####-####"
+				mask="_"
+				onChange={async (e) => {
+					let real = e.target.value
+					real = real.split('.').join('')
+					real = real.split('/').join('')
+					real = real.split('-').join('')
+					real = real.split('(').join('')
+					real = real.split(')').join('')
+					real = real.split(' ').join('')
+					real = real.split('X').join('')
+					console.log(real)
+				}}
+			/>
+			{/* <Input
 				style={{
 					backgroundColor: '#EDF1F7',
 					borderRadius: '10px',
@@ -62,7 +88,7 @@ const ForgotPassword = (props) => {
 				onChange={(e) => {
 					console.log(e.target.value)
 				}}
-			/>
+			/> */}
 
 			<div
 				onClick={() => {
@@ -80,7 +106,7 @@ const ForgotPassword = (props) => {
 					backgroundColor: '#FF805D',
 					position: 'absolute',
 					bottom: '0',
-					left: '0'
+					left: '0',
 				}}
 			>
 				<h4

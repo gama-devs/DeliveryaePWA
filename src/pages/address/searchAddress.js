@@ -283,7 +283,7 @@ const searchAddress = () => {
 											marginTop: '1vh',
 										}}
 									>
-										<Row style={{ textAlign: 'left' }} xs="12">
+										<Row style={{ textAlign: 'left', marginTop: '20px' }} xs="12">
 											<Col xs="10">Endereço sem número</Col>
 											<Col style={{ textAlign: 'right' }} xs="2">
 												<Input
@@ -320,14 +320,14 @@ const searchAddress = () => {
 												width: '80vw',
 												borderRadius: '12px',
 												backgroundColor: '#FF805D',
-												border: 'none'
+												border: 'none',
 											}}
 											disabled={
 												number === -1 || number.length > 0 ? false : true
 											}
 											onClick={() => {
 												setaddresschecked(true)
-												number === '69'
+												number === '203'
 													? handleValidAddress(true)
 													: handleValidAddress(false)
 
@@ -348,7 +348,7 @@ const searchAddress = () => {
 											position: 'fixed',
 											width: '100vw',
 											bottom: '0',
-											left: "0"
+											left: '0',
 										}}
 									>
 										<div
@@ -372,7 +372,7 @@ const searchAddress = () => {
 												borderRadius: '12px',
 												backgroundColor: '#FFF',
 												color: '#000',
-												border: 'none'
+												border: 'none',
 											}}
 											onClick={() => {
 												history.push('/home')
