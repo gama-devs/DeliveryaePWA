@@ -19,7 +19,7 @@ export const OnboardingCardStyles = makeStyles({
 	},
 	imgCheckAddress: {
 		alignContent: 'center',
-		width: '55vw',
+		width: '25vh',
 		height: 'auto',
 	},
 	title2: {

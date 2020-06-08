@@ -11,14 +11,18 @@ const BaseCheck = () => {
 	const { imgCheckAddress, logoCheckAddress, title1 } = OnboardingCardStyles()
 
 	return (
-		<div style={{height: 'auto'}}>
+		<div style={{
+			height: '50vh',
+			display: 'flex',
+    		flexDirection: 'column',
+    		justifyContent: 'space-between'
+		}}>
 			<div style={{ alignContent: 'center', textAlign: 'center' }}>
 				<img alt="Logo" className={logoCheckAddress} src={imgLogo} />
 			</div>
 			<div style={{ alignContent: 'center', textAlign: 'center' }}>
 				<img alt="Celular com GPS" className={imgCheckAddress} src={imggps} />
 			</div>
-
 			<div className={title1}>
 				Precisamos verificar
 				<br />

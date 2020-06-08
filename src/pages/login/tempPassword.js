@@ -63,7 +63,8 @@ const TempPassword = (props) => {
 					type={showpassword ? 'text' : 'password'}
 					style={{
 						backgroundColor: '#EDF1F7',
-						border: 'none'
+						border: 'none',
+						fontSize: '16px'
 					}}
 					placeholder="Nova senha"
 				/>

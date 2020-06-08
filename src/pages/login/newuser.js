@@ -62,7 +62,8 @@ const NewUser = (props) => {
 					width: '80vw',
 					height: '7vh',
 					marginTop: '3vh',
-					border: 'none'
+					border: 'none',
+					fontSize: '16px'
 				}}
 				placeholder="Seu número de celular"
 				onChange={(e) => {
@@ -77,7 +78,8 @@ const NewUser = (props) => {
 					width: '80vw',
 					height: '7vh',
 					marginTop: '1vh',
-					border: 'none'
+					border: 'none',
+					fontSize: '16px'
 				}}
 				placeholder="Seu e-mail"
 				onChange={(e) => {
@@ -92,7 +94,8 @@ const NewUser = (props) => {
 					width: '80vw',
 					height: '7vh',
 					marginTop: '1vh',
-					border: 'none'
+					border: 'none',
+					fontSize: '16px'
 				}}
 				placeholder="Seu nome"
 				onChange={(e) => {
@@ -114,7 +117,8 @@ const NewUser = (props) => {
 					type={showpassword ? 'text' : 'password'}
 					style={{
 						backgroundColor: '#EDF1F7',
-						border: 'none'
+						border: 'none',
+						fontSize: '16px'
 					}}
 					placeholder="Escolha uma senha"
 					onChange={(e) => {
@@ -156,7 +160,7 @@ const NewUser = (props) => {
 					height: '12vh',
 					display: 'flex',
 					backgroundColor: '#FF805D',
-					position: 'fixed',
+					position: 'absolute',
 					left: '0',
 					bottom: '0'
 				}}

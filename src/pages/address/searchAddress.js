@@ -65,7 +65,11 @@ const searchAddress = () => {
 					backgroundColor: '#ffff',
 					borderRadius: '32px',
 					marginTop: '-5vh',
-					height: '90vh',
+					height: selected ? adresschecked && isValidAddress ? '70%' : '85%' : '85%',
+					width: '100vw',
+					position: 'fixed',
+					bottom: '0',
+					left: '0'
 				}}
 			>
 				{lodaded.length == 0 && !selected && (
@@ -106,7 +110,7 @@ const searchAddress = () => {
 								style={{
 									maxWidth: '100vw',
 									marginTop: '8vh',
-									fontSize: '15px',
+									fontSize: '1em',
 									fontWeight: 'bold',
 								}}
 							>
@@ -115,7 +119,7 @@ const searchAddress = () => {
 							<div
 								style={{
 									maxWidth: '85vw',
-									fontSize: '15px',
+									fontSize: '1em',
 									fontWeight: 'bold',
 								}}
 							>
@@ -123,8 +127,8 @@ const searchAddress = () => {
 							</div>
 							<div
 								style={{
-									fontSize: '15px',
-									marginTop: '3vh',
+									fontSize: '1em',
+									marginTop: '2vh',
 									color: '#FF805D',
 									maxWidth: '85vw',
 								}}
@@ -133,7 +137,7 @@ const searchAddress = () => {
 							</div>
 							<div
 								style={{
-									fontSize: '15px',
+									fontSize: '1em',
 									color: '#FF805D',
 									maxWidth: '85vw',
 								}}
@@ -143,7 +147,7 @@ const searchAddress = () => {
 
 							<div
 								style={{
-									fontSize: '15px',
+									fontSize: '1em',
 									color: '#FF805D',
 								}}
 							>
@@ -162,8 +166,10 @@ const searchAddress = () => {
 									borderRadius: '10px',
 									margin: '0 auto',
 									width: '80vw',
-									height: '8vh',
-									marginTop: '5vh',
+									height: '7vh',
+									marginTop: '3vh',
+									border: 'none',
+									fontSize: '16px'
 								}}
 								placeholder="Complemento (caso tenha)"
 							></Input>
@@ -178,47 +184,52 @@ const searchAddress = () => {
 									borderRadius: '10px',
 									margin: '0 auto',
 									width: '80vw',
-									height: '8vh',
-									marginTop: '5vh',
+									height: '7vh',
+									marginTop: '1vh',
+									border: 'none',
+									fontSize: '16px'
 								}}
 								placeholder="Nome do Endereço. (Ex. Casa)"
 							></Input>
-
-							<Button
-								style={{
-									marginTop: '20vh',
-									height: '8vh',
-									width: '80vw',
-									borderRadius: '12px',
-									backgroundColor: '#FF805D',
-								}}
-								onClick={async () => {
-									await saveanotheraddress(fulluser.address)
-									await clearcurrentaddress()
-									await history.push('/home')
-									// console.log(fulluser)
-								}}
-							>
-								Salvar
-							</Button>
-							<div
-								onClick={() => {
-									history.push('/home')
-									// console.log('comentando ')
-								}}
-								style={{ cursor: 'pointer' }}
-							>
-								<h3
+							<div style={{
+								marginTop: '2vh'
+							}}>
+								<Button
 									style={{
-										cursor: 'pointer',
-										marginTop: '2vh',
-										fontSize: '10px',
-										color: '#413131',
-										textDecoration: 'underline',
+										height: '7vh',
+										border: 'none',
+										width: '80vw',
+										borderRadius: '12px',
+										backgroundColor: '#FF805D',
+									}}
+									onClick={async () => {
+										await saveanotheraddress(fulluser.address)
+										await clearcurrentaddress()
+										await history.push('/home')
+										// console.log(fulluser)
 									}}
 								>
-									Não,obrigado
-								</h3>
+									Salvar
+								</Button>
+								<div
+									onClick={() => {
+										history.push('/home')
+										// console.log('comentando ')
+									}}
+									style={{ cursor: 'pointer' }}
+								>
+									<h3
+										style={{
+											cursor: 'pointer',
+											marginTop: '2vh',
+											fontSize: '10px',
+											color: '#413131',
+											textDecoration: 'underline',
+										}}
+									>
+										Não,obrigado
+									</h3>
+								</div>
 							</div>
 						</Row>
 					) : (
@@ -248,7 +259,8 @@ const searchAddress = () => {
 											width: '80vw',
 											height: '7vh',
 											marginTop: '8vh',
-											border: 'none'
+											border: 'none',
+											fontSize: '16px'
 										}}
 										value={number === -1 ? 'Número não necessário' : number}
 										placeholder="Número"
@@ -276,7 +288,7 @@ const searchAddress = () => {
 											<Col style={{ textAlign: 'right' }} xs="2">
 												<Input
 													className="form-check-input"
-													style={{ marginTop: '-0.5vh' }}
+													style={{ marginTop: '-0.5vh', fontSize: '16px' }}
 													type="checkbox"
 													onChange={() => {}}
 													onClick={() => {

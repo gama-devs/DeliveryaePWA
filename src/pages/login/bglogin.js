@@ -6,29 +6,28 @@ import imgLogo from '../../assets/logo.png'
 
 const LoginBG = (props) => {
 	return (
-		<div style={{ top: 0, left: 0, position: 'relative' }}>
+		<div style={{ top: 0, left: 0, position: 'absolute' }}>
 			<img alt="Logo" style={{
 					width: '50vw',
 					position: 'absolute',
 					left: '25vw',
-					top: '15vh'
+					top: '9vh'
 				}} 
 				src={imgLogo} 
 			/>
 			<img
 				alt=""
 				style={{
-					height: 'auto',
+					height: '100vh',
 					width: '100vw',
-					position: 'absolute',
-					top: '8vh'
+					position: 'relative',
 				}}
 				src={bgpizza}
 			/>
 			<img
 				alt=""
 				style={{
-					height: '100vh',
+					height: '100%',
 					width: '100vw',
 					position: 'absolute',
 					top: 0,
@@ -38,7 +37,7 @@ const LoginBG = (props) => {
 			/>
 			<div
 				style={{
-					height: '100vh',
+					height: '100%',
 					width: '100vw',
 					position: 'absolute',
 					top: 0,

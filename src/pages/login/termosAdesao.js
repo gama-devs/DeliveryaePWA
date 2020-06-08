@@ -9,7 +9,13 @@ const TermosAdesao = (props) => {
 	return (
 		<div style={{height: '100vh'}}>
 			<div
-				style={{backgroundColor: '#E5E5E5', display: 'flex', alignItems: 'center'}}
+				style={{
+					backgroundColor: '#E5E5E5',
+					display: 'flex',
+					alignItems: 'center',
+					height: '20vh',
+					paddingBottom: '5vh'
+				}}
 			>
 				<Button
 					onClick={() => {
@@ -52,7 +58,12 @@ const TermosAdesao = (props) => {
 					borderRadius: '32px',
 					backgroundColor: '#fff',
 					padding: '5vh 5vw',
-					overflow: 'scroll'
+					overflow: 'scroll',
+					marginTop: '-5vh',
+					position: 'fixed',
+					bottom: 0,
+					left: 0,
+					height: '85%'
 				}}
 			>
 				<div style={{ flex: 1 }}>

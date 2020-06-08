@@ -308,84 +308,93 @@ const LoginPage = () => {
 									width: '100vw',
 									backgroundColor: '#fff',
 									height: '50vh',
+									display: 'flex',
+    								flexDirection: 'column',
+    								justifyContent: 'space-between'
 								}}
 							>
-								<h3
-									style={{
-										marginTop: '3vh',
-										fontSize: '14px',
-										fontWeight: 'bold',
-										color: '#FF805D',
-									}}
-								>
-									Realize seu login e<br /> aproveite nosso Aplicativo.
-								</h3>
-								<Input
-									style={{
-										backgroundColor: '#EDF1F7',
-										borderRadius: '12px',
-										margin: '3vh auto 0',
-										width: '80vw',
-										height: '7vh',
-										border: 'none'
-									}}
-									placeholder="Seu celular"
-									onChange={(e) => {
-										handleloginstate('celnumber', e.target.value)
-										// console.log(e.target.value)
-									}}
-								/>
-								<div style= 
-									{{
-										display: 'flex',
-										alignItems: 'center',
-										backgroundColor: '#EDF1F7',
-										borderRadius: '12px',
-										margin: '1vh auto 0',
-										width: '80vw',
-										height: '7vh',
-									}}
-								>
-									<Input
-										type={showpassword ? 'text' : 'password'}
+								<div>
+									<h3
 										style={{
-											backgroundColor: '#EDF1F7',
-											border: 'none'
-										}}
-										placeholder="Senha"
-										onChange={(e) => {
-											handleloginstate('password', e.target.value)
-										}}
-									/>
-									<div
-										style={{marginRight: '2vw'}}
-										onClick={() => {
-											setshowpass(() => {
-												console.log(showpassword)
-												return !showpassword
-											})
+											marginTop: '3vh',
+											fontSize: '14px',
+											fontWeight: 'bold',
+											color: '#FF805D',
 										}}
 									>
-										{showpassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+										Realize seu login e<br /> aproveite nosso Aplicativo.
+									</h3>
+									<Input
+										style={{
+											backgroundColor: '#EDF1F7',
+											borderRadius: '12px',
+											margin: '3vh auto 0',
+											width: '80vw',
+											height: '7vh',
+											border: 'none',
+											fontSize: '16px'
+										}}
+										placeholder="Seu celular"
+										onChange={(e) => {
+											handleloginstate('celnumber', e.target.value)
+											// console.log(e.target.value)
+										}}
+									/>
+									<div style= 
+										{{
+											display: 'flex',
+											alignItems: 'center',
+											backgroundColor: '#EDF1F7',
+											borderRadius: '12px',
+											margin: '1vh auto 0',
+											width: '80vw',
+											height: '7vh',
+										}}
+									>
+										<Input
+											type={showpassword ? 'text' : 'password'}
+											style={{
+												backgroundColor: '#EDF1F7',
+												border: 'none',
+												fontSize: '16px',
+												borderRadius: '12px',
+												height: '7vh'
+											}}
+											placeholder="Senha"
+											onChange={(e) => {
+												handleloginstate('password', e.target.value)
+											}}
+										/>
+										<div
+											style={{marginRight: '2vw'}}
+											onClick={() => {
+												setshowpass(() => {
+													console.log(showpassword)
+													return !showpassword
+												})
+											}}
+										>
+											{showpassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+										</div>
 									</div>
-								</div>
-								<div
-									onClick={() => {
-										handlejsonpage('passwordrecover')
-										setbackarrowstate('main')
-									}}
-									style={{
-										cursor: 'pointer',
-										justifyContent: 'flex-end',
-										display: 'flex',
-										flexDirection: 'row',
-										color: '#413131',
-										marginTop: '1vh',
-										fontSize: '10px',
-										width: '90vw',
-									}}
-								>
-									Esqueci minha senha
+									<div
+										onClick={() => {
+											handlejsonpage('passwordrecover')
+											setbackarrowstate('main')
+										}}
+										style={{
+											cursor: 'pointer',
+											justifyContent: 'flex-end',
+											display: 'flex',
+											flexDirection: 'row',
+											color: '#413131',
+											marginTop: '1vh',
+											fontSize: '10px',
+											width: '90vw',
+										}}
+									>
+										Esqueci minha senha
+									</div>
 								</div>
 								<div
 									onClick={() => {
@@ -399,7 +408,6 @@ const LoginPage = () => {
 										flexDirection: 'row',
 										color: '#FF805D',
 										fontSize: '12px',
-										marginTop: '4vh',
 										fontWeight: 'bold',
 									}}
 								>
@@ -411,6 +419,7 @@ const LoginPage = () => {
 										}}
 									>Crie agora mesmo!</span>
 								</div>
+								<div>
 								<div
 									onClick={() => {
 										triestologin()
@@ -426,7 +435,7 @@ const LoginPage = () => {
 										height: '12vh',
 										display: 'flex',
 										backgroundColor: '#FF805D',
-										position: 'fixed',
+										position: 'relative',
 										bottom: '0'
 									}}
 								>
@@ -448,6 +457,7 @@ const LoginPage = () => {
 											Entrar
 										</h4>
 									)}
+								</div>
 								</div>
 							</div>
 						</div>

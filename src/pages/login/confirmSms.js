@@ -76,7 +76,8 @@ const ConfirmSms = (props) => {
 							backgroundColor: '#EDF1F7',
 							marginLeft: '1vw',
 							borderStyle: 'none',
-							border: 'none'
+							border: 'none',
+							fontSize: '16px'
 						}}
 					/>
 				</div>
@@ -105,6 +106,7 @@ const ConfirmSms = (props) => {
 							backgroundColor: '#EDF1F7',
 							marginLeft: '1vw',
 							borderStyle: 'none',
+							fontSize: '16px'
 						}}
 					/>
 				</div>
@@ -133,6 +135,7 @@ const ConfirmSms = (props) => {
 							backgroundColor: '#EDF1F7',
 							marginLeft: '1vw',
 							borderStyle: 'none',
+							fontSize: '16px'
 						}}
 					/>
 				</div>
@@ -161,6 +164,7 @@ const ConfirmSms = (props) => {
 							backgroundColor: '#EDF1F7',
 							marginLeft: '1vw',
 							borderStyle: 'none',
+							fontSize: '16px'
 						}}
 					/>
 				</div>
@@ -227,7 +231,7 @@ const ConfirmSms = (props) => {
 					textAlign: 'center',
 					flex: 1,
 					width: '100vw',
-					position: 'fixed',
+					position: 'absolute',
 					bottom: '0',
 					borderRadius: '32px 32px 0px 0px',
 					height: '12vh',

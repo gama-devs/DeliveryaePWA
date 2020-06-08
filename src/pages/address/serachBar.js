@@ -87,6 +87,11 @@ const SearchBar = (props) => {
 								props.backroute()
 							}}
 							style={{
+								display: 'flex',
+								ustifyContent: 'center',
+								flexDirection: 'column',
+								alignItems: 'center',
+								textAlign: 'center',
 								backgroundColor: '#FFFF',
 								borderRadius: '8px',
 								height: '5.5vh',
@@ -137,6 +142,7 @@ const SearchBar = (props) => {
 										height: '5.5vh',
 										border: 'none',
 										borderRadius: '12px',
+										fontSize: '16px'
 									}}
 								></Input>
 							</div>

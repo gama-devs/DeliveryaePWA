@@ -8,6 +8,7 @@ import { InputField } from '../../components/input-field-component'
 import { OnboardingCardStyles } from '../../styles/card-styles'
 import { Input, Row, Col } from 'reactstrap'
 import history from '../../util/history-util'
+import { FormHelperText } from '@material-ui/core'
 
 const checkAddress = () => {
 	const setaddresbase = useStoreActions((actions) => actions.user.setaddress)
@@ -28,8 +29,9 @@ const checkAddress = () => {
 					backgroundColor: `#FF805D`,
 					height: '25vh',
 					position: 'fixed',
-					width: '100%',
-					bottom: '0'
+					width: '100vw',
+					bottom: 0,
+					left: 0
 				}}
 			>
 				<div
@@ -60,7 +62,7 @@ const checkAddress = () => {
 								}}
 								value={endereco.str}
 								placeholder="Endereço de entrega"
-								style={{ border: 'none' }}
+								style={{ border: 'none', fontSize: '16px' }}
 							/>
 							<div style={{color: "#fff"}}>
 								<DoneIcon

@@ -8,15 +8,15 @@ const ConfirmTempPassword = (props) => {
 			style={{
 				textAlign: 'center',
 				flex: 1,
-				top: 0,
+				bottom: 0,
 				left: 0,
-				position: 'relative',
+				position: 'fixed',
+				width: '100vw',
 				display: 'flex',
 				height: '25vh',
 				borderRadius: '32px 32px 0px 0px',
 				backgroundColor: '#1BD09A',
 				flexDirection: 'column',
-
 				alignItems: 'center',
 			}}
 		>

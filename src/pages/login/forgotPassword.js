@@ -55,7 +55,8 @@ const ForgotPassword = (props) => {
 					width: '80vw',
 					height: '7vh',
 					marginTop: '3vh',
-					border: 'none'
+					border: 'none',
+					fontSize: '16px'
 				}}
 				placeholder="Seu número de celular"
 				onChange={(e) => {
@@ -77,7 +78,7 @@ const ForgotPassword = (props) => {
 					height: '12vh',
 					display: 'flex',
 					backgroundColor: '#FF805D',
-					position: 'fixed',
+					position: 'absolute',
 					bottom: '0',
 					left: '0'
 				}}
