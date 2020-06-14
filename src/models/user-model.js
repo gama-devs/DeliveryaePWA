@@ -2,12 +2,11 @@ import { checkLocalStorage, setInLocalStorage } from '../util/localstorage-util'
 import { action, createStore, useStoreActions } from 'easy-peasy'
 const initialState = {
 	favoriteLyrics: checkLocalStorage('addresspicked', []),
-	isLyricsNotFound: false,
-	isLyricsLoading: false,
-	lyrics: '',
-	artist: '',
-	song: '',
+	currentseeall: [],
+	currentfootmenu: 0,
+	currentitem: [],
 	authtoken: '',
+	bag: [],
 	savedaddresses: [],
 	address: {
 		nome: '',
@@ -29,11 +28,23 @@ const initialState = {
 export const userModel = createStore({
 	user: {
 		...initialState,
+		setcurrentseeall: action((state, payload) => {
+			state.currentseeall = payload
+		}),
+		setcurrentitem: action((state, payload) => {
+			state.currentitem = payload
+		}),
+		setcurrentfootmenu: action((state, payload) => {
+			state.currentfootmenu = payload
+		}),
 		setaddress: action((state, payload) => {
 			state.address = payload
 		}),
 		setauthtoken: action((state, payload) => {
 			state.authtoken = payload
+		}),
+		saveonthebag: action((state, payload) => {
+			state.bag = [...state.bag, payload]
 		}),
 		clearcurrentaddress: action((state, payload) => {
 			state.address = initialState.address

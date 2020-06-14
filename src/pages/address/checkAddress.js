@@ -19,7 +19,7 @@ const checkAddress = () => {
 	return (
 		<div
 			style={{
-				backgroundColor: `#FFFFFF`
+				backgroundColor: `#FFFFFF`,
 			}}
 		>
 			<BaseCheck />
@@ -31,7 +31,7 @@ const checkAddress = () => {
 					position: 'fixed',
 					width: '100vw',
 					bottom: 0,
-					left: 0
+					left: 0,
 				}}
 			>
 				<div
@@ -40,24 +40,27 @@ const checkAddress = () => {
 						textAlign: 'center',
 						fontSize: '1em',
 						color: '#FFF',
-						fontWeight: '600'
+						fontWeight: '600',
 					}}
 				>
 					Informe o endereço de entrega.
 				</div>
 				<Row>
 					<Col>
-						<div 
+						<div
 							style={{
 								display: 'flex',
 								alignItems: 'center',
 								backgroundColor: 'white',
 								padding: '0.5em 0.3em',
 								margin: '0 5vh',
-								borderRadius: '12px'
-							}}>
+								borderRadius: '12px',
+							}}
+						>
 							<Input
-							
+								onClick={() => {
+									history.push('/searchaddres')
+								}}
 								onChange={(e) => {
 									setendereco(e.target.value)
 								}}
@@ -65,7 +68,7 @@ const checkAddress = () => {
 								placeholder="Endereço de entrega"
 								style={{ border: 'none', fontSize: '16px' }}
 							/>
-							<div style={{color: "#fff"}}>
+							<div style={{ color: '#fff' }}>
 								<DoneIcon
 									onClick={() => {
 										setaddresbase({
@@ -84,8 +87,8 @@ const checkAddress = () => {
 										width: '40px',
 										height: '40px',
 										marginRight: '0.1em',
-										color: '#fff'
-									}} 
+										color: '#fff',
+									}}
 								/>
 							</div>
 						</div>

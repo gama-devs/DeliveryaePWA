@@ -44,7 +44,7 @@ const SearchBar = (props) => {
 				}
 				arr.push({
 					description: ' ',
-					str: addresstring,
+					str: s.properties.text ? s.properties.text : s.text,
 					fullresp: s.place_name,
 					numero: '',
 					complement: 'Apto 1',
@@ -142,7 +142,7 @@ const SearchBar = (props) => {
 										height: '5.5vh',
 										border: 'none',
 										borderRadius: '12px',
-										fontSize: '16px'
+										fontSize: '16px',
 									}}
 								></Input>
 							</div>

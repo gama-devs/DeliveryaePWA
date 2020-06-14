@@ -11,6 +11,8 @@ import searchAddress from '../pages/address/searchAddress'
 import HomePage from '../pages/homepage/homePage'
 import LoginPage from '../pages/login/loginPage'
 import ProfilePage from '../pages/profile/profilePage'
+import seeAllHome from '../pages/homepage/seeAllHome'
+import itemChoosingHome from '../pages/homepage/itemChoosingHome'
 
 /**
  * 👉 if authenticated routes are needed 👈
@@ -30,14 +32,14 @@ export const Routes = () => (
 	<Router history={history}>
 		<Layout>
 			<Switch>
-				<Route path="/favorites" component={Favorites} />
 				<Route exact path="/" component={checkAddress} />
 				<Route path="/checkaddres" component={checkAddress} />
-				<Route path="/andrezinpae" component={Home} />
 				<Route path="/searchaddres" component={searchAddress} />
 				<Route path="/home" component={HomePage} />
 				<Route path="/login" component={LoginPage} />
 				<Route path="/profile" component={ProfilePage} />
+				<Route path="/seeall" component={seeAllHome} />
+				<Route path="/product" component={itemChoosingHome} />
 				{/* <PrivateRoute path="/" component={() => RestrictedArea()} /> */}
 			</Switch>
 		</Layout>
