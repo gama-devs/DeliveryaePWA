@@ -15,49 +15,52 @@ import history from '../../util/history-util'
 
 const FooterHome = (props) => {
 	return (
-		<div
-			style={{
-				borderRadius: '32px 32px 0px 0px',
-				backgroundColor: `#FF805D`,
-				height: '10vh',
-				flex: 1,
-				width: '100vw',
-				bottom: '0px',
-				position: 'fixed',
-				justifyContent: 'center',
-				alignContent: 'center',
-				display: 'flex',
-			}}
-		>
+		<div>
+			<div style={{ height: '11vh', backgroundColor: `#FFF` }}></div>
 			<div
 				style={{
-					margin: '0vw 8vw 0vw 8vw',
-					display: 'flex',
-					flexDirection: 'row',
+					borderRadius: '32px 32px 0px 0px',
+					backgroundColor: `#FF805D`,
+					height: '10vh',
 					flex: 1,
-					alignItems: 'center',
-					justifyContent: 'space-between',
+					width: '100vw',
+					bottom: '0px',
+					position: 'fixed',
+					justifyContent: 'center',
+					alignContent: 'center',
+					display: 'flex',
 				}}
 			>
 				<div
-					onClick={() => {
-						history.push('/home')
+					style={{
+						margin: '0vw 8vw 0vw 8vw',
+						display: 'flex',
+						flexDirection: 'row',
+						flex: 1,
+						alignItems: 'center',
+						justifyContent: 'space-between',
 					}}
 				>
-					<img src={menuicon} />
-				</div>
-				<div
-					onClick={() => {
-						history.push('/backet')
-					}}
-				>
-					<img src={bascketicon} />
-				</div>
-				<div>
-					<img src={couponimg} />
-				</div>
-				<div>
-					<img src={trophyvector} />
+					<div
+						onClick={() => {
+							history.push('/home')
+						}}
+					>
+						<img src={menuicon} />
+					</div>
+					<div
+						onClick={() => {
+							history.push('/backet')
+						}}
+					>
+						<img src={bascketicon} />
+					</div>
+					<div>
+						<img src={couponimg} />
+					</div>
+					<div>
+						<img src={trophyvector} />
+					</div>
 				</div>
 			</div>
 		</div>

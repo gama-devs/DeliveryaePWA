@@ -18,7 +18,8 @@ const itemChoosingHome = (props) => {
 	const currentitem = useStoreState((state) => {
 		return state.user.currentitem
 	})
-	const [itemnow, updateitem] = useState(currentitem)
+
+	const [itemnow, updateitem] = useState({ ...currentitem, qtd: 1 })
 	const [obs, setobs] = useState('')
 	const [insersuccess, setsuccess] = useState(false)
 	const [somethingwrong, setsomethingwrong] = useState(false)
@@ -45,7 +46,7 @@ const itemChoosingHome = (props) => {
 		<div
 			style={{ height: '100vh' }}
 			onClick={() => {
-				console.log(itemnow)
+				// console.log(itemnow.qtd)
 			}}
 		>
 			<div
@@ -89,9 +90,7 @@ const itemChoosingHome = (props) => {
 						flex: '1',
 						marginRight: '8vh',
 					}}
-				>
-					{itemnow.name}
-				</div>
+				></div>
 			</div>
 			<div style={{ display: 'flex' }}>
 				<div style={{ flex: 1 }}>
@@ -107,8 +106,35 @@ const itemChoosingHome = (props) => {
 					</div>
 				</div>
 				<div style={{ flex: 2, display: 'flex', flexDirection: 'column' }}>
-					<div>{'R$' + itemnow.price / 100 + ' A partir'}</div>
+					<div>{'R$' + (itemnow.price / 100) * itemnow.qtd + ' A partir'}</div>
 					<div>{itemnow.description}</div>
+				</div>
+			</div>
+			<div style={{ flex: 2, display: 'flex', flexDirection: 'row' }}>
+				<div
+					onClick={async () => {
+						updateitem((prev) => {
+							console.log(prev)
+							if (prev.qtd > 1) {
+								return { ...prev, qtd: prev.qtd - 1 }
+							} else {
+								return prev
+							}
+						})
+					}}
+				>
+					-
+				</div>
+				<div>{itemnow.qtd}</div>
+				<div
+					onClick={async () => {
+						updateitem((prev) => {
+							console.log(prev)
+							return { ...prev, qtd: prev.qtd + 1 }
+						})
+					}}
+				>
+					+
 				</div>
 			</div>
 			<div style={{ height: '30vh' }}>
@@ -205,7 +231,9 @@ const itemChoosingHome = (props) => {
 					}}
 				>
 					<div style={{ marginTop: '2vh' }}>
-						{'R$' + itemnow.price / 100 + '* Adicionar a sacola'}
+						{'R$' +
+							(itemnow.price / 100) * itemnow.qtd +
+							'* Adicionar a sacola'}
 					</div>
 				</div>
 			)}

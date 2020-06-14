@@ -9,6 +9,7 @@ import PersonOutlineIcon from '@material-ui/icons/PersonOutline'
 import Api from '../../services/Api'
 import history from '../../util/history-util'
 import { Button } from 'reactstrap'
+import FooterHome from './footerHome'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import { useStore, useStoreActions, useStoreState } from 'easy-peasy'
 
@@ -68,6 +69,8 @@ const seeAllHome = (props) => {
 				</div>
 			</div>
 			<SectionHome data={Pageitem} seeall />
+
+			<FooterHome />
 		</div>
 	)
 }
