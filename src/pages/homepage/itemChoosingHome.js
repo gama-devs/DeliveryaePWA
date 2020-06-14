@@ -11,6 +11,7 @@ import history from '../../util/history-util'
 import { Button, Input } from 'reactstrap'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import { useStore, useStoreActions, useStoreState } from 'easy-peasy'
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 
 const itemChoosingHome = (props) => {
 	const saveonthebag = useStoreActions((actions) => actions.user.saveonthebag)
@@ -20,6 +21,15 @@ const itemChoosingHome = (props) => {
 	const [itemnow, updateitem] = useState(currentitem)
 	const [obs, setobs] = useState('')
 	const [insersuccess, setsuccess] = useState(false)
+	const [somethingwrong, setsomethingwrong] = useState(false)
+
+	let erropassageiro = async () => {
+		await setsomethingwrong(true)
+		await setTimeout(() => {
+			setsomethingwrong(false)
+		}, 3000)
+		console.log('people die')
+	}
 
 	const SetCurrentItem = useStoreActions(
 		(actions) => actions.user.setcurrentitem
@@ -110,9 +120,45 @@ const itemChoosingHome = (props) => {
 			<div style={{ display: 'flex', flexDirection: 'column' }}>
 				<div>Observação</div>
 				<div>
-					<Input placeholder={'Observação'} />
+					<Input
+						onChange={(e) => {
+							setobs(e.target.value)
+						}}
+						placeholder={'Observação'}
+					/>
 				</div>
 			</div>
+			<Button
+				onClick={async () => {
+					await erropassageiro()
+				}}
+			></Button>
+			{somethingwrong && (
+				<div
+					onClick={() => {
+						console.log('sim')
+						setsuccess(true)
+						setTimeout(() => {
+							history.push('/home')
+						}, 2000)
+						// insertonbag()
+					}}
+					style={{
+						borderRadius: '32px 32px 0px 0px',
+						backgroundColor: `#FF5755`,
+						height: '15vh',
+						flex: 1,
+						width: '100vw',
+						bottom: '0px',
+						position: 'fixed',
+						justifyContent: 'center',
+						alignContent: 'center',
+						display: 'flex',
+					}}
+				>
+					<div style={{ color: '#FFF' }}>Erro</div>
+				</div>
+			)}
 			{insersuccess ? (
 				<div
 					onClick={() => {
@@ -141,6 +187,9 @@ const itemChoosingHome = (props) => {
 					onClick={() => {
 						console.log('sim')
 						setsuccess(true)
+						setTimeout(() => {
+							history.push('/home')
+						}, 2000)
 						// insertonbag()
 					}}
 					style={{

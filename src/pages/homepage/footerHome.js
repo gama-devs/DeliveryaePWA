@@ -8,6 +8,10 @@ import pizzalogo from '../../assets/logo.png'
 import SearchIcon from '@material-ui/icons/Search'
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline'
 import Api from '../../services/Api'
+import couponimg from '../../assets/couponvector.png'
+import trophyvector from '../../assets/trophyvector.png'
+import menuicon from '../../assets/food-menu.png'
+import bascketicon from '../../assets/bascket.png'
 
 const FooterHome = (props) => {
 	return (
@@ -16,13 +20,38 @@ const FooterHome = (props) => {
 				borderRadius: '32px 32px 0px 0px',
 				backgroundColor: `#FF805D`,
 				height: '10vh',
-				flex: '1',
-				bottom: 0,
-				left: 0,
+				flex: 1,
+				width: '100vw',
+				bottom: '0px',
+				position: 'fixed',
+				justifyContent: 'center',
+				alignContent: 'center',
 				display: 'flex',
 			}}
 		>
-			<div>Sim como adivinhou</div>
+			<div
+				style={{
+					margin: '0vw 8vw 0vw 8vw',
+					display: 'flex',
+					flexDirection: 'row',
+					flex: 1,
+					alignItems: 'center',
+					justifyContent: 'space-between',
+				}}
+			>
+				<div>
+					<img src={menuicon} />
+				</div>
+				<div>
+					<img src={bascketicon} />
+				</div>
+				<div>
+					<img src={couponimg} />
+				</div>
+				<div>
+					<img src={trophyvector} />
+				</div>
+			</div>
 		</div>
 	)
 }

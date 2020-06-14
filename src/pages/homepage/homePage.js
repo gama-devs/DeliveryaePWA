@@ -11,6 +11,7 @@ import PersonOutlineIcon from '@material-ui/icons/PersonOutline'
 import Api from '../../services/Api'
 import { Button } from 'reactstrap'
 import { useStore, useStoreActions, useStoreState } from 'easy-peasy'
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 
 const HomePage = () => {
 	const fulluser = useStoreState((state) => {
@@ -23,6 +24,7 @@ const HomePage = () => {
 	const setaddresbase = useStoreActions((actions) => actions.user.setaddress)
 
 	const [allproducts, setallproducts] = useState([])
+	const [loadingpage, setloading] = useState(true)
 	let loadproducts = async () => {
 		try {
 			const results = await Api.get('products?company_id=2', {
@@ -35,7 +37,8 @@ const HomePage = () => {
 			})
 
 			console.log(results.data.data)
-			setallproducts(results.data.data)
+			await setallproducts(results.data.data)
+			await setloading(false)
 		} catch (e) {
 			console.log(e)
 		}
@@ -48,26 +51,49 @@ const HomePage = () => {
 		<div>
 			<HeaderHome />
 
-			<div style={{ display: 'flex', flexDirection: 'column' }}>
-				<div
-					onClick={() => {
-						console.log(fulluser)
-					}}
-					style={{ flex: 1 }}
-				>
-					<CarrousselBannerHome />
+			{loadingpage ? (
+				<div className="ml-4">
+					<SkeletonTheme color="#F4F4F4" highlightColor="#444">
+						<Skeleton count={1} height={'20vh'} width={'60vw'} />
+						<Skeleton count={1} height={17} width={'50vw'} />
+						<br />
+						<Skeleton count={1} height={17} width={'30vw'} />
+						<br />
+						<Skeleton count={1} height={'20vh'} width={'60vw'} />
+						<Skeleton count={1} height={17} width={'50vw'} />
+						<br />
+						<Skeleton count={1} height={17} width={'30vw'} />
+						<br />
+						<Skeleton count={1} height={'20vh'} width={'60vw'} />
+						<Skeleton count={1} height={17} width={'50vw'} />
+						<br />
+						<Skeleton count={1} height={17} width={'30vw'} />
+					</SkeletonTheme>
 				</div>
-				{allproducts.map((item, index) => {
-					return (
-						<div key={index} style={{ flex: 1 }}>
-							<SectionHome data={item} />
+			) : (
+				<div>
+					<div style={{ display: 'flex', flexDirection: 'column' }}>
+						<div
+							onClick={() => {
+								console.log(fulluser)
+							}}
+							style={{ flex: 1 }}
+						>
+							<CarrousselBannerHome />
 						</div>
-					)
-				})}
-			</div>
-			<div style={{ flex: 1 }}>
-				<FooterHome />
-			</div>
+						{allproducts.map((item, index) => {
+							return (
+								<div key={index} style={{ flex: 1 }}>
+									<SectionHome data={item} />
+								</div>
+							)
+						})}
+					</div>
+					<div style={{ flex: 1 }}>
+						<FooterHome />
+					</div>
+				</div>
+			)}
 		</div>
 	)
 }
