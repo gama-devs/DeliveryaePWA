@@ -28,6 +28,7 @@ const initialState = {
 export const userModel = createStore({
 	user: {
 		...initialState,
+
 		setcurrentseeall: action((state, payload) => {
 			state.currentseeall = payload
 		}),
@@ -42,6 +43,9 @@ export const userModel = createStore({
 		}),
 		setauthtoken: action((state, payload) => {
 			state.authtoken = payload
+		}),
+		updatebag: action((state, payload) => {
+			state.bag = payload
 		}),
 		saveonthebag: action((state, payload) => {
 			state.bag = [...state.bag, payload]

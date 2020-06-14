@@ -36,7 +36,6 @@ const itemChoosingHome = (props) => {
 	)
 	let insertonbag = async () => {
 		await saveonthebag(itemnow)
-		await history.push('/home')
 	}
 
 	useEffect(() => {
@@ -190,7 +189,7 @@ const itemChoosingHome = (props) => {
 						setTimeout(() => {
 							history.push('/home')
 						}, 2000)
-						// insertonbag()
+						insertonbag()
 					}}
 					style={{
 						borderRadius: '32px 32px 0px 0px',

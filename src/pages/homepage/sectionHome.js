@@ -9,9 +9,7 @@ import history from '../../util/history-util'
 import { useStore, useStoreActions, useStoreState } from 'easy-peasy'
 const SectionHome = (props) => {
 	const [sectioninfo, setsectioninfo] = useState(props.data)
-	useEffect(() => {
-		console.log(' props.datamontoooooooooooooooou!S', sectioninfo)
-	}, [])
+
 	const setCurrentSeeAll = useStoreActions(
 		(actions) => actions.user.setcurrentseeall
 	)
