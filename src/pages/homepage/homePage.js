@@ -89,11 +89,11 @@ const HomePage = () => {
 							)
 						})}
 					</div>
-					<div style={{ flex: 1 }}>
-						<FooterHome />
-					</div>
 				</div>
 			)}
+			<div style={{ flex: 1 }}>
+				<FooterHome />
+			</div>
 		</div>
 	)
 }

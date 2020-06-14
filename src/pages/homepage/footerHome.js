@@ -3,7 +3,6 @@ import { withRouter } from 'react-router-dom'
 import HeaderHome from './headerHome'
 import CarrousselBannerHome from './carrousselBannerHome'
 import SectionHome from './sectionHome'
-
 import pizzalogo from '../../assets/logo.png'
 import SearchIcon from '@material-ui/icons/Search'
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline'
@@ -12,6 +11,7 @@ import couponimg from '../../assets/couponvector.png'
 import trophyvector from '../../assets/trophyvector.png'
 import menuicon from '../../assets/food-menu.png'
 import bascketicon from '../../assets/bascket.png'
+import history from '../../util/history-util'
 
 const FooterHome = (props) => {
 	return (
@@ -39,10 +39,18 @@ const FooterHome = (props) => {
 					justifyContent: 'space-between',
 				}}
 			>
-				<div>
+				<div
+					onClick={() => {
+						history.push('/home')
+					}}
+				>
 					<img src={menuicon} />
 				</div>
-				<div>
+				<div
+					onClick={() => {
+						history.push('/backet')
+					}}
+				>
 					<img src={bascketicon} />
 				</div>
 				<div>

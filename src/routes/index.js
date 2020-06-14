@@ -13,6 +13,7 @@ import LoginPage from '../pages/login/loginPage'
 import ProfilePage from '../pages/profile/profilePage'
 import seeAllHome from '../pages/homepage/seeAllHome'
 import itemChoosingHome from '../pages/homepage/itemChoosingHome'
+import BascketHome from '../pages/homepage/bascketHome'
 
 /**
  * 👉 if authenticated routes are needed 👈
@@ -40,6 +41,7 @@ export const Routes = () => (
 				<Route path="/profile" component={ProfilePage} />
 				<Route path="/seeall" component={seeAllHome} />
 				<Route path="/product" component={itemChoosingHome} />
+				<Route path="/backet" component={BascketHome} />
 				{/* <PrivateRoute path="/" component={() => RestrictedArea()} /> */}
 			</Switch>
 		</Layout>
