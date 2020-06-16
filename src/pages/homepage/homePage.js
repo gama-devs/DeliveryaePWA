@@ -9,6 +9,7 @@ import pizzalogo from '../../assets/logo.png'
 import SearchIcon from '@material-ui/icons/Search'
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline'
 import Api from '../../services/Api'
+import { MobileView } from "react-device-detect";
 import { Button } from 'reactstrap'
 import { useStore, useStoreActions, useStoreState } from 'easy-peasy'
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
@@ -48,53 +49,97 @@ const HomePage = () => {
 		loadproducts()
 	}, [])
 	return (
-		<div>
-			<HeaderHome />
+		<MobileView>
+			<div>
+				<HeaderHome />
 
-			{loadingpage ? (
-				<div className="ml-4">
-					<SkeletonTheme color="#F4F4F4" highlightColor="#444">
-						<Skeleton count={1} height={'20vh'} width={'60vw'} />
-						<Skeleton count={1} height={17} width={'50vw'} />
-						<br />
-						<Skeleton count={1} height={17} width={'30vw'} />
-						<br />
-						<Skeleton count={1} height={'20vh'} width={'60vw'} />
-						<Skeleton count={1} height={17} width={'50vw'} />
-						<br />
-						<Skeleton count={1} height={17} width={'30vw'} />
-						<br />
-						<Skeleton count={1} height={'20vh'} width={'60vw'} />
-						<Skeleton count={1} height={17} width={'50vw'} />
-						<br />
-						<Skeleton count={1} height={17} width={'30vw'} />
-					</SkeletonTheme>
-				</div>
-			) : (
-				<div>
-					<div style={{ display: 'flex', flexDirection: 'column' }}>
-						<div
-							onClick={() => {
-								console.log(fulluser)
-							}}
-							style={{ flex: 1 }}
-						>
-							<CarrousselBannerHome />
-						</div>
-						{allproducts.map((item, index) => {
-							return (
-								<div key={index} style={{ flex: 1 }}>
-									<SectionHome data={item} />
+				{loadingpage ? (
+					<div className="ml-4">
+						<SkeletonTheme color="#F4F4F4" highlightColor="#d6d6d6">
+							<Skeleton count={1} height={25} width={'75vw'} />
+							<Skeleton count={1} height={17} width={'50vw'} />
+							<br /><br />
+							<div style={{display: 'flex'}}>
+								<div>
+									<Skeleton count={1} height={'15vh'} width={'45vw'} />
+									<Skeleton count={1} height={17} width={'40vw'} />
+									<br />
+									<Skeleton count={1} height={17} width={'30vw'} />
 								</div>
-							)
-						})}
+								<div>
+									<Skeleton count={1} height={'15vh'} width={'45vw'} />
+									<Skeleton count={1} height={17} width={'40vw'} />
+									<br />
+									<Skeleton count={1} height={17} width={'30vw'} />
+								</div>
+							</div>
+							<br /><br />
+							
+							<Skeleton count={1} height={25} width={'75vw'} />
+							<Skeleton count={1} height={17} width={'50vw'} />
+							<br /><br />
+							<div style={{display: 'flex'}}>
+								<div>
+									<Skeleton count={1} height={'15vh'} width={'45vw'} />
+									<Skeleton count={1} height={17} width={'40vw'} />
+									<br />
+									<Skeleton count={1} height={17} width={'30vw'} />
+								</div>
+								<div>
+									<Skeleton count={1} height={'15vh'} width={'45vw'} />
+									<Skeleton count={1} height={17} width={'40vw'} />
+									<br />
+									<Skeleton count={1} height={17} width={'30vw'} />
+								</div>
+							</div>
+							<br /><br />
+
+							<Skeleton count={1} height={25} width={'75vw'} />
+							<Skeleton count={1} height={17} width={'50vw'} />
+							<br /><br />
+							<div style={{display: 'flex'}}>
+								<div>
+									<Skeleton count={1} height={'15vh'} width={'45vw'} />
+									<Skeleton count={1} height={17} width={'40vw'} />
+									<br />
+									<Skeleton count={1} height={17} width={'30vw'} />
+								</div>
+								<div>
+									<Skeleton count={1} height={'15vh'} width={'45vw'} />
+									<Skeleton count={1} height={17} width={'40vw'} />
+									<br />
+									<Skeleton count={1} height={17} width={'30vw'} />
+								</div>
+							</div>
+							<br /><br />
+						</SkeletonTheme>
 					</div>
+				) : (
+					<div>
+						<div style={{ display: 'flex', flexDirection: 'column' }}>
+							<div
+								onClick={() => {
+									console.log(fulluser)
+								}}
+								style={{ flex: 1 }}
+							>
+								<CarrousselBannerHome />
+							</div>
+							{allproducts.map((item, index) => {
+								return (
+									<div key={index} style={{ flex: 1 }}>
+										<SectionHome data={item} />
+									</div>
+								)
+							})}
+						</div>
+					</div>
+				)}
+				<div style={{ flex: 1 }}>
+					<FooterHome />
 				</div>
-			)}
-			<div style={{ flex: 1 }}>
-				<FooterHome />
 			</div>
-		</div>
+		</MobileView>
 	)
 }
 

@@ -33,24 +33,35 @@ const ItemSectionHome = (props) => {
 				flex: 1,
 				display: 'flex',
 				flexDirection: 'column',
-				borderStyle: 'solid',
-				borderColor: '#000',
-				backgroundColor: '#EE22',
-				height: '30vh',
-				borderRadius: '20px',
+				backgroundColor: '#FFFFFF',
+				marginBottom: '3vh'
 			}}
 		>
-			<div className="ml-1" style={{ flex: 1 }}>
-				'IMAGEM AQUI MEU BOM'
-			</div>
-			<div className="ml-1" style={{ fontSize: '13px', color: '#FF805D' }}>
-				{iteminfo.name}
-			</div>
-			<div className="ml-1" style={{ fontSize: '13px' }}>
-				{iteminfo.description}
-			</div>
-			<div className="ml-1" style={{ fontSize: '13px' }}>
-				{'R$' + iteminfo.price / 100}
+			<img 
+				src={'http://50.16.146.1/storage/' + iteminfo.image}
+				style={{
+					width: '100%',
+					height:'15vh',
+					objectFit:'cover',
+					borderRadius: '12px 12px 0 0',
+				}} />
+			<div style={{
+				border: '2px solid #F1F1F1',
+				borderRadius: '0 0 12px 12px',
+				height: '15vh',
+				display: 'flex',
+				flexDirection: 'column',
+				justifyContent: 'space-between'
+			}}>
+				<span className="ml-1" style={{ fontSize: '1.25em', color: '#FF805D', fontWeight: 600 }}>
+					{iteminfo.name}
+				</span>
+				<div className="ml-1" style={{ fontSize: '13px' }}>
+					{iteminfo.description}
+				</div>
+				<div className="ml-1" style={{ fontSize: '1.25em', fontWeight: 600 }}>
+					{'R$' + iteminfo.price / 100}
+				</div>
 			</div>
 		</div>
 	)

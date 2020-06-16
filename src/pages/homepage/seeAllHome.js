@@ -68,7 +68,20 @@ const seeAllHome = (props) => {
 					{Pageitem.name}
 				</div>
 			</div>
-			<SectionHome data={Pageitem} seeall />
+			<div style={{
+					borderRadius: '32px',
+					backgroundColor: '#fff',
+					overflow: 'scroll',
+					marginTop: '-5vh',
+					position: 'fixed',
+					width: '100%',
+					paddingTop: '3vh',
+					bottom: 0,
+					left: 0,
+					height: '85%'
+			}}>
+				<SectionHome data={Pageitem} seeall />
+			</div>
 
 			<FooterHome />
 		</div>

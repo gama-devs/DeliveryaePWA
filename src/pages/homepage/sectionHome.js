@@ -19,10 +19,10 @@ const SectionHome = (props) => {
 	}
 
 	return props.data.id ? (
-		<div style={{ display: 'flex', flexDirection: 'column' }}>
+		<div style={{ display: 'flex', flexDirection: 'column', margin: '0 3vw 3vh' }}>
 			{!props.seeall ? (
-				<div>
-					<h5>{sectioninfo.name}</h5>
+				<div style={{marginBottom: '3vh'}}>
+					<h3 style={{fontWeight: 600}}>{sectioninfo.name}</h3>
 					<div
 						style={{
 							flex: 1,
@@ -31,8 +31,9 @@ const SectionHome = (props) => {
 							justifyContent: 'space-between',
 						}}
 					>
-						<h6>{sectioninfo.description}</h6>{' '}
+						<p style={{margin: 0}}>{sectioninfo.description}</p>
 						<h6
+							style={{color: '#FF805D'}}
 							onClick={() => {
 								seeallaction()
 							}}
@@ -43,11 +44,11 @@ const SectionHome = (props) => {
 				</div>
 			) : null}
 
-			<div style={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'row' }}>
+			<div style={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'row', justifyContent: 'space-between' }}>
 				{sectioninfo.products.map((item, index) => {
 					if (index <= 3) {
 						return (
-							<div key={index} style={{ display: 'flex', width: '50vw' }}>
+							<div key={index} style={{ display: 'flex', width: '45vw' }}>
 								<ItemSectionHome item={item} />
 							</div>
 						)

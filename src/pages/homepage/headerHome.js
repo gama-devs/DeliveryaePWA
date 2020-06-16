@@ -9,55 +9,67 @@ const HeaderHome = () => {
 		<div
 			style={{
 				alignItems: 'center',
+				justifyContent: 'space-between',
 				height: '8vh',
 				marginTop: '2vh',
 				backgroundColor: '#FFF',
 				display: 'flex',
 				flexDirection: 'row',
+				margin: '3vh 3vw 1.5vh'
 			}}
 		>
-			<img
-				alt="logo"
-				src={pizzalogo}
-				style={{ paddingLeft: '3vw', height: '6vh', flex: 1 }}
-			></img>
-			<div
-				onClick={() => {
-					localStorage.removeItem('authtoken')
-					history.push('/login')
-				}}
-				style={{ marginLeft: '30vw', fontSize: '3px', flex: 5 }}
-			>
-				<div>logoff</div>{' '}
-			</div>
-
-			<SearchIcon
-				onClick={() => {
-					history.push('/searchaddres')
-				}}
-				style={{ flex: 1, color: '#FF805D' }}
-			/>
-			<div
-				onClick={() => {
-					if (localStorage.getItem('authtoken')) {
-						history.push('/profile')
-					} else {
+			<div>
+				<img
+					alt="logo"
+					src={pizzalogo}
+					style={{height: '6vh', flex: 1 }}
+				></img>
+				<div
+					onClick={() => {
+						localStorage.removeItem('authtoken')
 						history.push('/login')
-					}
-				}}
-				style={{
-					cursor: 'pointer',
-					display: 'flex',
-					alignItems: 'center',
-					justifyContent: 'center',
-					borderRadius: '6px',
-					height: '5vh',
-					width: '5vh',
-					backgroundColor: '#FF805D',
-				}}
-			>
-				{' '}
-				<PersonOutlineIcon style={{ color: '#FFF' }} />
+					}}
+					style={{ marginLeft: '30vw', fontSize: '3px', flex: 5 }}
+				>
+					<div>logoff</div>{' '}
+				</div>
+			</div>
+			<div style={{
+				display: 'flex',
+				alignItems: 'center'
+			}}>
+				<SearchIcon
+					onClick={() => {
+						history.push('/searchaddres')
+					}}
+					style={{
+						marginRight: '5vw',
+						flex: 1,
+						color: '#413131',
+						fontSize: '2em',
+					}}
+				/>
+				<div
+					onClick={() => {
+						if (localStorage.getItem('authtoken')) {
+							history.push('/profile')
+						} else {
+							history.push('/login')
+						}
+					}}
+					style={{
+						cursor: 'pointer',
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+						borderRadius: '12px',
+						height: '5vh',
+						width: '5vh',
+						backgroundColor: '#FF805D',
+					}}
+				>
+					<PersonOutlineIcon style={{ color: '#FFF' }} />
+				</div>
 			</div>
 		</div>
 	)
