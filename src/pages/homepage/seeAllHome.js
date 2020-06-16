@@ -44,10 +44,10 @@ const seeAllHome = (props) => {
 						borderStyle: 'none',
 						boxShadow: '0 0 0',
 						backgroundColor: '#FFF',
-						borderRadius: '12px',
+						borderRadius: '1em',
 						marginLeft: '3vh',
-						height: '5vh',
-						width: '5vh',
+						height: '3em',
+						width: '3em',
 					}}
 				>
 					<ChevronLeftIcon

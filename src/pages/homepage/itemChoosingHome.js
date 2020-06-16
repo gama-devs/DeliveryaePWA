@@ -44,7 +44,7 @@ const itemChoosingHome = (props) => {
 	}, [])
 	return (
 		<div
-			style={{ height: '100vh' }}
+			style={{ height: 'fit-content' }}
 			onClick={() => {
 				// console.log(itemnow.qtd)
 			}}
@@ -54,7 +54,7 @@ const itemChoosingHome = (props) => {
 					backgroundColor: '#E5E5E5',
 					display: 'flex',
 					alignItems: 'center',
-					height: '15vh',
+					height: '15%',
 				}}
 			>
 				<Button
@@ -71,15 +71,15 @@ const itemChoosingHome = (props) => {
 						backgroundColor: '#FFF',
 						borderRadius: '1em',
 						marginLeft: '3vh',
-						height: '3em',
-						width: '3em',
+						height: '12vw',
+						width: '12vw',
 					}}
 				>
 					<ChevronLeftIcon
 						style={{ color: '#FF805D', height: '1em', width: 'auto' }}
 					/>
 				</Button>
-				<div
+				<span
 					style={{
 						textAlign: 'center',
 						fontSize: '20px',
@@ -87,14 +87,14 @@ const itemChoosingHome = (props) => {
 						color: '#FF805D',
 						padding: '5vh 0',
 						flex: '1',
-						marginRight: '8vh',
+						marginRight: '15vw',
 					}}
-				></div>
+				>{itemnow.name}</span>
 			</div>
 			<div style={{ 
 					display: 'flex',
 					backgroundColor: '#E5E5E5',
-					padding: '0 3vw',
+					padding: '0 3vw 25%',
 					height: '20%' 
 			}}>
 				<img
@@ -109,22 +109,6 @@ const itemChoosingHome = (props) => {
 				<div style={{ flex: 2, display: 'flex', flexDirection: 'column' }}>
 					<div><span style={{fontSize: '1.25em', fontWeight: 600}}>{'R$' + (itemnow.price / 100) * itemnow.qtd}</span> A partir</div>
 					<div>{itemnow.description}</div>
-				</div>
-			</div>
-			<div style={{
-					borderRadius: '32px',
-					backgroundColor: '#fff',
-					overflow: 'scroll',
-					marginTop: '-5vh',
-					position: 'fixed',
-					width: '100%',
-					padding: '5vh 3vw 0',
-					bottom: 0,
-					left: 0,
-					height: '68%'
-			}}>	
-				<div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-					<span style={{fontWeight: 600, margin: '1em 0'}}>Quantidade</span>
 					<div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
 						<span
 							style={{fontSize: '2em', color: '#FF5755'}}
@@ -155,6 +139,19 @@ const itemChoosingHome = (props) => {
 						</span>
 					</div>
 				</div>
+			</div>
+			<div style={{
+					borderRadius: '32px',
+					backgroundColor: '#fff',
+					overflow: 'scroll',
+					marginTop: '-5%',
+					position: 'fixed',
+					width: '100%',
+					padding: '5vh 3vw 0',
+					bottom: 0,
+					left: 0,
+					height: '65%'
+			}}>	
 				<div style={{ display: 'flex', flexDirection: 'column' }}>
 					<span style={{fontWeight: 600, margin: '1em 0'}}>Observação</span>
 					<Input

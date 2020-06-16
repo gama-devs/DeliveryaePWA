@@ -5,6 +5,7 @@ import CarrousselBannerHome from './carrousselBannerHome'
 import SectionHome from './sectionHome'
 import jwt from 'jsonwebtoken'
 import DoneIcon from '@material-ui/icons/Done'
+import { Button } from 'reactstrap'
 import pizzalogo from '../../assets/logo.png'
 import SearchIcon from '@material-ui/icons/Search'
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline'
@@ -28,6 +29,7 @@ const BascketHome = (props) => {
 
 	useEffect(() => {
 		console.log(pagebag, 'bag!!!!')
+		console.log(fulluser)
 		try {
 			let token = localStorage.getItem('authtoken')
 			// console.log(token)
@@ -56,10 +58,10 @@ const BascketHome = (props) => {
 			>
 				<div style={{ marginLeft: '3vw', marginBottom: '-4vh' }}>
 					<div style={{ color: '#FFF' }}>
-						pedido de <br />
+						Pedido de <br />
 					</div>
 
-					<div style={{ color: '#FFF' }}>BIANCA</div>
+					<div style={{ color: '#FFF', fontWeight: 600 }}>BIANCA</div>
 				</div>
 			</div>
 
@@ -78,24 +80,23 @@ const BascketHome = (props) => {
 				<div
 					style={{ marginLeft: '3vw', marginTop: '2vh', marginRight: '3vw' }}
 				>
-					<div>🍕 Itens</div>
+					<span style={{fontWeight: 600, fontSize: '1.1em'}}>🍕 Itens</span>
 					{pagebag.map((prod, index) => {
 						return (
-							<div key={index}>
-								<div style={{ color: '#FF805D' }}>{prod.name}</div>
-								<div style={{ display: 'flex', flexDirection: 'row' }}>
-									<div style={{ flex: 2, flexWrap: 'wrap', display: 'flex' }}>
-										{prod.description}
-									</div>
+							<div style={{margin: '2vh 0'}} key={index}>
+								<div style={{ color: '#FF805D', fontWeight: 600, fontSize: '1.1em' }}>{prod.name}</div>
+								<div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+									<span style={{ fontSize:'0.8em' }}>{prod.description}</span>
 									<div
 										style={{
 											display: 'flex',
 											flexDirection: 'row',
-											flex: 1,
+											alignItems: 'center',
 											justifyContent: 'space-between',
 										}}
 									>
-										<div
+										<span
+											style={{fontSize: '2em', color: '#FF5755'}}
 											onClick={async () => {
 												await updatepagebag((prev) => {
 													if (prev[index].qtd > 1) {
@@ -109,12 +110,12 @@ const BascketHome = (props) => {
 											}}
 										>
 											-
-										</div>
-										<div>{pagebag[index].qtd}</div>
-										<div>+</div>
+										</span>
+										<span style={{fontSize: '1.5em', margin: '0 3vw'}}>{pagebag[index].qtd}</span>
+										<span style={{fontSize: '2em', color: '#FF5755'}}>+</span>
 									</div>
 								</div>
-								<div style={{ fontWeight: 'bold' }}>
+								<div style={{ fontWeight: 600, fontSize: '1.25em' }}>
 									{'R$' +
 										((pagebag[index].price / 100) * pagebag[index].qtd).toFixed(
 											2
@@ -127,34 +128,65 @@ const BascketHome = (props) => {
 						style={{
 							marginTop: '5vh',
 							flex: '1',
-							height: '10vh',
+							height: 'fit-content',
 							backgroundColor: '#1BD09A',
 							borderRadius: '4px',
 							display: 'flex',
+							padding: '2vh 5vw',
 							flexDirection: 'row',
+							alignItems: 'center',
+							justifyContent: 'space-between'
 						}}
 					>
-						{' '}
-						<div>Ainda dá tempo de adicionar algum item show, delicia</div>
-						<div
+						<span style={{color:'#FFFFFF', width: '55vw'}}>Ainda dá tempo de adicionar mais alguma delícia!</span>
+						<Button
 							style={{
 								backgroundColor: '#FFF',
 								color: '#1BD09A',
-								height: '4vh',
 								width: '25vw',
+								border: 'none',
+								boxShadow: '0 0 0',
+								borderRadius: '4px'
 							}}
 						>
 							Adicionar
-						</div>
+						</Button>
 					</div>
-					<div style={{ marginTop: '5vh' }}>🛵 Endereço de entrega</div>
+					<div style={{margin: '5vh 0', fontWeight: 600, fontSize: '1.1em'}}>🛵 Endereço de entrega</div>
 					<div style={{ display: 'flex', flexDirection: 'row' }}>
-						<div style={{ flex: 1 }}> MAIS</div>
-						<div style={{ flex: 2 }}>
-							CARD GRANDE AQUI COM CASA POSSIVEL, FAZ MOCADO
+						<Button style={{ 
+							border: 'none',
+							boxShadow: '0 0 0',
+							backgroundColor: '#F4F4F4',
+							height: '4em',
+							width: '4em',
+							borderRadius: '1em',
+							padding: 0,
+							display: 'flex',
+							alignItems: 'center',
+							textAlign: 'center'
+						}}><span style={{
+							color: '#413231',
+							fontSize: '2.5em',
+							margin: 'auto'
+						}}>+</span></Button>
+						<div style={{
+							width: '60vw',
+							border: '1px solid #FF805D',
+							borderRadius: '1em',
+							padding: '2vh 3vw',
+							margin: '0 5vw',
+							boxShadow: '10px 15px 62px -9px rgba(0,0,0,0.25)',
+							display: 'flex',
+							flexDirection: 'column'
+						}}>
+							<span style={{fontWeight: 600, fontSize: '1.1em', marginBottom: '1em' }}>Casa</span>
+							<span>R. Álvares Machado, 187,</span>
+							<span>Petrópolis, Porto Alegre/RS</span>
+							<span>CEP: 94252-652</span>
 						</div>
 					</div>
-					<div style={{ marginTop: '5vh' }}>🤑Cumpom de desconto</div>
+					<div style={{margin: '5vh 0', fontWeight: 600, fontSize: '1.1em'}}>🤑Cumpom de desconto</div>
 					<div
 						style={{
 							display: 'flex',
@@ -165,9 +197,9 @@ const BascketHome = (props) => {
 							style={{
 								display: 'flex',
 								alignItems: 'center',
-								backgroundColor: 'white',
+								backgroundColor: '#F4F4F4',
 								padding: '0.5em 0.3em',
-								margin: '0 5vh',
+								width: '100%',
 								borderRadius: '12px',
 							}}
 						>
@@ -176,9 +208,12 @@ const BascketHome = (props) => {
 									console.log('hmmmmmm')
 								}}
 								onChange={(e) => {}}
-								placeholder="Endereço de entrega"
-								style={{ border: 'none', fontSize: '16px' }}
-							/>
+								placeholder="Insira o cupom"
+								style={{ 
+									border: 'none',
+									backgroundColor: '#F4F4F4',
+									fontSize: '16px' 
+							}}/>
 							<div style={{ color: '#fff' }}>
 								<DoneIcon
 									onClick={() => {

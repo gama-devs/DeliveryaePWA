@@ -58,7 +58,7 @@ const ItemSectionHome = (props) => {
 					{iteminfo.name}
 				</span>
 				<div className="ml-1" style={{ fontSize: '0.8em'}}>
-					{(iteminfo.description) ? iteminfo.description.slice(0,50) : ''}
+					{(iteminfo.description) ? iteminfo.description.slice(0,55) : ''}
 					{(iteminfo.description && iteminfo.description.length > 55 ? '...' : '')}
 				</div>
 				<div className="ml-1" style={{ fontSize: '1.25em', fontWeight: 600 }}>
