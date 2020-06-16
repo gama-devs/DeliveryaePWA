@@ -12,7 +12,7 @@ import Api from '../../services/Api'
 const CarrousselBannerHome = (props) => {
 	return (
 		<div style={{ display: 'flex', backgroundColor: '#ddd', height: '20vh' }}>
-			Carrossel imagens aqui
+			Carrossel imagens aqui11111
 		</div>
 	)
 }
