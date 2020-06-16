@@ -106,7 +106,7 @@ const HomePage = () => {
               <Container
                 style={{
                   backgroundColor: "#F9F9F9",
-                  width: "110px",
+                  width: "150px",
                   height: "40px",
                   marginTop: "20px",
                   borderRadius: "16px",
@@ -151,6 +151,7 @@ const HomePage = () => {
                       width: "20px",
                       height: "20px",
                       marginRight: "10px",
+                      marginLeft: "10px",
                     }}
                   />
                   <span
@@ -168,14 +169,20 @@ const HomePage = () => {
               <Container
                 style={{
                   backgroundColor: "#F9F9F9",
-                  width: "180px",
+                  width: "170px",
                   height: "40px",
-                  marginTop: "20px",
+                  marginTop: "30px",
                   borderRadius: "16px",
                   display: "flex",
                 }}
               >
-                <Row style={{ margin: "auto" }}>
+                <Row
+                  style={{
+                    margin: "auto",
+                    marginLeft: "30px",
+                    position: "absolute",
+                  }}
+                >
                   <img
                     src={tropy}
                     style={{
@@ -225,9 +232,29 @@ const HomePage = () => {
               />
             </Row>
           </Col>
+
           <Col xs="7" style={{ margin: "0", padding: "0" }}>
-            <div style={{ height: "500px", backgroundColor: "red" }} />
+              <div>
+						<div style={{ display: 'flex', flexDirection: 'column' }}>
+							<div
+								onClick={() => {
+									console.log(fulluser)
+								}}
+								style={{ flex: 1 }}
+							>
+								<CarrousselBannerHome style={{height: '100px !important'}}/>
+							</div>
+							{allproducts.map((item, index) => {
+								return (
+									<div key={index} style={{ flex: 1 }}>
+										<SectionHome data={item} />
+									</div>
+								)
+							})}
+						</div>
+					</div>
           </Col>
+
           <Col xs="3" style={{ margin: "0", padding: "0" }}>
             <Row>
               <span
@@ -291,13 +318,13 @@ const HomePage = () => {
                     para aproveitar nossas promoções.
                   </h7>
                 </Row>
-                <Row style={{textAlign: 'center'}}>
+                <Row style={{ textAlign: "center" }}>
                   <span
                     style={{
                       fontWeight: "700",
-					  color: "#FF805D",
-					  margin: 'auto',
-					  marginTop: '-20px'
+                      color: "#FF805D",
+                      margin: "auto",
+                      marginTop: "-20px",
                     }}
                   >
                     É rápido e fácil.
@@ -309,50 +336,100 @@ const HomePage = () => {
         </Row>
       </BrowserView>
       <MobileView>
-        <HeaderHome />
+        <div>
+          <HeaderHome />
 
-        {loadingpage ? (
-          <div className="ml-4">
-            <SkeletonTheme color="#F4F4F4" highlightColor="#444">
-              <Skeleton count={1} height={"20vh"} width={"60vw"} />
-              <Skeleton count={1} height={17} width={"50vw"} />
-              <br />
-              <Skeleton count={1} height={17} width={"30vw"} />
-              <br />
-              <Skeleton count={1} height={"20vh"} width={"60vw"} />
-              <Skeleton count={1} height={17} width={"50vw"} />
-              <br />
-              <Skeleton count={1} height={17} width={"30vw"} />
-              <br />
-              <Skeleton count={1} height={"20vh"} width={"60vw"} />
-              <Skeleton count={1} height={17} width={"50vw"} />
-              <br />
-              <Skeleton count={1} height={17} width={"30vw"} />
-            </SkeletonTheme>
-          </div>
-        ) : (
-          <div>
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <div
-                onClick={() => {
-                  console.log(fulluser);
-                }}
-                style={{ flex: 1 }}
-              >
-                <CarrousselBannerHome />
-              </div>
-              {allproducts.map((item, index) => {
-                return (
-                  <div key={index} style={{ flex: 1 }}>
-                    <SectionHome data={item} />
+          {loadingpage ? (
+            <div className="ml-4">
+              <SkeletonTheme color="#F4F4F4" highlightColor="#d6d6d6">
+                <Skeleton count={1} height={25} width={"75vw"} />
+                <Skeleton count={1} height={17} width={"50vw"} />
+                <br />
+                <br />
+                <div style={{ display: "flex" }}>
+                  <div>
+                    <Skeleton count={1} height={"15vh"} width={"45vw"} />
+                    <Skeleton count={1} height={17} width={"40vw"} />
+                    <br />
+                    <Skeleton count={1} height={17} width={"30vw"} />
                   </div>
-                );
-              })}
+                  <div>
+                    <Skeleton count={1} height={"15vh"} width={"45vw"} />
+                    <Skeleton count={1} height={17} width={"40vw"} />
+                    <br />
+                    <Skeleton count={1} height={17} width={"30vw"} />
+                  </div>
+                </div>
+                <br />
+                <br />
+
+                <Skeleton count={1} height={25} width={"75vw"} />
+                <Skeleton count={1} height={17} width={"50vw"} />
+                <br />
+                <br />
+                <div style={{ display: "flex" }}>
+                  <div>
+                    <Skeleton count={1} height={"15vh"} width={"45vw"} />
+                    <Skeleton count={1} height={17} width={"40vw"} />
+                    <br />
+                    <Skeleton count={1} height={17} width={"30vw"} />
+                  </div>
+                  <div>
+                    <Skeleton count={1} height={"15vh"} width={"45vw"} />
+                    <Skeleton count={1} height={17} width={"40vw"} />
+                    <br />
+                    <Skeleton count={1} height={17} width={"30vw"} />
+                  </div>
+                </div>
+                <br />
+                <br />
+
+                <Skeleton count={1} height={25} width={"75vw"} />
+                <Skeleton count={1} height={17} width={"50vw"} />
+                <br />
+                <br />
+                <div style={{ display: "flex" }}>
+                  <div>
+                    <Skeleton count={1} height={"15vh"} width={"45vw"} />
+                    <Skeleton count={1} height={17} width={"40vw"} />
+                    <br />
+                    <Skeleton count={1} height={17} width={"30vw"} />
+                  </div>
+                  <div>
+                    <Skeleton count={1} height={"15vh"} width={"45vw"} />
+                    <Skeleton count={1} height={17} width={"40vw"} />
+                    <br />
+                    <Skeleton count={1} height={17} width={"30vw"} />
+                  </div>
+                </div>
+                <br />
+                <br />
+              </SkeletonTheme>
             </div>
+          ) : (
+            <div>
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <div
+                  onClick={() => {
+                    console.log(fulluser);
+                  }}
+                  style={{ flex: 1 }}
+                >
+                  <CarrousselBannerHome />
+                </div>
+                {allproducts.map((item, index) => {
+                  return (
+                    <div key={index} style={{ flex: 1 }}>
+                      <SectionHome data={item} />
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+          <div style={{ flex: 1 }}>
+            <FooterHome />
           </div>
-        )}
-        <div style={{ flex: 1 }}>
-          <FooterHome />
         </div>
       </MobileView>
     </div>
