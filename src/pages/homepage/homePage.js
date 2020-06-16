@@ -70,7 +70,11 @@ const HomePage = () => {
 							textAlign: 'center',
 						}}
 					>
-						<img src={pizza} style={{ width: '150px', marginTop: '20px' }} />
+						<img
+							alt="img"
+							src={pizza}
+							style={{ width: '150px', marginTop: '20px' }}
+						/>
 
 						<Row>
 							<Container
@@ -85,6 +89,7 @@ const HomePage = () => {
 							>
 								<Row style={{ margin: 'auto' }}>
 									<img
+										alt="img"
 										src={vector}
 										style={{
 											width: '20px',
@@ -116,6 +121,7 @@ const HomePage = () => {
 							>
 								<Row style={{ margin: 'auto' }}>
 									<img
+										alt="img"
 										src={cart}
 										style={{
 											width: '20px',
@@ -147,6 +153,7 @@ const HomePage = () => {
 							>
 								<Row style={{ margin: 'auto' }}>
 									<img
+										alt="img"
 										src={ticket}
 										style={{
 											width: '20px',
@@ -185,6 +192,7 @@ const HomePage = () => {
 									}}
 								>
 									<img
+										alt="img"
 										src={tropy}
 										style={{
 											width: '20px',
@@ -206,6 +214,7 @@ const HomePage = () => {
 						<Row>
 							<img
 								src={mao}
+								alt="img"
 								style={{
 									width: '200px',
 									height: '200px',
@@ -228,6 +237,7 @@ const HomePage = () => {
 						</Row>
 						<Row>
 							<img
+								alt="img"
 								src={logo}
 								style={{ width: '100px', margin: 'auto', marginBottom: '20px' }}
 							/>
@@ -285,6 +295,7 @@ const HomePage = () => {
 								<Row>
 									<img
 										src={mulher}
+										alt="img"
 										style={{
 											width: '200px',
 											margin: 'auto',
