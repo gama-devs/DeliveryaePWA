@@ -118,59 +118,58 @@ const itemChoosingHome = (props) => {
 					marginTop: '-5vh',
 					position: 'fixed',
 					width: '100%',
-					paddingTop: '5vh',
+					padding: '5vh 3vw 0',
 					bottom: 0,
 					left: 0,
 					height: '68%'
-			}}>
-				<div style={{ flex: 2, display: 'flex', flexDirection: 'row' }}>
-					<div
-						onClick={async () => {
-							updateitem((prev) => {
-								console.log(prev)
-								if (prev.qtd > 1) {
-									return { ...prev, qtd: prev.qtd - 1 }
-								} else {
-									return prev
-								}
-							})
-						}}
-					>
-						-
-					</div>
-					<div>{itemnow.qtd}</div>
-					<div
-						onClick={async () => {
-							updateitem((prev) => {
-								console.log(prev)
-								return { ...prev, qtd: prev.qtd + 1 }
-							})
-						}}
-					>
-						+
-					</div>
-				</div>
-				<div style={{ height: '30vh' }}>
-					ESSA DIV AQUI NO MEIO É PARA OS LANCES AÍ DE CATEGORIA, OPÇOES DE CADA
-					PRODUTO
-				</div>
-
-				<div style={{ display: 'flex', flexDirection: 'column' }}>
-					<div>Observação</div>
-					<div>
-						<Input
-							onChange={(e) => {
-								setobs(e.target.value)
+			}}>	
+				<div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+					<span style={{fontWeight: 600, margin: '1em 0'}}>Quantidade</span>
+					<div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+						<span
+							style={{fontSize: '2em', color: '#FF5755'}}
+							onClick={async () => {
+								updateitem((prev) => {
+									console.log(prev)
+									if (prev.qtd > 1) {
+										return { ...prev, qtd: prev.qtd - 1 }
+									} else {
+										return prev
+									}
+								})
 							}}
-							placeholder={'Observação'}
-						/>
+						>
+							-
+						</span>
+						<span style={{fontSize: '1.5em', margin: '0 3vw'}}>{itemnow.qtd}</span>
+						<span
+							style={{fontSize: '2em', color: '#FF5755'}}
+							onClick={async () => {
+								updateitem((prev) => {
+									console.log(prev)
+									return { ...prev, qtd: prev.qtd + 1 }
+								})
+							}}
+						>
+							+
+						</span>
 					</div>
 				</div>
-				<Button
-					onClick={async () => {
-						await erropassageiro()
-					}}
-				></Button>
+				<div style={{ display: 'flex', flexDirection: 'column' }}>
+					<span style={{fontWeight: 600, margin: '1em 0'}}>Observação</span>
+					<Input
+						type="textarea"
+						onChange={(e) => {
+							setobs(e.target.value)
+						}}
+						style={{
+							border: 'none',
+							background: '#F9F9F9',
+							borderRadius: '1em'
+						}}
+						placeholder={'Gostaria de inserir alguma informação referente ao pedido?'}
+					/>
+				</div>
 				{somethingwrong && (
 					<div
 						onClick={() => {
@@ -215,11 +214,13 @@ const itemChoosingHome = (props) => {
 						justifyContent: 'center',
 						alignContent: 'center',
 						display: 'flex',
+						alignItems: 'center',
+						fontWeight: 600,
+						fontSize: '1.25em',
+						color: '#FFFFFF'
 					}}
 				>
-					<div style={{ marginTop: '2vh' }}>
-						Predido adicionado com sucesso!
-					</div>
+					<span>Pedido adicionado com sucesso!</span>
 				</div>
 			) : (
 				<div
@@ -242,13 +243,17 @@ const itemChoosingHome = (props) => {
 						justifyContent: 'center',
 						alignContent: 'center',
 						display: 'flex',
+						alignItems: 'center',
+						fontWeight: 600,
+						fontSize: '1.25em',
+						color: '#FFFFFF'
 					}}
 				>
-					<div style={{ marginTop: '2vh' }}>
+					<span>
 						{'R$' +
 							(itemnow.price / 100) * itemnow.qtd +
-							'* Adicionar a sacola'}
-					</div>
+							' ● Adicionar a sacola'}
+					</span>
 				</div>
 			)}
 		</div>
