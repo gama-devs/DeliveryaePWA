@@ -34,7 +34,9 @@ const ItemSectionHome = (props) => {
 				display: 'flex',
 				flexDirection: 'column',
 				backgroundColor: '#FFFFFF',
-				marginBottom: '3vh'
+				marginBottom: '3vh',
+				border: '2px solid #F1F1F1',
+				borderRadius: '12px'
 			}}
 		>
 			<img 
@@ -46,18 +48,18 @@ const ItemSectionHome = (props) => {
 					borderRadius: '12px 12px 0 0',
 				}} />
 			<div style={{
-				border: '2px solid #F1F1F1',
 				borderRadius: '0 0 12px 12px',
-				height: '15vh',
+				height: '30vw',
 				display: 'flex',
 				flexDirection: 'column',
 				justifyContent: 'space-between'
 			}}>
-				<span className="ml-1" style={{ fontSize: '1.25em', color: '#FF805D', fontWeight: 600 }}>
+				<span className="ml-1" style={{ fontSize: '1.1em', color: '#FF805D', fontWeight: 600 }}>
 					{iteminfo.name}
 				</span>
-				<div className="ml-1" style={{ fontSize: '13px' }}>
-					{iteminfo.description}
+				<div className="ml-1" style={{ fontSize: '0.8em'}}>
+					{(iteminfo.description) ? iteminfo.description.slice(0,50) : ''}
+					{(iteminfo.description && iteminfo.description.length > 55 ? '...' : '')}
 				</div>
 				<div className="ml-1" style={{ fontSize: '1.25em', fontWeight: 600 }}>
 					{'R$' + iteminfo.price / 100}
