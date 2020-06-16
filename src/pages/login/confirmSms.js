@@ -29,7 +29,7 @@ const ConfirmSms = (props) => {
 				bottom: 0,
 				left: 0,
 				position: 'fixed',
-				width: '100vw',
+				width: '100%',
 				height: '50vh',
 				borderRadius: '32px',
 				backgroundColor: '#fff',
@@ -75,7 +75,7 @@ const ConfirmSms = (props) => {
 							width: '7vh',
 							fontSize: '20px',
 							backgroundColor: '#EDF1F7',
-							marginLeft: '1vw',
+							marginLeft: '1%',
 							borderStyle: 'none',
 							border: 'none',
 							fontSize: '16px'
@@ -92,7 +92,7 @@ const ConfirmSms = (props) => {
 						alignItems: 'center',
 						borderRadius: '12px',
 						backgroundColor: '#EDF1F7',
-						marginLeft: '4vw',
+						marginLeft: '4%',
 					}}
 				>
 					<Input
@@ -105,7 +105,7 @@ const ConfirmSms = (props) => {
 							width: '7vh',
 							fontSize: '20px',
 							backgroundColor: '#EDF1F7',
-							marginLeft: '1vw',
+							marginLeft: '1%',
 							borderStyle: 'none',
 							fontSize: '16px'
 						}}
@@ -121,7 +121,7 @@ const ConfirmSms = (props) => {
 						alignItems: 'center',
 						borderRadius: '12px',
 						backgroundColor: '#EDF1F7',
-						marginLeft: '4vw',
+						marginLeft: '4%',
 					}}
 				>
 					<Input
@@ -134,7 +134,7 @@ const ConfirmSms = (props) => {
 							width: '7vh',
 							fontSize: '20px',
 							backgroundColor: '#EDF1F7',
-							marginLeft: '1vw',
+							marginLeft: '1%',
 							borderStyle: 'none',
 							fontSize: '16px'
 						}}
@@ -150,7 +150,7 @@ const ConfirmSms = (props) => {
 						alignItems: 'center',
 						borderRadius: '12px',
 						backgroundColor: '#EDF1F7',
-						marginLeft: '4vw',
+						marginLeft: '4%',
 					}}
 				>
 					<Input
@@ -163,7 +163,7 @@ const ConfirmSms = (props) => {
 							width: '7vh',
 							fontSize: '20px',
 							backgroundColor: '#EDF1F7',
-							marginLeft: '1vw',
+							marginLeft: '1%',
 							borderStyle: 'none',
 							fontSize: '16px'
 						}}
@@ -233,7 +233,7 @@ const ConfirmSms = (props) => {
 					justifyContent: 'center',
 					textAlign: 'center',
 					flex: 1,
-					width: '100vw',
+					width: '100%',
 					position: 'absolute',
 					bottom: '0',
 					borderRadius: '32px 32px 0px 0px',
