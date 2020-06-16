@@ -62,9 +62,9 @@ const HeaderHome = () => {
 						display: 'flex',
 						alignItems: 'center',
 						justifyContent: 'center',
-						borderRadius: '12px',
-						height: '5vh',
-						width: '5vh',
+						borderRadius: '1em',
+						height: '3em',
+						width: '3em',
 						backgroundColor: '#FF805D',
 					}}
 				>

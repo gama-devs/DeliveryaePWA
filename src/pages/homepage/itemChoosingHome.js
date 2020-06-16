@@ -54,8 +54,7 @@ const itemChoosingHome = (props) => {
 					backgroundColor: '#E5E5E5',
 					display: 'flex',
 					alignItems: 'center',
-					height: '20vh',
-					paddingBottom: '5vh',
+					height: '15vh',
 				}}
 			>
 				<Button
@@ -70,14 +69,14 @@ const itemChoosingHome = (props) => {
 						borderStyle: 'none',
 						boxShadow: '0 0 0',
 						backgroundColor: '#FFF',
-						borderRadius: '12px',
+						borderRadius: '1em',
 						marginLeft: '3vh',
-						height: '5vh',
-						width: '5vh',
+						height: '3em',
+						width: '3em',
 					}}
 				>
 					<ChevronLeftIcon
-						style={{ color: '#FF805D', height: '3vh', width: 'auto' }}
+						style={{ color: '#FF805D', height: '1em', width: 'auto' }}
 					/>
 				</Button>
 				<div
@@ -92,98 +91,113 @@ const itemChoosingHome = (props) => {
 					}}
 				></div>
 			</div>
-			<div style={{ display: 'flex' }}>
-				<div style={{ flex: 1 }}>
-					<div
-						style={{
-							borderStyle: 'solid',
-							borderRadius: '12px',
-							height: '10vh',
-							width: '10vh',
-						}}
-					>
-						IMAGEM PRODUTO
-					</div>
-				</div>
+			<div style={{ 
+					display: 'flex',
+					backgroundColor: '#E5E5E5',
+					padding: '0 3vw',
+					height: '20%' 
+			}}>
+				<img
+					src={'http://50.16.146.1/storage/' + itemnow.image}
+					style={{
+						borderRadius: '1em',
+						height: '7em',
+						width: '7em',
+						marginRight: '1em'
+					}}
+				/>
 				<div style={{ flex: 2, display: 'flex', flexDirection: 'column' }}>
-					<div>{'R$' + (itemnow.price / 100) * itemnow.qtd + ' A partir'}</div>
+					<div><span style={{fontSize: '1.25em', fontWeight: 600}}>{'R$' + (itemnow.price / 100) * itemnow.qtd}</span> A partir</div>
 					<div>{itemnow.description}</div>
 				</div>
 			</div>
-			<div style={{ flex: 2, display: 'flex', flexDirection: 'row' }}>
-				<div
-					onClick={async () => {
-						updateitem((prev) => {
-							console.log(prev)
-							if (prev.qtd > 1) {
-								return { ...prev, qtd: prev.qtd - 1 }
-							} else {
-								return prev
-							}
-						})
-					}}
-				>
-					-
-				</div>
-				<div>{itemnow.qtd}</div>
-				<div
-					onClick={async () => {
-						updateitem((prev) => {
-							console.log(prev)
-							return { ...prev, qtd: prev.qtd + 1 }
-						})
-					}}
-				>
-					+
-				</div>
-			</div>
-			<div style={{ height: '30vh' }}>
-				ESSA DIV AQUI NO MEIO É PARA OS LANCES AÍ DE CATEGORIA, OPÇOES DE CADA
-				PRODUTO
-			</div>
-
-			<div style={{ display: 'flex', flexDirection: 'column' }}>
-				<div>Observação</div>
-				<div>
-					<Input
-						onChange={(e) => {
-							setobs(e.target.value)
+			<div style={{
+					borderRadius: '32px',
+					backgroundColor: '#fff',
+					overflow: 'scroll',
+					marginTop: '-5vh',
+					position: 'fixed',
+					width: '100%',
+					paddingTop: '5vh',
+					bottom: 0,
+					left: 0,
+					height: '68%'
+			}}>
+				<div style={{ flex: 2, display: 'flex', flexDirection: 'row' }}>
+					<div
+						onClick={async () => {
+							updateitem((prev) => {
+								console.log(prev)
+								if (prev.qtd > 1) {
+									return { ...prev, qtd: prev.qtd - 1 }
+								} else {
+									return prev
+								}
+							})
 						}}
-						placeholder={'Observação'}
-					/>
+					>
+						-
+					</div>
+					<div>{itemnow.qtd}</div>
+					<div
+						onClick={async () => {
+							updateitem((prev) => {
+								console.log(prev)
+								return { ...prev, qtd: prev.qtd + 1 }
+							})
+						}}
+					>
+						+
+					</div>
 				</div>
+				<div style={{ height: '30vh' }}>
+					ESSA DIV AQUI NO MEIO É PARA OS LANCES AÍ DE CATEGORIA, OPÇOES DE CADA
+					PRODUTO
+				</div>
+
+				<div style={{ display: 'flex', flexDirection: 'column' }}>
+					<div>Observação</div>
+					<div>
+						<Input
+							onChange={(e) => {
+								setobs(e.target.value)
+							}}
+							placeholder={'Observação'}
+						/>
+					</div>
+				</div>
+				<Button
+					onClick={async () => {
+						await erropassageiro()
+					}}
+				></Button>
+				{somethingwrong && (
+					<div
+						onClick={() => {
+							console.log('sim')
+							setsuccess(true)
+							setTimeout(() => {
+								history.push('/home')
+							}, 2000)
+							// insertonbag()
+						}}
+						style={{
+							borderRadius: '32px 32px 0px 0px',
+							backgroundColor: `#FF5755`,
+							height: '15vh',
+							flex: 1,
+							width: '100vw',
+							bottom: '0px',
+							position: 'fixed',
+							justifyContent: 'center',
+							alignContent: 'center',
+							display: 'flex',
+						}}
+					>
+						<div style={{ color: '#FFF' }}>Erro</div>
+					</div>
+				)}
 			</div>
-			<Button
-				onClick={async () => {
-					await erropassageiro()
-				}}
-			></Button>
-			{somethingwrong && (
-				<div
-					onClick={() => {
-						console.log('sim')
-						setsuccess(true)
-						setTimeout(() => {
-							history.push('/home')
-						}, 2000)
-						// insertonbag()
-					}}
-					style={{
-						borderRadius: '32px 32px 0px 0px',
-						backgroundColor: `#FF5755`,
-						height: '15vh',
-						flex: 1,
-						width: '100vw',
-						bottom: '0px',
-						position: 'fixed',
-						justifyContent: 'center',
-						alignContent: 'center',
-						display: 'flex',
-					}}
-				>
-					<div style={{ color: '#FFF' }}>Erro</div>
-				</div>
-			)}
 			{insersuccess ? (
 				<div
 					onClick={() => {

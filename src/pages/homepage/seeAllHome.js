@@ -75,7 +75,7 @@ const seeAllHome = (props) => {
 					marginTop: '-5vh',
 					position: 'fixed',
 					width: '100%',
-					paddingTop: '3vh',
+					paddingTop: '5vh',
 					bottom: 0,
 					left: 0,
 					height: '85%'
