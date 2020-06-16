@@ -8,9 +8,9 @@ const LoginBG = (props) => {
 	return (
 		<div style={{ top: 0, left: 0, position: 'absolute' }}>
 			<img alt="Logo" style={{
-					width: '50vw',
+					width: '50%',
 					position: 'absolute',
-					left: '25vw',
+					left: '25%',
 					top: '9vh'
 				}} 
 				src={imgLogo} 
@@ -19,7 +19,7 @@ const LoginBG = (props) => {
 				alt=""
 				style={{
 					height: '100vh',
-					width: '100vw',
+					width: '100%',
 					position: 'relative',
 				}}
 				src={bgpizza}
@@ -28,7 +28,7 @@ const LoginBG = (props) => {
 				alt=""
 				style={{
 					height: '100%',
-					width: '100vw',
+					width: '100%',
 					position: 'absolute',
 					top: 0,
 					left: 0,
@@ -38,7 +38,7 @@ const LoginBG = (props) => {
 			<div
 				style={{
 					height: '100%',
-					width: '100vw',
+					width: '100%',
 					position: 'absolute',
 					top: 0,
 					left: 0,

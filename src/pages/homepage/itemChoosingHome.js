@@ -12,6 +12,7 @@ import { Button, Input } from 'reactstrap'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import { useStore, useStoreActions, useStoreState } from 'easy-peasy'
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import { BrowserView, MobileView } from "react-device-detect";
 
 const itemChoosingHome = (props) => {
 	const saveonthebag = useStoreActions((actions) => actions.user.saveonthebag)
