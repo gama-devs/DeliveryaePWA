@@ -22,6 +22,7 @@ import VisibilityIcon from "@material-ui/icons/Visibility";
 import { BrowserView, MobileView } from "react-device-detect";
 import reunida from "../../assets/reunida.png";
 import logo from "../../assets/logo.png";
+import ae from "../../assets/deliveryae.png";
 
 const LoginPage = () => {
   const fulluser = useStoreState((state) => state.user);
@@ -343,7 +344,8 @@ const LoginPage = () => {
                           src={logo}
                           style={{
                             width: "300px",
-                           marginTop: '-350px',
+                            marginTop: "-350px",
+                            marginBottom: "-150px",
                             marginRight: "10px",
                             marginLeft: "140px",
                           }}
@@ -352,6 +354,7 @@ const LoginPage = () => {
                           style={{
                             fontSize: "20px",
                             fontWeight: "bold",
+                            marginBottom: "-100px",
                             color: "#FF805D",
                           }}
                         >
@@ -378,7 +381,8 @@ const LoginPage = () => {
                             backgroundColor: "#EDF1F7",
                             borderRadius: "12px",
                             margin: "3vh auto 0",
-                            marginTop: '-50px',
+                            marginTop: "-90px",
+                            marginBottom: "-120px",
                             width: "60%",
                             height: "7vh",
                             border: "none",
@@ -407,7 +411,7 @@ const LoginPage = () => {
                             backgroundColor: "#EDF1F7",
                             borderRadius: "12px",
                             margin: "1vh auto 0",
-                            marginTop: '-90px',
+                            marginTop: "-90px",
                             width: "60%",
                             height: "7vh",
                           }}
@@ -453,9 +457,10 @@ const LoginPage = () => {
                             display: "flex",
                             flexDirection: "row",
                             color: "#413131",
-                            marginTop: "-70px",
-                            marginLeft: '-60px',
+                            marginTop: "-200px",
+                            marginLeft: "-60px",
                             fontSize: "10px",
+                            marginBottom: "-20px",
                             width: "90%",
                           }}
                         >
@@ -471,7 +476,7 @@ const LoginPage = () => {
                             justifyContent: "center",
                             display: "flex",
                             flexDirection: "row",
-                            marginTop: "-70px",
+                            marginTop: "-170px",
                             color: "#FF805D",
                             fontSize: "12px",
                             fontWeight: "bold",
@@ -501,10 +506,12 @@ const LoginPage = () => {
                               width: "60%",
                               borderRadius: "12px 12px 12px 12px",
                               height: "55px",
+                              marginTop: "-170px",
+                              marginBottom: "20px",
                               display: "flex",
                               backgroundColor: "#FF805D",
+                              marginLeft: "120px",
                               position: "relative",
-                              marginBottom: '50px'
                             }}
                           >
                             {loadingreq ? (
@@ -520,12 +527,35 @@ const LoginPage = () => {
                                   color: "#FFF",
                                   fontWeight: "bold",
                                   fontSize: "15px",
+                                  marginBottom: "10px",
                                 }}
                               >
                                 Entrar
                               </h4>
                             )}
                           </div>
+                          <Row>
+                            <span
+                              style={{
+                                textDecoration: "underline",
+                                textAlign: "center",
+                                margin: "auto",
+                              }}
+                            >
+                              Fechar
+                            </span>
+                          </Row>
+                          <Row>
+                            <img
+                              src={ae}
+                              style={{
+                                width: "100px",
+                                textAlign: "center",
+                                margin: "auto",
+                                marginTop: "30px",
+                              }}
+                            />
+                          </Row>
                         </div>
                       </div>
                     </div>
