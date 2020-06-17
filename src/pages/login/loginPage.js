@@ -344,7 +344,7 @@ const LoginPage = () => {
                           src={logo}
                           style={{
                             width: "300px",
-                            marginTop: "-350px",
+                            marginTop: "-300px",
                             marginBottom: "-150px",
                             marginRight: "10px",
                             marginLeft: "140px",
@@ -382,7 +382,7 @@ const LoginPage = () => {
                             borderRadius: "12px",
                             margin: "3vh auto 0",
                             marginTop: "-90px",
-                            marginBottom: "-120px",
+                            marginBottom: "-100px",
                             width: "60%",
                             height: "7vh",
                             border: "none",
