@@ -11,7 +11,7 @@ import PersonOutlineIcon from '@material-ui/icons/PersonOutline'
 import Api from '../../services/Api'
 import imgbg from '../../assets/bannercarousel.png'
 import { withKnobs, boolean, number } from '@storybook/addon-knobs'
-
+import { BrowserView, MobileView } from 'react-device-detect'
 const CarrousselBannerHome = (props) => {
 	const getConfigurableProps = () => ({
 		showArrows: boolean('showArrows', true, tooglesGroupId),
@@ -36,56 +36,164 @@ const CarrousselBannerHome = (props) => {
 	const tooglesGroupId = 'Toggles'
 	const valuesGroupId = 'Values'
 	return (
-		<div style={{ display: 'flex', borderRadius: '20px', height: '20vh' }}>
-			<style></style>
-			<Carousel
-				backgroundColor="#FFF"
-				color="#FFF"
-				infiniteLoop
-				style={{
-					background: 'none',
-					borderRadius: '20px',
-					height: '18vh',
-					width: '100vw',
-					backgroundColor: 'red',
-				}}
-			>
-				<div
-					style={{
-						borderRadius: '20px',
-						borderRadius: '20px',
-						height: '19vh',
-						width: '20vh',
-					}}
-				>
-					<img
-						style={{ borderRadius: '20px', height: '18vh', width: '100vw' }}
-						alt=""
-						src={imgbg}
-					/>
+		<div>
+			<MobileView>
+				{' '}
+				<div style={{ display: 'flex', borderRadius: '20px', height: '20vh' }}>
+					<style></style>
+					<Carousel
+						centerSlidePercentage={20}
+						transitionTime={1500}
+						autoPlay
+						showArrows={false}
+						backgroundColor="#FFF"
+						color="#FFF"
+						infiniteLoop
+						showStatus={false}
+						renderIndicator={false}
+						showThumbs={false}
+					>
+						<div
+							style={{
+								alignItems: 'center',
+								justifyContent: 'center',
+								borderRadius: '20px',
+								height: '19vh',
+								width: '100vw',
+							}}
+						>
+							<img
+								style={{ borderRadius: '20px', height: '18vh', width: '80vw' }}
+								alt=""
+								src={imgbg}
+							/>
+						</div>
+						<div
+							style={{
+								alignItems: 'center',
+								justifyContent: 'center',
+								borderRadius: '20px',
+								height: '19vh',
+								width: '100vw',
+							}}
+						>
+							<img
+								style={{ borderRadius: '20px', height: '18vh', width: '80vw' }}
+								alt=""
+								src={imgbg}
+							/>
+						</div>
+						<div
+							style={{
+								alignItems: 'center',
+								justifyContent: 'center',
+								borderRadius: '20px',
+								height: '19vh',
+								width: '100vw',
+							}}
+						>
+							<img
+								style={{ borderRadius: '20px', height: '18vh', width: '80vw' }}
+								alt=""
+								src={imgbg}
+							/>
+						</div>
+						<div
+							style={{
+								alignItems: 'center',
+								justifyContent: 'center',
+								borderRadius: '20px',
+								height: '19vh',
+								width: '100vw',
+							}}
+						>
+							<img
+								style={{ borderRadius: '20px', height: '18vh', width: '80vw' }}
+								alt=""
+								src={imgbg}
+							/>
+						</div>
+					</Carousel>
 				</div>
-				<div style={{ borderRadius: '20px', height: '18vh', width: '100vw' }}>
-					<img
-						style={{ borderRadius: '20px', height: '18vh', width: '100vw' }}
-						alt=""
-						src={imgbg}
-					/>
+			</MobileView>
+			<BrowserView>
+				<div style={{ width: '60vw', borderRadius: '20px', height: '25vh' }}>
+					<Carousel
+						centerSlidePercentage={20}
+						transitionTime={1500}
+						autoPlay
+						showArrows={false}
+						backgroundColor="#FFF"
+						color="#FFF"
+						infiniteLoop
+						showStatus={false}
+						renderIndicator={false}
+						showThumbs={false}
+					>
+						<div
+							style={{
+								alignItems: 'center',
+								justifyContent: 'center',
+								borderRadius: '20px',
+								height: '23vh',
+								width: '60vw',
+								marginTop: '1vh',
+							}}
+						>
+							<img
+								style={{ borderRadius: '20px', height: '23vh', width: '40vw' }}
+								alt=""
+								src={imgbg}
+							/>
+						</div>
+						<div
+							style={{
+								alignItems: 'center',
+								justifyContent: 'center',
+								borderRadius: '20px',
+								height: '23vh',
+								width: '60vw',
+							}}
+						>
+							<img
+								style={{ borderRadius: '20px', height: '23vh', width: '40vw' }}
+								alt=""
+								src={imgbg}
+							/>
+						</div>
+						<div
+							style={{
+								alignItems: 'center',
+								justifyContent: 'center',
+								borderRadius: '20px',
+								height: '23vh',
+								width: '60vw',
+							}}
+						>
+							<img
+								style={{ borderRadius: '20px', height: '23vh', width: '40vw' }}
+								alt=""
+								src={imgbg}
+							/>
+						</div>
+						<div
+							style={{
+								alignItems: 'center',
+								justifyContent: 'center',
+								borderRadius: '20px',
+								height: '23vh',
+								width: '60vw',
+							}}
+						>
+							<img
+								style={{ borderRadius: '20px', height: '23vh', width: '40vw' }}
+								alt=""
+								src={imgbg}
+							/>
+						</div>
+					</Carousel>
 				</div>
-				<div style={{ borderRadius: '20px', height: '18vh', width: '100vw' }}>
-					<img
-						style={{ borderRadius: '20px', height: '18vh', width: '100vw' }}
-						alt=""
-						src={imgbg}
-					/>
-				</div>
-				<div style={{ borderRadius: '20px', height: '18vh', width: '100vw' }}>
-					<img
-						style={{ borderRadius: '20px', height: '18vh', width: '100vw' }}
-						alt=""
-						src={imgbg}
-					/>
-				</div>
-			</Carousel>
+			</BrowserView>
 		</div>
 	)
 }

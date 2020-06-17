@@ -52,6 +52,7 @@ const ItemSectionHome = (props) => {
 								}}
 							>
 								<img
+									alt="img"
 									src={'http://50.16.146.1/storage/' + iteminfo.image}
 									style={{
 										width: '75px',
@@ -95,7 +96,7 @@ const ItemSectionHome = (props) => {
 										marginTop: '-5px',
 									}}
 								>
-									{'R$' + iteminfo.price / 100}
+									{'R$' + (iteminfo.price / 100).toFixed(2)}
 								</h5>
 								<h5
 									style={{
@@ -115,6 +116,9 @@ const ItemSectionHome = (props) => {
 			</BrowserView>
 			<MobileView>
 				<div
+					onClick={async () => {
+						await seeProductPage()
+					}}
 					style={{
 						flex: 1,
 						display: 'flex',
@@ -123,9 +127,11 @@ const ItemSectionHome = (props) => {
 						marginBottom: '3vh',
 						border: '2px solid #F1F1F1',
 						borderRadius: '12px',
+						width: '45vw',
 					}}
 				>
 					<img
+						alt="img"
 						src={'http://50.16.146.1/storage/' + iteminfo.image}
 						style={{
 							width: '100%',
@@ -159,7 +165,7 @@ const ItemSectionHome = (props) => {
 							className="ml-1"
 							style={{ fontSize: '1.25em', fontWeight: 600 }}
 						>
-							{'R$' + iteminfo.price / 100}
+							{'R$' + (iteminfo.price / 100).toFixed(2)}
 						</div>
 					</div>
 				</div>

@@ -247,7 +247,7 @@ const HomePage = () => {
 					<Col xs="7" style={{ margin: '0', padding: '0' }}>
 						<div style={{}}>
 							<div style={{ display: 'flex', flexDirection: 'column' }}>
-								<div style={{ flex: 1 }}>
+								<div style={{}}>
 									<CarrousselBannerHome />
 								</div>
 								{allproducts.map((item, index) => {

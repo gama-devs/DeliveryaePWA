@@ -12,7 +12,7 @@ import { Button, Input } from 'reactstrap'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import { useStore, useStoreActions, useStoreState } from 'easy-peasy'
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
-import { BrowserView, MobileView } from "react-device-detect";
+import { BrowserView, MobileView } from 'react-device-detect'
 
 const itemChoosingHome = (props) => {
 	const saveonthebag = useStoreActions((actions) => actions.user.saveonthebag)
@@ -90,29 +90,44 @@ const itemChoosingHome = (props) => {
 						flex: '1',
 						marginRight: '15vw',
 					}}
-				>{itemnow.name}</span>
+				>
+					{itemnow.name}
+				</span>
 			</div>
-			<div style={{ 
+			<div
+				style={{
 					display: 'flex',
 					backgroundColor: '#E5E5E5',
 					padding: '0 3vw 25%',
-					height: '20%' 
-			}}>
+					height: '20%',
+				}}
+			>
 				<img
 					src={'http://50.16.146.1/storage/' + itemnow.image}
 					style={{
 						borderRadius: '1em',
 						height: '7em',
 						width: '7em',
-						marginRight: '1em'
+						marginRight: '1em',
 					}}
 				/>
 				<div style={{ flex: 2, display: 'flex', flexDirection: 'column' }}>
-					<div><span style={{fontSize: '1.25em', fontWeight: 600}}>{'R$' + (itemnow.price / 100) * itemnow.qtd}</span> A partir</div>
+					<div>
+						<span style={{ fontSize: '1.25em', fontWeight: 600 }}>
+							{'R$' + (itemnow.price / 100) * itemnow.qtd.toFixed(2)}
+						</span>{' '}
+						A partir
+					</div>
 					<div>{itemnow.description}</div>
-					<div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+					<div
+						style={{
+							display: 'flex',
+							flexDirection: 'row',
+							alignItems: 'center',
+						}}
+					>
 						<span
-							style={{fontSize: '2em', color: '#FF5755'}}
+							style={{ fontSize: '2em', color: '#FF5755' }}
 							onClick={async () => {
 								updateitem((prev) => {
 									console.log(prev)
@@ -126,9 +141,11 @@ const itemChoosingHome = (props) => {
 						>
 							-
 						</span>
-						<span style={{fontSize: '1.5em', margin: '0 3vw'}}>{itemnow.qtd}</span>
+						<span style={{ fontSize: '1.5em', margin: '0 3vw' }}>
+							{itemnow.qtd}
+						</span>
 						<span
-							style={{fontSize: '2em', color: '#FF5755'}}
+							style={{ fontSize: '2em', color: '#FF5755' }}
 							onClick={async () => {
 								updateitem((prev) => {
 									console.log(prev)
@@ -141,7 +158,8 @@ const itemChoosingHome = (props) => {
 					</div>
 				</div>
 			</div>
-			<div style={{
+			<div
+				style={{
 					borderRadius: '32px',
 					backgroundColor: '#fff',
 					overflow: 'scroll',
@@ -151,10 +169,11 @@ const itemChoosingHome = (props) => {
 					padding: '5vh 3vw 0',
 					bottom: 0,
 					left: 0,
-					height: '65%'
-			}}>	
+					height: '65%',
+				}}
+			>
 				<div style={{ display: 'flex', flexDirection: 'column' }}>
-					<span style={{fontWeight: 600, margin: '1em 0'}}>Observação</span>
+					<span style={{ fontWeight: 600, margin: '1em 0' }}>Observação</span>
 					<Input
 						type="textarea"
 						onChange={(e) => {
@@ -163,9 +182,11 @@ const itemChoosingHome = (props) => {
 						style={{
 							border: 'none',
 							background: '#F9F9F9',
-							borderRadius: '1em'
+							borderRadius: '1em',
 						}}
-						placeholder={'Gostaria de inserir alguma informação referente ao pedido?'}
+						placeholder={
+							'Gostaria de inserir alguma informação referente ao pedido?'
+						}
 					/>
 				</div>
 				{somethingwrong && (
@@ -215,7 +236,7 @@ const itemChoosingHome = (props) => {
 						alignItems: 'center',
 						fontWeight: 600,
 						fontSize: '1.25em',
-						color: '#FFFFFF'
+						color: '#FFFFFF',
 					}}
 				>
 					<span>Pedido adicionado com sucesso!</span>
@@ -244,12 +265,12 @@ const itemChoosingHome = (props) => {
 						alignItems: 'center',
 						fontWeight: 600,
 						fontSize: '1.25em',
-						color: '#FFFFFF'
+						color: '#FFFFFF',
 					}}
 				>
 					<span>
 						{'R$' +
-							(itemnow.price / 100) * itemnow.qtd +
+							((itemnow.price / 100) * itemnow.qtd).toFixed(2) +
 							' ● Adicionar a sacola'}
 					</span>
 				</div>
