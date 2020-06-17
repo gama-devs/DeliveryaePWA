@@ -15,14 +15,14 @@ const HeaderHome = () => {
 				backgroundColor: '#FFF',
 				display: 'flex',
 				flexDirection: 'row',
-				margin: '3vh 3vw 1.5vh'
+				margin: '3vh 3vw 1.5vh',
 			}}
 		>
 			<div>
 				<img
 					alt="logo"
 					src={pizzalogo}
-					style={{height: '6vh', flex: 1 }}
+					style={{ height: '6vh', flex: 1 }}
 				></img>
 				<div
 					onClick={() => {
@@ -34,13 +34,15 @@ const HeaderHome = () => {
 					<div>logoff</div>{' '}
 				</div>
 			</div>
-			<div style={{
-				display: 'flex',
-				alignItems: 'center'
-			}}>
+			<div
+				style={{
+					display: 'flex',
+					alignItems: 'center',
+				}}
+			>
 				<SearchIcon
 					onClick={() => {
-						history.push('/searchaddres')
+						history.push('/searchprod')
 					}}
 					style={{
 						marginRight: '5vw',

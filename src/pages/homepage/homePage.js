@@ -32,6 +32,7 @@ const HomePage = () => {
 	})
 
 	const setaddresbase = useStoreActions((actions) => actions.user.setaddress)
+	const setallbase = useStoreActions((actions) => actions.user.setallproducts)
 
 	const [allproducts, setallproducts] = useState([])
 	const [loadingpage, setloading] = useState(true)
@@ -48,6 +49,7 @@ const HomePage = () => {
 
 			console.log(results.data.data)
 			await setallproducts(results.data.data)
+			await setallbase(results.data.data)
 			await setloading(false)
 		} catch (e) {
 			console.log(e)

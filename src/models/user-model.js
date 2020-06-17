@@ -3,6 +3,7 @@ import { action, createStore, useStoreActions } from 'easy-peasy'
 const initialState = {
 	favoriteLyrics: checkLocalStorage('addresspicked', []),
 	currentseeall: [],
+	allproducts: [],
 	currentfootmenu: 0,
 	currentitem: [],
 	authtoken: '',
@@ -28,6 +29,10 @@ const initialState = {
 export const userModel = createStore({
 	user: {
 		...initialState,
+
+		setallproducts: action((state, payload) => {
+			state.allproducts = payload
+		}),
 
 		setcurrentseeall: action((state, payload) => {
 			state.currentseeall = payload
