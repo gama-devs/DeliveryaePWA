@@ -31,6 +31,7 @@ const NewUser = (props) => {
             flex: 1,
             position: "fixed",
             bottom: "0",
+            left: 0,
             height: "70vh",
             width: "100vw",
             borderRadius: "32px",
