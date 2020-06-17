@@ -90,9 +90,6 @@ const checkAddress = () => {
 								}}
 							>
 								<Input
-									onClick={() => {
-										history.push('/searchaddres')
-									}}
 									onChange={(e) => {
 										setendereco(e.target.value)
 									}}
@@ -114,7 +111,7 @@ const checkAddress = () => {
 												long: '',
 												cep: '',
 											})
-											history.push('/searchaddres')
+											history.push('/home')
 										}}
 										style={{
 											borderRadius: '12px',
