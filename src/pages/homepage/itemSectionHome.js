@@ -157,7 +157,7 @@ const ItemSectionHome = (props) => {
 						style={{
 							marginBottom: '20px',
 							borderRadius: '0 0 12px 12px',
-							height: '30vw',
+
 							display: 'flex',
 							flexDirection: 'column',
 							justifyContent: 'flex-start',
