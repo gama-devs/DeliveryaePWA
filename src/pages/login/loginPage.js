@@ -190,7 +190,52 @@ const LoginPage = () => {
 							) : (
 								<div>
 									{/* {backarrowstate} */}
-									{backarrowstate && (
+									{backarrowstate === 'home' && (
+										<div
+											style={{}}
+											onClick={() => {
+												console.log('lhaaal')
+											}}
+										>
+											<div>
+												<div style={{ marginLeft: '3.5%', marginTop: '5.5%' }}>
+													h
+												</div>
+												<br />
+												<br />
+											</div>
+											<Button
+												onClick={() => {
+													history.push('/home')
+												}}
+												style={{
+													display: 'flex',
+													alignItems: 'center',
+													justifyContent: 'center',
+													textAlign: 'center',
+													borderStyle: 'none',
+													boxShadow: '0 0 0',
+													position: 'absolute',
+													left: '3%',
+													top: '3vh',
+													backgroundColor: '#FF805D',
+													borderRadius: '12px',
+													height: '5vh',
+													width: '5vh',
+												}}
+											>
+												<ChevronLeftIcon
+													style={{
+														color: '#FFFF',
+														height: '3vh',
+														width: 'auto',
+													}}
+												/>
+											</Button>
+										</div>
+									)}
+
+									{backarrowstate !== 'home' && (
 										<Button
 											onClick={() => {
 												console.log(backarrowstate)

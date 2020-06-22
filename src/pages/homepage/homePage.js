@@ -271,11 +271,9 @@ const HomePage = () => {
 						>
 							<span
 								style={{
+									cursor: 'pointer',
 									fontWeight: '700',
 									margin: 'auto',
-									marginTop: '38px',
-									color: ' #FF805D',
-									fontSize: 16,
 								}}
 							>
 								Entrar

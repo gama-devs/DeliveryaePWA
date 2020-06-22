@@ -65,11 +65,15 @@ const searchAddress = () => {
 					backgroundColor: '#ffff',
 					borderRadius: '32px',
 					marginTop: '-5vh',
-					height: selected ? adresschecked && isValidAddress ? '70%' : '85%' : '85%',
+					height: selected
+						? adresschecked && isValidAddress
+							? '70%'
+							: '85%'
+						: '85%',
 					width: '100vw',
 					position: 'fixed',
 					bottom: '0',
-					left: '0'
+					left: '0',
 				}}
 			>
 				{lodaded.length == 0 && !selected && (
@@ -169,7 +173,7 @@ const searchAddress = () => {
 									height: '7vh',
 									marginTop: '3vh',
 									border: 'none',
-									fontSize: '16px'
+									fontSize: '16px',
 								}}
 								placeholder="Complemento (caso tenha)"
 							></Input>
@@ -187,13 +191,15 @@ const searchAddress = () => {
 									height: '7vh',
 									marginTop: '1vh',
 									border: 'none',
-									fontSize: '16px'
+									fontSize: '16px',
 								}}
 								placeholder="Nome do Endereço. (Ex. Casa)"
 							></Input>
-							<div style={{
-								marginTop: '2vh'
-							}}>
+							<div
+								style={{
+									marginTop: '2vh',
+								}}
+							>
 								<Button
 									style={{
 										height: '7vh',
@@ -260,7 +266,7 @@ const searchAddress = () => {
 											height: '7vh',
 											marginTop: '8vh',
 											border: 'none',
-											fontSize: '16px'
+											fontSize: '16px',
 										}}
 										value={number === -1 ? 'Número não necessário' : number}
 										placeholder="Número"
@@ -283,12 +289,19 @@ const searchAddress = () => {
 											marginTop: '1vh',
 										}}
 									>
-										<Row style={{ textAlign: 'left', marginTop: '20px' }} xs="12">
+										<Row
+											style={{
+												fontSize: '13px',
+												textAlign: 'left',
+												marginTop: '20px',
+											}}
+											xs="12"
+										>
 											<Col xs="10">Endereço sem número</Col>
 											<Col style={{ textAlign: 'right' }} xs="2">
 												<Input
 													className="form-check-input"
-													style={{ marginTop: '-0.5vh', fontSize: '16px' }}
+													style={{ marginTop: '5px', fontSize: '18px' }}
 													type="checkbox"
 													onChange={() => {}}
 													onClick={() => {
