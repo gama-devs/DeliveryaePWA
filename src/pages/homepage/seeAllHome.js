@@ -25,7 +25,7 @@ const seeAllHome = (props) => {
 		<div>
 			<div
 				style={{
-					backgroundColor: '#E5E5E5',
+					backgroundColor: '#f9f9f9',
 					display: 'flex',
 					alignItems: 'center',
 					height: '20vh',
@@ -68,7 +68,8 @@ const seeAllHome = (props) => {
 					{Pageitem.name}
 				</div>
 			</div>
-			<div style={{
+			<div
+				style={{
 					borderRadius: '32px',
 					backgroundColor: '#fff',
 					overflow: 'scroll',
@@ -78,8 +79,9 @@ const seeAllHome = (props) => {
 					paddingTop: '5vh',
 					bottom: 0,
 					left: 0,
-					height: '85%'
-			}}>
+					height: '85%',
+				}}
+			>
 				<SectionHome data={Pageitem} seeall />
 			</div>
 

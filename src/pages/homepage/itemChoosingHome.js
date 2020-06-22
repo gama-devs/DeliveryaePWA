@@ -52,7 +52,7 @@ const itemChoosingHome = (props) => {
 		>
 			<div
 				style={{
-					backgroundColor: '#E5E5E5',
+					backgroundColor: '#f9f9f9',
 					display: 'flex',
 					alignItems: 'center',
 					height: '15%',
@@ -97,7 +97,7 @@ const itemChoosingHome = (props) => {
 			<div
 				style={{
 					display: 'flex',
-					backgroundColor: '#E5E5E5',
+					backgroundColor: '#f9f9f9',
 					padding: '0 3vw 25%',
 					height: '20%',
 				}}

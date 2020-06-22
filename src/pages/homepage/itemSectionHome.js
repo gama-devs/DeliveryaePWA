@@ -74,7 +74,14 @@ const ItemSectionHome = (props) => {
 								flex: 2,
 							}}
 						>
-							<h1 style={{ fontSize: 16, fontWeight: '800', color: '#FF805D' }}>
+							<h1
+								style={{
+									marginTop: '10px',
+									fontSize: 16,
+									fontWeight: '800',
+									color: '#FF805D',
+								}}
+							>
 								{iteminfo.name}
 							</h1>
 							<h5
@@ -87,7 +94,13 @@ const ItemSectionHome = (props) => {
 							>
 								{iteminfo.description}
 							</h5>
-							<div style={{ display: 'flex', flexDirection: 'row' }}>
+							<div
+								style={{
+									marginBottom: '10px',
+									display: 'flex',
+									flexDirection: 'row',
+								}}
+							>
 								<h5
 									style={{
 										fontSize: 17,
@@ -142,16 +155,22 @@ const ItemSectionHome = (props) => {
 					/>
 					<div
 						style={{
+							marginBottom: '20px',
 							borderRadius: '0 0 12px 12px',
 							height: '30vw',
 							display: 'flex',
 							flexDirection: 'column',
-							justifyContent: 'space-between',
+							justifyContent: 'flex-start',
 						}}
 					>
 						<span
 							className="ml-1"
-							style={{ fontSize: '1.1em', color: '#FF805D', fontWeight: 600 }}
+							style={{
+								marginTop: '10px',
+								fontSize: '1.0em',
+								color: '#FF805D',
+								fontWeight: 600,
+							}}
 						>
 							{iteminfo.name}
 						</span>
@@ -163,7 +182,11 @@ const ItemSectionHome = (props) => {
 						</div>
 						<div
 							className="ml-1"
-							style={{ fontSize: '1.25em', fontWeight: 600 }}
+							style={{
+								fontSize: '1.25em',
+								fontWeight: 600,
+								color: '#413131',
+							}}
 						>
 							{'R$' + (iteminfo.price / 100).toFixed(2)}
 						</div>

@@ -27,7 +27,7 @@ import ae from '../../assets/deliveryae.png'
 const LoginPage = () => {
 	const fulluser = useStoreState((state) => state.user)
 	const setauthtoken = useStoreActions((actions) => actions.user.setauthtoken)
-	const [backarrowstate, setbackarrowstate] = useState('')
+	const [backarrowstate, setbackarrowstate] = useState('home')
 	const [loadingreq, setloading] = useState(false)
 	const [showpassword, setshowpass] = useState(false)
 	const [logged, setlogged] = useState(false)
@@ -60,7 +60,8 @@ const LoginPage = () => {
 	}, [logged])
 	useEffect(() => {
 		if (jsonpagestate.main) {
-			setbackarrowstate('')
+			console.log('coloquei')
+			setbackarrowstate('home')
 		}
 	}, [JSON.stringify(jsonpagestate)])
 
@@ -170,7 +171,10 @@ const LoginPage = () => {
 	}
 
 	let handlearrowbackclick = () => {
-		handlejsonpage(backarrowstate)
+		console.log(backarrowstate)
+		backarrowstate === 'home'
+			? history.push('/home')
+			: handlejsonpage(backarrowstate)
 	}
 	return (
 		<div>
@@ -189,6 +193,7 @@ const LoginPage = () => {
 									{backarrowstate && (
 										<Button
 											onClick={() => {
+												console.log(backarrowstate)
 												handlearrowbackclick()
 											}}
 											style={{
@@ -565,9 +570,51 @@ const LoginPage = () => {
 					) : (
 						<LoginBg>
 							{/* {backarrowstate} */}
-							{backarrowstate && (
+							{backarrowstate === 'home' && (
+								<div
+									style={{}}
+									onClick={() => {
+										console.log('lhaaal')
+									}}
+								>
+									<div>
+										<div style={{ marginLeft: '3.5%', marginTop: '5.5%' }}>
+											h
+										</div>
+										<br />
+										<br />
+									</div>
+									<Button
+										onClick={() => {
+											history.push('/home')
+										}}
+										style={{
+											display: 'flex',
+											alignItems: 'center',
+											justifyContent: 'center',
+											textAlign: 'center',
+											borderStyle: 'none',
+											boxShadow: '0 0 0',
+											position: 'absolute',
+											left: '3%',
+											top: '3vh',
+											backgroundColor: '#FF805D',
+											borderRadius: '12px',
+											height: '5vh',
+											width: '5vh',
+										}}
+									>
+										<ChevronLeftIcon
+											style={{ color: '#FFFF', height: '3vh', width: 'auto' }}
+										/>
+									</Button>
+								</div>
+							)}
+							{backarrowstate !== 'home' && (
 								<Button
 									onClick={() => {
+										console.log('lahl')
+										console.log(backarrowstate)
 										handlearrowbackclick()
 									}}
 									style={{
