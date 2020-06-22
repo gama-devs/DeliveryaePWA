@@ -43,7 +43,7 @@ const CarrousselBannerHome = (props) => {
 					<style></style>
 					<Carousel
 						centerSlidePercentage={20}
-						transitionTime={1500}
+						transitionTime={2000}
 						autoPlay
 						showArrows={false}
 						backgroundColor="#FFF"
@@ -120,7 +120,7 @@ const CarrousselBannerHome = (props) => {
 				<div style={{ width: '60vw', borderRadius: '20px', height: '25vh' }}>
 					<Carousel
 						centerSlidePercentage={20}
-						transitionTime={1500}
+						transitionTime={2000}
 						autoPlay
 						showArrows={false}
 						backgroundColor="#FFF"
