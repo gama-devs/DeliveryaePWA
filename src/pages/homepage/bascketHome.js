@@ -499,6 +499,7 @@ const BascketHome = (props) => {
 								onClick={() => {
 									console.log('hmmmmmm')
 								}}
+								type='number'
 								onChange={(e) => {}}
 								placeholder="Informe CPF ou CNPJ"
 								style={{
