@@ -786,6 +786,7 @@ const LoginPage = () => {
 										position: 'relative',
 										display: 'flex',
 										flexDirection: 'row',
+										width:'100vw'
 									}}
 								>
 									<div

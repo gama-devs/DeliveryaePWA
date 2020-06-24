@@ -19,7 +19,7 @@ const LoginBG = (props) => {
 				alt=""
 				style={{
 					height: '100vh',
-					width: '100%',
+					width: '100vw',
 					position: 'relative',
 				}}
 				src={bgpizza}
